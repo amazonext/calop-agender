@@ -1,4 +1,4 @@
-package com.myapp
+package com.scripts
 
 import android.app.Application
 import android.content.res.Configuration
