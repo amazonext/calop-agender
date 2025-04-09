@@ -5,10 +5,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 // styles
 import styles from '../assets/css/styles'
 
-export default function Home() {
+export default function MySchedule() {
     return (
         <SafeAreaView style={styles.container}>
-            <Text>Tela inicial</Text>
+            <Text>Tela de Meus agendamentos</Text>
         </SafeAreaView>
     )
 }
