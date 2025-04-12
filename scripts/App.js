@@ -18,6 +18,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName='Tela inicial'
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarActiveTintColor: projectPalete.color1,
