@@ -50,6 +50,7 @@ export default function App() {
 
       <StatusBar
         animated={true}
+        style='dark'
         backgroundColor={projectPalete.color1}
       />
     </NavigationContainer>
