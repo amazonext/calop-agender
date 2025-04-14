@@ -1,11 +1,14 @@
 import * as SQLite from 'expo-sqlite';
 import createTable from './createTable';
 
-export default function getSchedules() {
-    // código...
+export default async function getSchedules() {
     try {
-        createTable();
-    } catch (error) {
+        const db = createTable();
 
+        const result = await db.getAllAsync("SELECT * FROM schedules;");
+
+        return result;
+    } catch (error) {
+        console.error("Erro ao selecionar os itens da tabela: ", error);
     }
 }
