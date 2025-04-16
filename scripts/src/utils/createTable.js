@@ -14,7 +14,7 @@ export default function createTable() {
         } else {
             db.execSync(`
                 CREATE TABLE schedules (
-                    id INTEGER PRIMARY KEY NOT NULL,
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                     procedure TEXT NOT NULL,
                     hour TEXT NOT NULL,
                     value INTEGER NOT NULL
