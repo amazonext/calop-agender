@@ -1,4 +1,3 @@
-import * as SQLite from 'expo-sqlite';
 import createTable from './createTable';
 
 export default async function ediSchedule(id, procediments, hour, value) {
