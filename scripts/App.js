@@ -1,8 +1,10 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import * as NavigationBar from 'expo-navigation-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { Platform } from 'react-native';
 
 // Telas
 import Home from "./src/screens/Home";
@@ -16,6 +18,12 @@ import { projectPalete } from './src/assets/css/colors';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      NavigationBar.setBorderColorAsync(projectPalete.color1);
+    }
+  }, []);
+
   return (
     <NavigationContainer>
       <Tab.Navigator
