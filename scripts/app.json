@@ -18,8 +18,7 @@
       "package": "com.project"
     },
     "ios": {
-      "bundleIdentifier": "com.project",
-      "statusBarStyle": "dark-content"
+      "bundleIdentifier": "com.project"
     },
     "extra": {
       "eas": {
