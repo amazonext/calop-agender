@@ -15,7 +15,7 @@ export default async function createTable() {
             await db.execAsync(`
                 CREATE TABLE schedules (
                     id INTEGER PRIMARY KEY NOT NULL,
-                    procediments TEXT NOT NULL,
+                    procedure TEXT NOT NULL,
                     hour TEXT NOT NULL,
                     value INTEGER NOT NULL
                 );
