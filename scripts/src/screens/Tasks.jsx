@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 // styles
 import styles from '../assets/css/styles'
 
-export default function Home() {
+export default function Tasks() {
     return (
         <SafeAreaView style={styles.container}>
             <Text>Tela inicial</Text>

@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Platform } from 'react-native';
 
 // Telas
-import Home from "./src/screens/Home";
+import Tasks from "./src/screens/Tasks.jsx";
 import AddSchedule from "./src/screens/AddSchedule";
 import MySchedules from "./src/screens/MySchedules";
 import About from "./src/screens/About.jsx";
@@ -27,7 +27,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName='Tela inicial'
+        initialRouteName='Tarefas'
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarActiveTintColor: projectPalete.color1,
@@ -36,8 +36,8 @@ export default function App() {
           tabBarIcon: ({ color, size, focused }) => {
             let iconName;
 
-            if (route.name === 'Tela inicial') {
               iconName = focused ? 'home' : 'home-outline';
+            if (route.name === 'Tarefas') {
             } else if (route.name === 'Adicionar agendamento') {
               iconName = focused ? 'add-circle' : 'add-circle-outline';
             } else if (route.name === 'Agendamentos') {
@@ -55,7 +55,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Adicionar agendamento" component={AddSchedule} />
-        <Tab.Screen name="Tela inicial" component={Home} />
+        <Tab.Screen name="Tarefas" component={Tasks} />
         <Tab.Screen name="Agendamentos" component={MySchedules} />
         <Tab.Screen name="Sobre" component={About} />
       </Tab.Navigator>
