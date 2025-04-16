@@ -9,8 +9,8 @@ export default function editSchedule(id, procedure, hour, value) {
             [procedure, hour, value, id]
         );
 
-        console.log("Agendamento enviado com sucesso!");
+        console.log("Agendamento atualizado com sucesso!");
     } catch (error) {
-        console.error("Erro ao enviar agendamento: ", error);
+        console.error("Erro ao atualizar agendamento: ", error);
     }
 }

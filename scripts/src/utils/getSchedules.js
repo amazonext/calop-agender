@@ -6,7 +6,7 @@ export default function getSchedules() {
 
         const results = db.getAllSync("SELECT * FROM schedules");
 
-        return result;
+        return results;
     } catch (error) {
         console.error("Erro ao selecionar os itens da tabela: ", error);
     }
