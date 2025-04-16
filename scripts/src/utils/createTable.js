@@ -1,10 +1,10 @@
 import * as SQLite from 'expo-sqlite';
 
-export default async function createTable() {
+export default function createTable() {
     try {
-        const db = await SQLite.openDatabaseAsync("./db/my-db.db");
+        const db = SQLite.openDatabaseSync("./db/my-db.db");
 
-        const result = await db.getAllAsync(`
+        const result = db.getAllSync(`
             SELECT name FROM sqlite_master
             WHERE type='table' AND name='schedules';
         `);
@@ -12,7 +12,7 @@ export default async function createTable() {
         if (result.length > 0) {
             console.log("Tabela 'schedules' já existe. Nenhuma ação foi tomada.");
         } else {
-            await db.execAsync(`
+            db.execSync(`
                 CREATE TABLE schedules (
                     id INTEGER PRIMARY KEY NOT NULL,
                     procedure TEXT NOT NULL,

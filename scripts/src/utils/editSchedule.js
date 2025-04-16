@@ -1,15 +1,15 @@
 import createTable from './createTable';
 
-export default async function editSchedule(id, procedure, hour, value) {
+export default function editSchedule(id, procedure, hour, value) {
     try {
-        const db = await createTable();
+        const db = createTable();
 
-        await db.runAsync(
                 `UPDATE schedules
                 SET procedure = ?,
                 hour = ?,
                 value = ?
                 WHERE id = ?`,
+        db.execSync(
             [procedure, hour, value, id]
         );
 

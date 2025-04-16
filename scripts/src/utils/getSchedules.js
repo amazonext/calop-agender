@@ -1,10 +1,10 @@
 import createTable from './createTable';
 
-export default async function getSchedules() {
+export default function getSchedules() {
     try {
         const db = createTable();
 
-        const result = await db.getAllAsync("SELECT * FROM schedules;");
+        const results = db.getAllSync("SELECT * FROM schedules");
 
         return result;
     } catch (error) {
