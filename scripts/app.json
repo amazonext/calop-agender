@@ -1,8 +1,35 @@
 {
   "expo": {
-    "name": "scripts",
-    "slug": "scripts",
+    "name": "Calop Agender",
+    "slug": "calop-agender",
+    "splash": {
+      "image": "./src/assets/images/logo-app.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#C0933E"
+    },
+    "assetBundlePatterns": [
+      "./src/**"
+    ],
     "version": "1.0.0",
-    "newArchEnabled": true
+    "orientation": "portrait",
+    "icon": "./src/assets/images/logo-app.png",
+    "newArchEnabled": true,
+    "android": {
+      "package": "com.project"
+    },
+    "ios": {
+      "bundleIdentifier": "com.project",
+      "statusBarStyle": "dark-content"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "84d68c36-0d29-430d-a19f-6ca42cb830f3"
+      }
+    },
+    "androidNavigationBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#C0933E"
+    },
+    "owner": "the-heapsters"
   }
 }
