@@ -36,8 +36,8 @@ export default function App() {
           tabBarIcon: ({ color, size, focused }) => {
             let iconName;
 
-              iconName = focused ? 'home' : 'home-outline';
             if (route.name === 'Tarefas') {
+              iconName = focused ? 'checkbox' : 'checkbox-outline';
             } else if (route.name === 'Adicionar agendamento') {
               iconName = focused ? 'add-circle' : 'add-circle-outline';
             } else if (route.name === 'Agendamentos') {
