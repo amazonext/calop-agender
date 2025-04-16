@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Home from "./src/screens/Home";
 import AddSchedule from "./src/screens/AddSchedule";
 import MySchedules from "./src/screens/MySchedules";
+import About from "./src/screens/About.jsx";
 
 // Cores
 import { projectPalete } from './src/assets/css/colors';
@@ -33,6 +34,8 @@ export default function App() {
               iconName = focused ? 'add-circle' : 'add-circle-outline';
             } else if (route.name === 'Agendamentos') {
               iconName = focused ? 'calendar' : 'calendar-outline';
+            } else if (route.name === 'Sobre') {
+              iconName = focused ? 'information-circle' : 'information-circle-outline';
             }
 
             return <Ionicons
@@ -46,6 +49,7 @@ export default function App() {
         <Tab.Screen name="Adicionar agendamento" component={AddSchedule} />
         <Tab.Screen name="Tela inicial" component={Home} />
         <Tab.Screen name="Agendamentos" component={MySchedules} />
+        <Tab.Screen name="Sobre" component={About} />
       </Tab.Navigator>
 
       <StatusBar
