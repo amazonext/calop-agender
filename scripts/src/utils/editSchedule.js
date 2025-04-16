@@ -4,12 +4,8 @@ export default function editSchedule(id, procedure, hour, value) {
     try {
         const db = createTable();
 
-                `UPDATE schedules
-                SET procedure = ?,
-                hour = ?,
-                value = ?
-                WHERE id = ?`,
         db.execSync(
+            "UPDATE schedules SET procedure = ?, hour = ?, value = ? WHERE id = ?",
             [procedure, hour, value, id]
         );
 

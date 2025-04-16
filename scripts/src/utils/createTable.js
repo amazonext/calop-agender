@@ -18,9 +18,10 @@ export default function createTable() {
                     procedure TEXT NOT NULL,
                     hour TEXT NOT NULL,
                     value INTEGER NOT NULL
-                );
+                )
             `);
-            console.log("Tabela 'schedules' foi criada com sucesso!");
+
+            console.log("Tabela criada com sucesso!");
         }
 
         return db;
