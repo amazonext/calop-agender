@@ -1,64 +1,89 @@
-import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import * as NavigationBar from 'expo-navigation-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
-import { Platform } from 'react-native';
 
 // Telas
 import Home from "./src/screens/Home";
 import AddSchedule from "./src/screens/AddSchedule";
 import MySchedules from "./src/screens/MySchedules";
-import About from "./src/screens/About.jsx";
+import Settings from './src/screens/Settings'
 
-// Cores
+// Assets
 import { projectPalete } from './src/assets/css/colors';
+import { Image, TouchableOpacity } from 'react-native';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
-  useEffect(() => {
-    if (Platform.OS === 'android') {
-      NavigationBar.setBorderColorAsync(projectPalete.color1);
-    }
-  }, []);
-
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName='Tarefas'
-        screenOptions={({ route }) => ({
-          headerShown: false,
-          tabBarActiveTintColor: projectPalete.color1,
-          tabBarInactiveTintColor: projectPalete.color3,
-          tabBarStyle: { backgroundColor: projectPalete.color2 },
-          tabBarIcon: ({ color, size, focused }) => {
-            let iconName;
+      <Stack.Navigator>
+        <Stack.Screen name="Home" options={{ headerShown: false }}>
+          {() => (
+            <Tab.Navigator
+              initialRouteName='Tela inicial'
+              screenOptions={({ route, navigation }) => ({
+                // header
+                headerTitle: "Calop Agender",
+                headerTintColor: projectPalete.color3,
+                headerStyle: {
+                  backgroundColor: projectPalete.color1
+                },
+                headerLeft: () => (
+                  <Image
+                    source={require('./src/assets/images/logo-app.png')}
+                    style={{ width: 30, height: 30, marginLeft: 10 }}
+                  />
+                ),
+                headerRight: () => (
+                  <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+                    <Ionicons name="settings" size={30} color="white" style={{ marginRight: 10 }} />
+                  </TouchableOpacity>
+                ),
+                tabBarActiveTintColor: projectPalete.color1,
+                tabBarInactiveTintColor: projectPalete.color3,
+                tabBarStyle: { backgroundColor: projectPalete.color2 },
+                tabBarIcon: ({ color, size, focused }) => {
+                  let iconName;
 
-            if (route.name === 'Tarefas') {
-              iconName = focused ? 'checkbox' : 'checkbox-outline';
-            } else if (route.name === 'Adicionar agendamento') {
-              iconName = focused ? 'add-circle' : 'add-circle-outline';
-            } else if (route.name === 'Agendamentos') {
-              iconName = focused ? 'calendar' : 'calendar-outline';
-            } else if (route.name === 'Sobre') {
-              iconName = focused ? 'information-circle' : 'information-circle-outline';
-            }
+                  if (route.name === 'Tela inicial') {
+                    iconName = focused ? 'home' : 'home-outline';
+                  } else if (route.name === 'Adicionar agendamento') {
+                    iconName = focused ? 'add-circle' : 'add-circle-outline';
+                  } else if (route.name === 'Agendamentos') {
+                    iconName = focused ? 'calendar' : 'calendar-outline';
+                  }
 
-            return <Ionicons
-              name={iconName}
-              size={focused ? size + 4 : size}
-              color={color}
-            />;
-          },
-        })}
-      >
-        <Tab.Screen name="Adicionar agendamento" component={AddSchedule} />
-        <Tab.Screen name="Tarefas" component={Tasks} />
-        <Tab.Screen name="Agendamentos" component={MySchedules} />
-        <Tab.Screen name="Sobre" component={About} />
-      </Tab.Navigator>
+                  return <Ionicons
+                    name={iconName}
+                    size={focused ? size + 4 : size}
+                    color={color}
+                  />;
+                },
+              })}
+            >
+              <Tab.Screen name="Adicionar agendamento" component={AddSchedule} />
+              <Tab.Screen name="Tela inicial" component={Home} />
+              <Tab.Screen name="Agendamentos" component={MySchedules} />
+            </Tab.Navigator>
+          )}
+        </Stack.Screen>
+
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            headerTitle: "Configurações",
+            headerTintColor: projectPalete.color3,
+            headerStyle: {
+              backgroundColor: projectPalete.color1
+            },
+          }}
+        />
+      </Stack.Navigator>
 
       <StatusBar
         animated={true}
