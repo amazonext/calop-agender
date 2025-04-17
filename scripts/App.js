@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Platform } from 'react-native';
 
 // Telas
-import Tasks from "./src/screens/Tasks.jsx";
+import Home from "./src/screens/Home";
 import AddSchedule from "./src/screens/AddSchedule";
 import MySchedules from "./src/screens/MySchedules";
 import About from "./src/screens/About.jsx";
