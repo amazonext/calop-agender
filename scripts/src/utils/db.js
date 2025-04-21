@@ -21,7 +21,15 @@ function createTable() {
                 )
             `);
 
-            console.log("Tabela criada com sucesso!");
+            db.execSync(`
+                CREATE TABLE user (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    name TEXT NOT NULL,
+                    enterprise_name TEXT NOT NULL
+                )
+            `);
+
+            console.log("Tabelas criadas com sucesso!");
         }
 
         return db;
@@ -75,4 +83,14 @@ function deleteSchedule() {
     }
 }
 
-export { createSchedule, getSchedules, editSchedule, deleteSchedule }
+function updateUsername(newUsername) {
+    try {
+        const db = createTable();
+
+        db.execSync("UPDATE user SET name = ?", [newUsername]);
+    } catch (error) {
+        console.error("Erro ao atualizar o nome de usuário: " + error);
+    }
+}
+
+export { createSchedule, getSchedules, editSchedule, deleteSchedule, updateUsername }
