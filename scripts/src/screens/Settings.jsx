@@ -1,14 +1,18 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-// styles
-import styles from '../assets/css/styles'
+import styles, { settingsStyles } from '../assets/css/styles';
 
-export default function Settings() {
+const defaultUserPhoto = require('../assets/images/logo-app.png');
+
+export default function Settings({ user = { name: "Nome do Usuário", photo: defaultUserPhoto } }) {
     return (
         <SafeAreaView style={styles.container}>
-            <Text>Tela de Configurações</Text>
+            <View style={settingsStyles.userBox}>
+                <Image source={user.photo} style={settingsStyles.userPhoto} />
+                <Text style={settingsStyles.userName}>{user.name}</Text>
+            </View>
         </SafeAreaView>
-    )
+    );
 }
