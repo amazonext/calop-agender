@@ -1,0 +1,78 @@
+import * as SQLite from 'expo-sqlite';
+
+function createTable() {
+    try {
+        const db = SQLite.openDatabaseSync("./db/my-db.db");
+
+        const result = db.getAllSync(`
+            SELECT name FROM sqlite_master
+            WHERE type='table' AND name='schedules';
+        `);
+
+        if (result.length > 0) {
+            console.log("Tabela 'schedules' já existe. Nenhuma ação foi tomada.");
+        } else {
+            db.execSync(`
+                CREATE TABLE schedules (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    procedure TEXT NOT NULL,
+                    hour TEXT NOT NULL,
+                    value INTEGER NOT NULL
+                )
+            `);
+
+            console.log("Tabela criada com sucesso!");
+        }
+
+        return db;
+    } catch (error) {
+        console.error("Erro ao verificar/criar tabela: ", error);
+    }
+}
+
+function createSchedule() {
+    // código...
+    try {
+        createTable();
+    } catch (error) {
+
+    }
+}
+
+function getSchedules() {
+    try {
+        const db = createTable();
+
+        const results = db.getAllSync("SELECT * FROM schedules");
+
+        return results;
+    } catch (error) {
+        console.error("Erro ao selecionar os itens da tabela: ", error);
+    }
+}
+
+function editSchedule(id, procedure, hour, value) {
+    try {
+        const db = createTable();
+
+        db.execSync(
+            "UPDATE schedules SET procedure = ?, hour = ?, value = ? WHERE id = ?",
+            [procedure, hour, value, id]
+        );
+
+        console.log("Agendamento atualizado com sucesso!");
+    } catch (error) {
+        console.error("Erro ao atualizar agendamento: ", error);
+    }
+}
+
+function deleteSchedule() {
+    // código...
+    try {
+        createTable();
+    } catch (error) {
+
+    }
+}
+
+export { createSchedule, getSchedules, editSchedule, deleteSchedule }
