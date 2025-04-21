@@ -1,50 +1,34 @@
-export default function month() {
+function weekDayName() {
     const date = new Date();
-    const infos = {};
 
     switch (date.getDay()) {
-        case 0: infos.dayWeek = "Domingo";
-            break
-        case 1: infos.dayWeek = "Segunda-feira";
-            break
-        case 2: infos.dayWeek = "Terça-feira";
-            break
-        case 3: infos.dayWeek = "Quarta-feira";
-            break
-        case 4: infos.dayWeek = "Quinta-feira";
-            break
-        case 5: infos.dayWeek = "Sexta-feira";
-            break
-        case 6: infos.dayWeek = "Sábado";
-            break
+        case 0: return "Domingo";
+        case 1: return "Segunda-feira";
+        case 2: return "Terça-feira";
+        case 3: return "Quarta-feira";
+        case 4: return "Quinta-feira";
+        case 5: return "Sexta-feira";
+        case 6: return "Sábado";
     }
+}
+
+function monthName() {
+    const date = new Date();
 
     switch (date.getMonth()) {
-        case 0: infos.month = "Janeiro"
-            break
-        case 1: infos.month = "Fevereiro"
-            break
-        case 2: infos.month = "Março"
-            break
-        case 3: infos.month = "Abril"
-            break
-        case 4: infos.month = "Maio"
-            break
-        case 5: infos.month = "Junho"
-            break
-        case 6: infos.month = "Julho"
-            break
-        case 7: infos.month = "Agosto"
-            break
-        case 8: infos.month = "Setembro"
-            break
-        case 9: infos.month = "Outubro"
-            break
-        case 10: infos.month = "Novembro"
-            break
-        case 11: infos.month = "Dezembro"
-            break
+        case 0: return "Janeiro"
+        case 1: return "Fevereiro"
+        case 2: return "Março"
+        case 3: return "Abril"
+        case 4: return "Maio"
+        case 5: return "Junho"
+        case 6: return "Julho"
+        case 7: return "Agosto"
+        case 8: return "Setembro"
+        case 9: return "Outubro"
+        case 10: return "Novembro"
+        case 11: return "Dezembro"
     }
-
-    return infos;
 }
+
+export { weekDayName, monthName };
