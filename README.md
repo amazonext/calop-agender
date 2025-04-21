@@ -22,7 +22,7 @@ Para instalar as extens√µes basta copiar os IDs e colar na barra de busca da se√
 - Babel JavaScript - ID: *mgmcdermott.vscode-language-babel*
 - Color Highlight - ID: *naumovs.color-highlight*
 - Error Lens - ID: *usernamehw.errorlens*
-- Path Intelisense - ID: *christian-kohler.path-intellisense*
+- Path Intellisense - ID: *christian-kohler.path-intellisense*
 - string-highlight - ID: *jenkey2011.string-highlight*
 - React Native Tools - ID: *msjsdiag.vscode-react-native*
 - Template String Converter - ID: *meganrogge.template-string-converter*

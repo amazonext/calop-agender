@@ -8,7 +8,7 @@ const theHeapstersPalete = {
 
 const projectPalete = {
     color1: "#C0933E",
-    color2: "#F4ECDD",
+    color2: "#FFFDF7",
     color3: "#644C20",
     color4: "#7C7471",
     color5: "#C0C0B7"
