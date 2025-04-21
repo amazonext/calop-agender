@@ -79,3 +79,24 @@ export default StyleSheet.create({
     color: '#3A3C3F',
   }
 });
+
+export const settingsStyles = StyleSheet.create({
+  userBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 16,
+    backgroundColor: "#f0f0f0",
+    borderRadius: 12,
+    marginBottom: 20,
+  },
+  userPhoto: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 16,
+  },
+  userName: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+});
