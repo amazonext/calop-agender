@@ -9,6 +9,7 @@ import Home from "./src/screens/Home";
 import AddSchedule from "./src/screens/AddSchedule";
 import MySchedules from "./src/screens/MySchedules";
 import Settings from './src/screens/Settings'
+import About from './src/screens/About';
 
 // Assets
 import { projectPalete } from './src/assets/css/colors';
@@ -83,6 +84,18 @@ export default function App() {
             },
           }}
         />
+        <Stack.Screen
+          name="About"
+          component={About}
+          options={{
+            headerTitle: "Sobre",
+            headerTintColor: projectPalete.color3,
+            headerStyle: {
+            backgroundColor: projectPalete.color1
+            },
+          }}
+        />
+
       </Stack.Navigator>
 
       <StatusBar
