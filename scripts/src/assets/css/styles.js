@@ -1,11 +1,48 @@
-import { StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 import { projectPalete } from './colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFDF7', 
+    backgroundColor: projectPalete.color2,
     paddingHorizontal: 20,
+  },
+  content: {
+    backgroundColor: "#F4ECDD",
+    borderRadius: 15,
+
+    // #C0933E
+  },
+  titleItem: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: "black",
+    fontWeight: "bold",
+    padding: 5,
+  },
+  field: {
+    fontSize: 20,
+    color: "black",
+    padding: 5,
+    gap: 2
+  },
+  label: {
+    fontSize: 20,
+    // backgroundColor:"#F4ECDD",
+  },
+  input: {
+    backgroundColor: "#C0933E",
+    borderRadius: 10,
+    color: "#fff"
+  },
+  Button: {
+    alignItems: "center",
+    margin: 20,
+    fontSize: 20,
+    padding: 5,
+    backgroundColor: "#D6AE4F",
+    borderRadius: 10,
+    fontWeight: 'bold',
   },
   header: {
     marginTop: 30,
@@ -15,7 +52,7 @@ export default StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 20,
-    backgroundColor: '#D6AE4F', 
+    backgroundColor: '#D6AE4F',
   },
   title: {
     fontSize: 36,
