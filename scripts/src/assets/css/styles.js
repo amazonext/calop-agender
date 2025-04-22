@@ -88,6 +88,7 @@ export const settingsStyles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
     borderRadius: 12,
     marginBottom: 20,
+    marginVertical: 15,
   },
   userPhoto: {
     width: 60,
@@ -99,4 +100,17 @@ export const settingsStyles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  button: {
+    backgroundColor: '#D6AE4F',
+    padding: 16,
+    marginVertical: 5,
+    marginHorizontal: 10,
+    borderRadius: 12,
+  },
+  buttonText: {
+    color: '#3A3C3F',
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  }
 });
