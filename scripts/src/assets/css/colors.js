@@ -3,7 +3,7 @@ const theHeapstersPalete = {
     color2: "#5D4EBF",
     color3: "#403873",
     color4: "#D9D9D9",
-    color5: "#262626"
+    color5: "#1E1E1E"
 }
 
 const projectPalete = {
@@ -11,7 +11,12 @@ const projectPalete = {
     color2: "#FFFDF7",
     color3: "#644C20",
     color4: "#7C7471",
-    color5: "#C0C0B7"
+    color5: "#C0C0B7",
+    color6: "#D6AE4F",
+    color7: "#515151",
+    color8: "#3A3C3F",
+    color9: "#E9B124",
+    color10: "#493918"
 }
 
 export { theHeapstersPalete, projectPalete };
