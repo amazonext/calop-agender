@@ -1,5 +1,7 @@
-import { Button, StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { projectPalete } from './colors';
+
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -10,8 +12,6 @@ export default StyleSheet.create({
   content: {
     backgroundColor: "#F4ECDD",
     borderRadius: 15,
-
-    // #C0933E
   },
   titleItem: {
     fontSize: 30,
@@ -19,6 +19,7 @@ export default StyleSheet.create({
     color: "black",
     fontWeight: "bold",
     padding: 5,
+    color: projectPalete.color3
   },
   field: {
     fontSize: 20,
@@ -28,19 +29,18 @@ export default StyleSheet.create({
   },
   label: {
     fontSize: 20,
-    // backgroundColor:"#F4ECDD",
+    color: projectPalete.color10
   },
   input: {
-    backgroundColor: "#C0933E",
+    backgroundColor: projectPalete.color1,
     borderRadius: 10,
     color: "#fff"
   },
-  Button: {
+  button: {
     alignItems: "center",
-    margin: 20,
     fontSize: 20,
     padding: 5,
-    backgroundColor: "#D6AE4F",
+    backgroundColor: projectPalete.color6,
     borderRadius: 10,
     fontWeight: 'bold',
   },
@@ -52,12 +52,12 @@ export default StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 20,
-    backgroundColor: '#D6AE4F',
+    backgroundColor: projectPalete.color6,
   },
   title: {
     fontSize: 36,
     fontWeight: '600',
-    color: '#3A3C3F',
+    color: projectPalete.color8,
     marginTop: 10,
     marginBottom: 30,
   },
@@ -68,12 +68,12 @@ export default StyleSheet.create({
   welcomeText: {
     fontSize: 32,
     fontWeight: '500',
-    color: '#3A3C3F',
+    color: projectPalete.color8,
     marginBottom: 5,
   },
   subtitleText: {
     fontSize: 26,
-    color: '#3A3C3F',
+    color: projectPalete.color8,
   },
   appointmentContainer: {
     flex: 1,
@@ -90,8 +90,8 @@ export default StyleSheet.create({
   calendarIcon: {
     width: 60,
     height: 60,
-    borderWidth: 2,
-    borderColor: '#515151',
+    borderWidth: 5,
+    borderColor: projectPalete.color7,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -100,7 +100,7 @@ export default StyleSheet.create({
   dateNumber: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#515151',
+    color: projectPalete.color7,
   },
   dateInfo: {
     justifyContent: 'center',
@@ -108,12 +108,32 @@ export default StyleSheet.create({
   dateTitle: {
     fontSize: 30,
     fontWeight: '500',
-    color: '#3A3C3F',
+    color: projectPalete.color8,
     marginBottom: 5,
   },
   noAppointments: {
     fontSize: 22,
-    color: '#3A3C3F',
+    color: projectPalete.color8,
+  },
+  slide: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  image: {
+    width: width * 0.8,
+    height: height * 0.5,
+    resizeMode: 'contain'
+  },
+  titleSlide: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  text: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 16
   }
 });
 
@@ -138,14 +158,14 @@ export const settingsStyles = StyleSheet.create({
     fontWeight: "bold",
   },
   button: {
-    backgroundColor: '#D6AE4F',
+    backgroundColor: projectPalete.color6,
     padding: 16,
     marginVertical: 5,
     marginHorizontal: 10,
     borderRadius: 12,
   },
   buttonText: {
-    color: '#3A3C3F',
+    color: projectPalete.color8,
     fontSize: 14,
     textAlign: 'center',
     fontWeight: 'bold',
