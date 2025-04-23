@@ -1,108 +1,83 @@
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ActivityIndicator } from 'react-native';
 
-// Telas
-import Home from "./src/screens/Home";
-import AddSchedule from "./src/screens/AddSchedule";
-import MySchedules from "./src/screens/MySchedules";
-import Settings from './src/screens/Settings'
-import About from './src/screens/About';
+// navigation
+import MainTabs from './src/navigation/MainTabs';
 
-// Assets
+// screens
+import Onboarding from './src/screens/Onboarding';
+import Settings from './src/screens/Settings';
+import Register from './src/screens/Register';
+
+// colors
 import { projectPalete } from './src/assets/css/colors';
-import { Image, TouchableOpacity } from 'react-native';
 
-const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasSeenOnboarding, setHasSeenOnboarding] = useState(false);
+
+  useEffect(() => {
+    const checkOnboarding = async () => {
+      const value = await AsyncStorage.getItem('hasSeenOnboarding');
+      setHasSeenOnboarding(value === 'true');
+      setIsLoading(false);
+    };
+    checkOnboarding();
+  }, []);
+
+  if (isLoading) {
+    return <ActivityIndicator style={{ flex: 1 }} />;
+  }
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" options={{ headerShown: false }}>
-          {() => (
-            <Tab.Navigator
-              initialRouteName='Tela inicial'
-              screenOptions={({ route, navigation }) => ({
-                // header
-                headerTitle: "Calop Agender",
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {!hasSeenOnboarding ? (
+          <Stack.Screen name="Onboarding">
+            {(props) => (
+              <Onboarding
+                {...props}
+                onFinish={() => {
+                  setHasSeenOnboarding(true);
+                  AsyncStorage.setItem('hasSeenOnboarding', 'true');
+                  // Após concluir o onboarding, redireciona para a tela de registro
+                  props.navigation.replace('Register');
+                }}
+              />
+            )}
+          </Stack.Screen>
+        ) : (
+          <>
+            <Stack.Screen name="Main" component={MainTabs} />
+            <Stack.Screen
+              name="Settings"
+              component={Settings}
+              options={{
+                headerShown: true,
+                headerTitle: 'Configurações',
                 headerTintColor: projectPalete.color3,
                 headerStyle: {
-                  backgroundColor: projectPalete.color1
+                  backgroundColor: projectPalete.color1,
                 },
-                headerLeft: () => (
-                  <Image
-                    source={require('./src/assets/images/logo-app.png')}
-                    style={{ width: 30, height: 30, marginLeft: 10 }}
-                  />
-                ),
-                headerRight: () => (
-                  <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-                    <Ionicons name="settings" size={30} color="white" style={{ marginRight: 10 }} />
-                  </TouchableOpacity>
-                ),
-                tabBarActiveTintColor: projectPalete.color1,
-                tabBarInactiveTintColor: projectPalete.color3,
-                tabBarStyle: { backgroundColor: projectPalete.color2 },
-                tabBarIcon: ({ color, size, focused }) => {
-                  let iconName;
-
-                  if (route.name === 'Tela inicial') {
-                    iconName = focused ? 'home' : 'home-outline';
-                  } else if (route.name === 'Adicionar agendamento') {
-                    iconName = focused ? 'add-circle' : 'add-circle-outline';
-                  } else if (route.name === 'Agendamentos') {
-                    iconName = focused ? 'calendar' : 'calendar-outline';
-                  }
-
-                  return <Ionicons
-                    name={iconName}
-                    size={focused ? size + 4 : size}
-                    color={color}
-                  />;
-                },
-              })}
-            >
-              <Tab.Screen name="Adicionar agendamento" component={AddSchedule} />
-              <Tab.Screen name="Tela inicial" component={Home} />
-              <Tab.Screen name="Agendamentos" component={MySchedules} />
-            </Tab.Navigator>
-          )}
-        </Stack.Screen>
-
+              }}
+            />
+          </>
+        )}
         <Stack.Screen
-          name="Settings"
-          component={Settings}
+          name="Register"
+          component={Register}
           options={{
-            headerTitle: "Configurações",
-            headerTintColor: projectPalete.color3,
-            headerStyle: {
-              backgroundColor: projectPalete.color1
-            },
+            headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="About"
-          component={About}
-          options={{
-            headerTitle: "Sobre",
-            headerTintColor: projectPalete.color3,
-            headerStyle: {
-            backgroundColor: projectPalete.color1
-            },
-          }}
-        />
-
       </Stack.Navigator>
-
-      <StatusBar
-        animated={true}
-        style='dark'
-        backgroundColor={projectPalete.color1}
-      />
+      <StatusBar animated style="dark" backgroundColor={projectPalete.color1} />
     </NavigationContainer>
   );
 }
