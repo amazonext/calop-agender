@@ -1,12 +1,18 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, Button, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles, { settingsStyles } from '../assets/css/styles';
 
 const defaultUserPhoto = require('../assets/images/logo-app.png');
 
-export default function Settings({ navigation, user = { name: "Nome do Usuário", photo: defaultUserPhoto } }) {
+export default function Settings() {
+    const handleResetOnboarding = async () => {
+        await AsyncStorage.removeItem('hasSeenOnboarding');
+        Alert.alert('Reset', 'A tela de introdução será exibida na próxima vez que o app for aberto.');
+    };
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={settingsStyles.userBox}>
@@ -14,14 +20,9 @@ export default function Settings({ navigation, user = { name: "Nome do Usuário"
                 <Text style={settingsStyles.userName}>{user.name}</Text>
             </View>
 
-            {/* Botões */}
-            <TouchableOpacity
-                style={settingsStyles.button}
-                onPress={() => navigation.navigate('About')}
-            >
-                <Text style={settingsStyles.buttonText}>Sobre</Text>
-            </TouchableOpacity>
-
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Button title="Resetar Tela de Introdução" onPress={handleResetOnboarding} />
+            </View>
         </SafeAreaView>
     );
 }
