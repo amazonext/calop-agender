@@ -39,11 +39,17 @@ function createTable() {
 }
 
 function createSchedule() {
-    // código...
     try {
-        createTable();
-    } catch (error) {
+        const db = createTable();
 
+        db.execSync(
+            "INSERT INTO schedules (procedure, hour, value) VALUES (?, ?, ?)",
+            [procedure, hour, value]
+        );
+
+        console.log("Agendamento criado com sucesso!");
+    } catch (error) {
+        console.error("Erro ao criar agendamento: ", error);
     }
 }
 
@@ -74,12 +80,18 @@ function editSchedule(id, procedure, hour, value) {
     }
 }
 
-function deleteSchedule() {
-    // código...
+function deleteSchedule(id) {
     try {
-        createTable();
-    } catch (error) {
+        const db = createTable();
 
+        db.execSync(
+            "DELETE FROM schedules WHERE id = ?",
+            [id]
+        );
+
+        console.log("Agendamento deletado com sucesso!");
+    } catch (error) {
+        console.error("Erro ao deletar agendamento: ", error);
     }
 }
 
