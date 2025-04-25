@@ -7,7 +7,6 @@ import { Image, TouchableOpacity } from 'react-native';
 import Home from '../screens/Home';
 import AddSchedule from '../screens/AddSchedule';
 import MySchedules from '../screens/MySchedules';
-import Register from '../screens/Register';
 
 // Cores
 import { projectPalete } from '../assets/css/colors';
