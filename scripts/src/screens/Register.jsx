@@ -5,9 +5,12 @@ import * as ImagePicker from 'expo-image-picker';
 
 import { saveImage, loadImage } from '../utils/image';
 import { projectPalete } from '../assets/css/colors';
+import { addUserInfos } from '../utils/user';
 
 export default function Register({ navigation }) {
     const [imageUri, setImageUri] = useState(null);
+    const [enterpriseName, setEnterpriseName] = useState("");
+    const [Username, setUserName] = useState("");
 
     useEffect(() => {
         (async () => {
@@ -54,23 +57,33 @@ export default function Register({ navigation }) {
                     <Image source={{ uri: imageUri }} style={styles.imagePreview} />
                 )}
 
-                <TextInput style={styles.input} placeholder="Nome da empresa" />
-                <TextInput style={styles.input} placeholder="Seu nome" />
+                <TextInput
+                    style={styles.input}
+                    value={enterpriseName}
+                    onChangeText={setEnterpriseName}
+                    placeholder="Nome da empresa"
+                />
+                <TextInput
+                    style={styles.input}
+                    value={Username}
+                    onChangeText={setUserName}
+                    placeholder="Seu nome"
+                />
             </View>
 
             <View style={styles.footer}>
                 <Button
                     title="Registrar"
                     color={projectPalete.color9}
-
-                    onPress={() =>
-                        navigation.replace('Main', { screen: 'Tela inicial' })
+                    disabled={!enterpriseName || !Username}
+                    onPress={() => {
+                        addUserInfos(Username, enterpriseName);
+                        navigation.navigate('Main', { screen: 'Tela inicial' });
                     }
+                }
                 />
                 <TouchableOpacity
-                    onPress={() =>
-                        navigation.replace('Main', { screen: 'Tela inicial' })
-                    }
+                    onPress={() => navigation.navigate('Main', { screen: 'Tela inicial' })}
                 >
                     <Text style={styles.laterText}>Depois</Text>
                 </TouchableOpacity>
@@ -106,7 +119,7 @@ const styles = StyleSheet.create({
         borderColor: 'transparent',
         borderRadius: 15,
         backgroundColor: projectPalete.color1,
-        color: '#000',
+        color: '#fff',
         borderWidth: 1,
         marginBottom: 20,
         paddingLeft: 8,
