@@ -46,8 +46,7 @@ export default function App() {
                 onFinish={() => {
                   setHasSeenOnboarding(true);
                   AsyncStorage.setItem('hasSeenOnboarding', 'true');
-                  // Após concluir o onboarding, redireciona para a tela de registro
-                  props.navigation.replace('Register');
+                  // props.navigation.replace('Main');
                 }}
               />
             )}
@@ -67,15 +66,13 @@ export default function App() {
                 },
               }}
             />
+            <Stack.Screen
+              name="Register"
+              component={Register}
+              options={{ headerShown: false }}
+            />
           </>
         )}
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{
-            headerShown: false,
-          }}
-        />
       </Stack.Navigator>
       <StatusBar animated style="dark" backgroundColor={projectPalete.color1} />
     </NavigationContainer>
