@@ -8,14 +8,14 @@ import slides from '../navigation/slides';
 import { onDone, onSkip } from '../utils/slide';
 import renderItem from '../components/renderItem';
 
-export default function Onboarding({ navigation }) {
+export default function Onboarding({ onFinish }) {
     return (
         <AppIntroSlider
             data={slides}
             renderItem={renderItem}
-            onDone={() => onDone(navigation)} 
+            onDone={onFinish}
             showSkipButton
-            onSkip={() => onSkip(navigation)}
+            onSkip={onFinish}
         />
     );
 }
