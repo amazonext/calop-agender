@@ -10,14 +10,14 @@ const defaultUserPhoto = require('../assets/images/logo-app.png');
 export default function Settings() {
     const handleResetOnboarding = async () => {
         await AsyncStorage.removeItem('hasSeenOnboarding');
-        Alert.alert('Reset', 'A tela de introdução será exibida na próxima vez que o app for aberto.');
+        // Alert.alert('Reset', 'A tela de introdução será exibida na próxima vez que o app for aberto.');
     };
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={settingsStyles.userBox}>
-                <Image source={user.photo} style={settingsStyles.userPhoto} />
-                <Text style={settingsStyles.userName}>{user.name}</Text>
+                <Image source={ defaultUserPhoto } style={settingsStyles.userPhoto} />
+                <Text style={settingsStyles.Username}>Nome do Usuário</Text>
             </View>
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
