@@ -41,7 +41,8 @@ export default function MainTabs({ navigation }) {
                     else if (route.name === 'Adicionar modelo') iconName = focused ? 'add-circle' : 'add-circle-outline';
                     else if (route.name === 'Agendamentos') iconName = focused ? 'calendar' : 'calendar-outline';
                     return <Ionicons name={iconName} size={focused ? size + 4 : size} color={color} />;
-                }
+                },
+                tabBarHideOnKeyboard: true
             })}
         >
             <Tab.Screen name="Adicionar modelo" component={AddSchedule} />
