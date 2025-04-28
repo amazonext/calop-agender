@@ -38,13 +38,13 @@ export default function MainTabs({ navigation }) {
                 tabBarIcon: ({ color, size, focused }) => {
                     let iconName;
                     if (route.name === 'Tela inicial') iconName = focused ? 'home' : 'home-outline';
-                    else if (route.name === 'Adicionar agendamento') iconName = focused ? 'add-circle' : 'add-circle-outline';
+                    else if (route.name === 'Adicionar modelo') iconName = focused ? 'add-circle' : 'add-circle-outline';
                     else if (route.name === 'Agendamentos') iconName = focused ? 'calendar' : 'calendar-outline';
                     return <Ionicons name={iconName} size={focused ? size + 4 : size} color={color} />;
                 }
             })}
         >
-            <Tab.Screen name="Adicionar agendamento" component={AddSchedule} />
+            <Tab.Screen name="Adicionar modelo" component={AddSchedule} />
             <Tab.Screen name="Tela inicial" component={Home} />
             <Tab.Screen name="Agendamentos" component={MySchedules} />
         </Tab.Navigator>
