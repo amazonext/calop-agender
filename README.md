@@ -100,4 +100,4 @@ cd scripts && npx expo start
   3. Iniciar a aplicação
   > [!NOTE]
   > Ao iniciar a aplicação (depois que aparecer o QR code) você tecla `s`
-  Após isso, você será redirecionado para o seu navegador e ali terá a opção de seguir para o Expo Go ou executar a build pro seu celular. E você seguirá para o Expo go.
+  Você apontará a sua câmera pro QR code e após isso, você será redirecionado para o seu navegador e ali terá a opção de seguir para o Expo Go ou executar a build pro seu celular. E você seguirá para o Expo go.
