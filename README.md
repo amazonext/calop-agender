@@ -79,3 +79,25 @@ ou
 ```bash
 cd scripts && npx expo start
 ```
+
+4. Acessando pelo celular
+
+- Requisitos mínimos e obrigatórios
+
+  - Ter o aplicativo **Expo Go** (disponível para [**_Android_**](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) e [**_IOS_**](https://itunes.apple.com/app/apple-store/id982107779))
+  - Ter uma conta na plataforma [**_Expo_**](https://expo.dev/signup)
+  - Ter o pacote _eas-cli_ instalado globalmente
+
+- Passo a passo
+  1. Instalar o _eas-cli_ globalmente na sua aplicação
+  ```bash
+  npm install -g eas-cli
+  ```
+  2. Logar na sua conta Expo recém criada
+  ```bash
+  eas login
+  ```
+  3. Iniciar a aplicação
+  > [!NOTE]
+  > Ao iniciar a aplicação (depois que aparecer o QR code) você tecla `s`
+  Após isso, você será redirecionado para o seu navegador e ali terá a opção de seguir para o Expo Go ou executar a build pro seu celular. E você seguirá para o Expo go.
