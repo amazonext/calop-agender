@@ -45,16 +45,5 @@ export default [
             title: projectPalete.color3,
             text: projectPalete.color2
         }
-    },
-    {
-        key: 'register',
-        title: 'Aproveite e registre-se',
-        text: 'Siga para tela de registro ou faça isso posteriormente.',
-        image: require('../assets/images/logo-app.png'),
-        backgroundColor: projectPalete.color6,
-        colors: {
-            title: projectPalete.color3,
-            text: projectPalete.color2
-        }
     }
 ];
