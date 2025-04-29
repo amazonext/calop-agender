@@ -35,7 +35,7 @@ function insertRow(tableName, dataObj) {
     const placeholders = cols.map(() => '?').join(', ');
     const values = cols.map(col => dataObj[col]);
     const sql = `INSERT INTO ${tableName} (${cols.join(', ')}) VALUES (${placeholders})`;
-    exec(sql, values);
+    query(sql, values);
 }
 
 // atualiza um registro pelo seu id
