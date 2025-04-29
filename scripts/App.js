@@ -18,62 +18,28 @@ import { projectPalete } from './src/assets/css/colors';
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasSeenOnboarding, setHasSeenOnboarding] = useState(false);
-
-  useEffect(() => {
-    const checkOnboarding = async () => {
-      const value = await AsyncStorage.getItem('hasSeenOnboarding');
-      setHasSeenOnboarding(value === 'true');
-      setIsLoading(false);
-    };
-    checkOnboarding();
-  }, []);
-
-  if (isLoading) {
-    return <ActivityIndicator style={{ flex: 1 }} />;
-  }
-
-  return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!hasSeenOnboarding ? (
-          <Stack.Screen name="Onboarding">
-            {(props) => (
-              <Onboarding
-                {...props}
-                onFinish={() => {
-                  setHasSeenOnboarding(true);
-                  AsyncStorage.setItem('hasSeenOnboarding', 'true');
-                  // props.navigation.replace('Main');
-                }}
-              />
-            )}
-          </Stack.Screen>
-        ) : (
-          <>
-            <Stack.Screen name="Main" component={MainTabs} />
-            <Stack.Screen
-              name="Settings"
-              component={Settings}
-              options={{
-                headerShown: true,
-                headerTitle: 'Configurações',
-                headerTintColor: projectPalete.color3,
-                headerStyle: {
-                  backgroundColor: projectPalete.color1,
-                },
-              }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={Register}
-              options={{ headerShown: false }}
-            />
-          </>
-        )}
-      </Stack.Navigator>
-      <StatusBar animated style="dark" backgroundColor={projectPalete.color1} />
-    </NavigationContainer>
-  );
+    return (
+        <NavigationContainer>
+            <Stack.Navigator
+                initialRouteName="Splash"
+                screenOptions={{ headerShown: false }}
+            >
+                <Stack.Screen name="Splash" component={Splash} />
+                <Stack.Screen name="Onboarding" component={Onboarding} />
+                <Stack.Screen name="Register" component={Register} />
+                <Stack.Screen name="HomeTabs" component={HomeTabs} />
+                <Stack.Screen
+                    name="Settings"
+                    component={Settings}
+                    options={{
+                        headerShown: true,
+                        headerTitle: 'Configurações',
+                        headerTintColor: projectPalete.color3,
+                        headerStyle: { backgroundColor: projectPalete.color1 }
+                    }}
+                />
+            </Stack.Navigator>
+            <StatusBar style="dark" backgroundColor={projectPalete.color1} />
+        </NavigationContainer>
+    );
 }
