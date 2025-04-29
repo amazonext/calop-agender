@@ -1,6 +1,6 @@
 import { createTable, deleteRow, insertRow, selectAll, updateRow } from "../helpers/db";
 
-function createTableSchedules() {
+function createTableSchedulings() {
     createTable('scheduling_models', `
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         description TEXT NOT NULL,
@@ -10,22 +10,22 @@ function createTableSchedules() {
     `);
 }
 
-function createSchedule(schedule) {
-    createTableSchedules();
+function createScheduling(scheduling) {
+    createTableSchedulings();
 
-    insertRow('scheduling_models', schedule);
+    insertRow('scheduling_models', scheduling);
 }
 
-function getAllSchedules() {
+function getAllSchedulings() {
     return selectAll('scheduling_models');
 }
 
-function editSchedule(id, schedule) {
-    updateRow('scheduling_models', id, schedule);
+function editScheduling(id, scheduling) {
+    updateRow('scheduling_models', id, scheduling);
 }
 
-function deleteSchedule(id) {
+function deleteScheduling(id) {
     deleteRow('scheduling_models', id);
 }
 
-export { createSchedule, getAllSchedules, editSchedule, deleteSchedule };
+export { createScheduling, getAllSchedulings, editScheduling, deleteScheduling };

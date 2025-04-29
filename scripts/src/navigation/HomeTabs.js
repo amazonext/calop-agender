@@ -5,8 +5,8 @@ import { Image, Keyboard, TouchableOpacity } from 'react-native';
 
 // Telas
 import Home from '../screens/Home';
-import AddSchedule from '../screens/AddSchedule';
-import MySchedules from '../screens/MySchedules';
+import AddScheduling from '../screens/AddScheduling';
+import MySchedulings from '../screens/MySchedulings';
 
 // Cores
 import { projectPalete } from '../assets/css/colors';
@@ -64,9 +64,9 @@ export default function HomeTabs({ navigation }) {
                 },
             })}
         >
-            <Tab.Screen name="Criar modelo" component={AddSchedule} />
+            <Tab.Screen name="Criar modelo" component={AddScheduling} />
             <Tab.Screen name="Tela inicial" component={Home} />
-            <Tab.Screen name="Agendamentos" component={MySchedules} />
+            <Tab.Screen name="Agendamentos" component={MySchedulings} />
         </Tab.Navigator>
     );
 }

@@ -5,12 +5,12 @@ import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView, Platfo
 import styles from '../assets/css/styles'
 
 // utils
-import { createSchedule, getAllSchedules } from "../utils/scheduling_models";
+import { createScheduling, getAllSchedulings } from "../utils/scheduling_models";
 
 // style
 import { projectPalete } from "../assets/css/colors";
 
-export default function AddSchedule() {
+export default function AddScheduling() {
     const [procedure, setProcedure] = useState("");
     const [value, setValue] = useState("");
     const [detailing, setDetailing] = useState("");
@@ -82,7 +82,7 @@ export default function AddSchedule() {
                         color={projectPalete.color6}
                         disabled={!procedure || !value || !profissionalName}
                         onPress={() => {
-                            createSchedule({
+                            createScheduling({
                                 description: procedure,
                                 value: parseFloat(value),
                                 detailing: detailing || "",
