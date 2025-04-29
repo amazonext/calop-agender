@@ -18,4 +18,8 @@ function editUserInfos(userInfos) {
     updateRow('user_infos', userInfos);
 }
 
-export { addUserInfos, editUserInfos };
+function getUserInfos() {
+    return selectAll('user_infos')[0];
+}
+
+export { addUserInfos, editUserInfos, getUserInfos };
