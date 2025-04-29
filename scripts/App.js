@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // navigation
-import MainTabs from './src/navigation/MainTabs';
+import HomeTabs from './src/navigation/HomeTabs';
 
 // screens
 import Onboarding from './src/screens/Onboarding';
