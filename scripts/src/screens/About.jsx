@@ -1,5 +1,4 @@
-import React from 'react';
-import { SafeAreaView, Text, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import styles, { settingsStyles } from '../assets/css/styles';
 
 export default function About() {

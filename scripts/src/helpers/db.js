@@ -52,4 +52,4 @@ function deleteRow(tableName, id) {
     exec(`DELETE FROM ${tableName} WHERE id = ?`, [id]);
 }
 
-export { createTable, dropTable, selectAll, insertRow, updateRow, deleteRow, };
+export { createTable, dropTable, selectAll, insertRow, updateRow, deleteRow };

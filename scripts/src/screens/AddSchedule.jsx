@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, Button, ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useState } from "react";
+import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView, Platform, Keyboard } from "react-native";
 
 // styles
 import styles from '../assets/css/styles'

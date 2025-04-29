@@ -1,6 +1,4 @@
-import React from "react";
-import { View, Text, Image, Button, Alert } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Text, Image, Button } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles, { settingsStyles } from '../assets/css/styles';
