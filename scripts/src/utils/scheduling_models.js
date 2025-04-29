@@ -1,9 +1,9 @@
 import { createTable, deleteRow, insertRow, selectAll, updateRow } from "../helpers/db";
 
 function createTableSchedules() {
-    createTable('schedules', `
+    createTable('scheduling_models', `
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        procedure TEXT NOT NULL,
+        description TEXT NOT NULL,
         value REAL NOT NULL,
         detailing TEXT,
         profissionalName TEXT NOT NULL
@@ -13,19 +13,19 @@ function createTableSchedules() {
 function createSchedule(schedule) {
     createTableSchedules();
 
-    insertRow('schedules', schedule);
+    insertRow('scheduling_models', schedule);
 }
 
 function getAllSchedules() {
-    return selectAll('schedules');
+    return selectAll('scheduling_models');
 }
 
 function editSchedule(id, schedule) {
-    updateRow('schedule', id, schedule);
+    updateRow('scheduling_models', id, schedule);
 }
 
 function deleteSchedule(id) {
-    deleteRow('schedule', id);
+    deleteRow('scheduling_models', id);
 }
 
 export { createSchedule, getAllSchedules, editSchedule, deleteSchedule };
