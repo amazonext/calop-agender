@@ -9,6 +9,7 @@ import HomeTabs from './src/navigation/HomeTabs';
 import Onboarding from './src/screens/Onboarding';
 import Settings from './src/screens/Settings';
 import Register from './src/screens/Register';
+import Splash from './src/screens/Splash';
 
 // colors
 import { projectPalete } from './src/assets/css/colors';
