@@ -2,9 +2,14 @@ import { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // utils
 import { addUserInfos } from '../utils/user';
+
+// style
+import { projectPalete } from '../assets/css/colors';
+import { saveImage, loadImage } from '../utils/image';
 
 export default function Register({ navigation }) {
     const [imageUri, setImageUri] = useState(null);
@@ -74,15 +79,21 @@ export default function Register({ navigation }) {
                 <Button
                     title="Registrar"
                     color={projectPalete.color9}
-                    disabled={!enterpriseName || !Username}
-                    onPress={() => {
-                        addUserInfos(Username, enterpriseName);
-                        navigation.navigate('Main', { screen: 'Tela inicial' });
-                    }
-                }
+                    disabled={!enterpriseName || !username}
+                    onPress={async () => {
+                        await AsyncStorage.setItem('hasSeenRegister', 'true');
+
+                        addUserInfos({ username: username, enterprise_name: enterpriseName });
+
+                        navigation.replace("HomeTabs");
+                    }}
                 />
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('Main', { screen: 'Tela inicial' })}
+                    onPress={async () => {
+                        await AsyncStorage.setItem('hasSeenRegister', 'true');
+
+                        navigation.replace("HomeTabs");
+                    }}
                 >
                     <Text style={styles.laterText}>Depois</Text>
                 </TouchableOpacity>
