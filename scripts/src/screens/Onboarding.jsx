@@ -1,21 +1,32 @@
 import React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // navigation
 import slides from '../navigation/slides';
 
 // utils
-import { onDone, onSkip } from '../utils/slide';
-import renderItem from '../components/renderItem';
+import RenderItem from '../components/RenderItem';
 
-export default function Onboarding({ onFinish }) {
+export default function Onboarding({ navigation }) {
+    const handleFinish = async () => {
+        await AsyncStorage.setItem('hasSeenOnboarding', 'true');
+        navigation.replace('Register');
+    };
+
     return (
         <AppIntroSlider
             data={slides}
-            renderItem={renderItem}
-            onDone={onFinish}
+            renderItem={RenderItem}
+            showPrevButton
+            prevLabel='Voltar'
+            showNextButton
+            nextLabel='Próximo'
+            doneLabel='Feito'
+            onDone={handleFinish}
             showSkipButton
-            onSkip={onFinish}
+            skipLabel='Pular'
+            onSkip={handleFinish}
         />
     );
 }
