@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 // styles
 import styles from '../assets/css/styles';
-
-import date from './../utils/date';
 
 export default function Home() {
   const [currentDay, setCurrentDay] = useState(new Date().getDate());
@@ -18,13 +15,13 @@ export default function Home() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Image
           source={require('../assets/images/logo-app.png')}
           style={styles.logo}
         />
-        <Text style={styles.title}>Agendamentos</Text>
+        <Text style={styles.title}>Tela inicial</Text>
       </View>
 
       <View style={styles.welcomeContainer}>
@@ -43,6 +40,6 @@ export default function Home() {
           </View>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }

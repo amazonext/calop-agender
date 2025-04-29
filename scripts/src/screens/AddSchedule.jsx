@@ -4,12 +4,11 @@ import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView, Platfo
 // styles
 import styles from '../assets/css/styles'
 
-// hooks
-import { useSelectAll } from '../hooks/useSchedules';
-
 // utils
-import { createSchedule } from "../utils/schedules";
-import { dropTable } from "../helpers/db";
+import { createSchedule, getAllSchedules } from "../utils/scheduling_models";
+
+// style
+import { projectPalete } from "../assets/css/colors";
 
 export default function AddSchedule() {
     // hooks originais

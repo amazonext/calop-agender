@@ -12,7 +12,7 @@ function query(sql, params = []) {
     return db.getAllSync(sql, params);
 }
 
-// cria (se não existir) uma tabela
+// cria uma tabela se não existir
 function createTable(tableName, columnsDefinition) {
     exec(
         `CREATE TABLE IF NOT EXISTS ${tableName} (${columnsDefinition})`

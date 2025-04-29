@@ -5,8 +5,8 @@ import styles from '../assets/css/styles'
 
 export default function MySchedule() {
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <Text>Tela de Meus agendamentos</Text>
-        </SafeAreaView>
+        </View>
     )
 }

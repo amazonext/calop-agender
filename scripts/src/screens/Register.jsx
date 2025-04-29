@@ -3,14 +3,13 @@ import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity, Ale
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
 
-import { saveImage, loadImage } from '../utils/image';
-import { projectPalete } from '../assets/css/colors';
+// utils
 import { addUserInfos } from '../utils/user';
 
 export default function Register({ navigation }) {
     const [imageUri, setImageUri] = useState(null);
     const [enterpriseName, setEnterpriseName] = useState("");
-    const [Username, setUserName] = useState("");
+    const [username, setUserName] = useState("");
 
     useEffect(() => {
         (async () => {
@@ -65,7 +64,7 @@ export default function Register({ navigation }) {
                 />
                 <TextInput
                     style={styles.input}
-                    value={Username}
+                    value={username}
                     onChangeText={setUserName}
                     placeholder="Seu nome"
                 />

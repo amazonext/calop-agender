@@ -1,9 +1,11 @@
 import { View, Text, Image, Button } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+// styles
 import styles, { settingsStyles } from '../assets/css/styles';
 
-const defaultUserPhoto = require('../assets/images/logo-app.png');
+// components
+import Profile from "../components/Profile";
 
 export default function Settings() {
     const handleResetOnboarding = async () => {

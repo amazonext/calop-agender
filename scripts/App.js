@@ -14,6 +14,7 @@ import Splash from './src/screens/Splash';
 // colors
 import { projectPalete } from './src/assets/css/colors';
 
+// navigation
 const Stack = createStackNavigator();
 
 export default function App() {
