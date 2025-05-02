@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { projectPalete } from './colors';
+import { global } from './global/globalStyle';
 
 export const settingsStyles = StyleSheet.create({
+    ...global,
     userBox: {
         flexDirection: "row",
         alignItems: "center",
@@ -17,7 +19,7 @@ export const settingsStyles = StyleSheet.create({
         borderRadius: 30,
         marginRight: 16,
     },
-    username: {
+    name: {
         fontSize: 18,
         fontWeight: "bold",
     },

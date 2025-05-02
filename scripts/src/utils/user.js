@@ -2,9 +2,9 @@ import { createTable, insertRow, updateRow } from "../helpers/db";
 
 function createTableUserInfos() {
     createTable('user_infos', `
-        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        username TEXT NOT NULL,
-        enterprise_name TEXT NOT NULL
+        name TEXT NOT NULL,
+        enterprise_name TEXT NOT NULL,
+        image_uri TEXT NOT NULL
     `);
 }
 
