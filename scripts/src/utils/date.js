@@ -30,4 +30,9 @@ function currentMonth() {
     };
 }
 
-export { currentWeekday, currentMonth };
+function currentDay() {
+    const date = new Date();
+    return date.getDate();
+}
+
+export { currentDay, currentMonth, currentWeekday };
