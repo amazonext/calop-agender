@@ -1,34 +1,33 @@
 function currentWeekday() {
     const date = new Date();
+    const weekIndex = date.getDay();
 
-    switch (date.getDay()) {
-        case 0: return "Domingo";
-        case 1: return "Segunda-feira";
-        case 2: return "Terça-feira";
-        case 3: return "Quarta-feira";
-        case 4: return "Quinta-feira";
-        case 5: return "Sexta-feira";
-        case 6: return "Sábado";
-    }
+    const weekdays = [
+        "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira",
+        "Quinta-feira", "Sexta-feira", "Sábado"
+    ];
+
+    return weekdays[weekIndex];
 }
 
 function currentMonth() {
     const date = new Date();
+    const monthIndex = date.getMonth();
 
-    switch (date.getMonth()) {
-        case 0: return "Janeiro"
-        case 1: return "Fevereiro"
-        case 2: return "Março"
-        case 3: return "Abril"
-        case 4: return "Maio"
-        case 5: return "Junho"
-        case 6: return "Julho"
-        case 7: return "Agosto"
-        case 8: return "Setembro"
-        case 9: return "Outubro"
-        case 10: return "Novembro"
-        case 11: return "Dezembro"
-    }
+    const colors = [
+        "#E6C87D", "#FFF4B2", "#F2D6A5", "#FFFBCC", "#D9B86A", "#F6E2A5",
+        "#F4D160", "#E3C17A", "#FBC798", "#FDE8A9", "#EFD393", "#D4B16A",
+    ];
+
+    const monthNames = [
+        "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+        "Jul", "Ago", "Set", "Out", "Nov", "Dez"
+    ];
+
+    return {
+        name: monthNames[monthIndex],
+        color: colors[monthIndex % colors.length]
+    };
 }
 
-export { weekDayName, monthName };
+export { currentWeekday, currentMonth };
