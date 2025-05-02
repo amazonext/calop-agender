@@ -36,4 +36,43 @@ export const settingsStyles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
     },
+    section: {
+        marginTop: 25,
+        paddingHorizontal: 16,
+    },
+    sectionTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 10,
+    },
+    infoCard: {
+        backgroundColor: '#f0f0f0',
+        borderRadius: 12,
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+    },
+    infoRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+    },
+    infoLabel: {
+        fontSize: 14,
+        color: '#555',
+    },
+    infoValue: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#111',
+    },
+    linkValue: {
+        color: 'blue',
+        textDecorationLine: 'underline',
+        fontSize: 15,
+        fontWeight: '450'
+    },    
 });

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, Text, Image, Button } from "react-native";
+import { Linking } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getUserInfos } from "../utils/user";
@@ -34,6 +35,33 @@ export default function Settings() {
                     <Image source={require('../assets/images/logo-app.png')} style={settingsStyles.userPhoto} />
                 )}
                 <Text style={settingsStyles.name}>{userInfo?.name || 'Nome não encontrado'}</Text>
+            </View>
+
+            {/* Seção: Informações do App */}
+            <View style={settingsStyles.section}>
+                <Text style={settingsStyles.sectionTitle}>App info.</Text>
+                <View style={settingsStyles.infoCard}>
+
+                    <View style={settingsStyles.infoRow}>
+                        <Text style={settingsStyles.infoLabel}>Versão</Text>
+                        <Text style={settingsStyles.infoValue}>1.0.0</Text>
+                    </View>
+
+                    <View style={settingsStyles.infoRow}>
+                        <Text style={settingsStyles.infoLabel}>SDK Version</Text>
+                        <Text style={settingsStyles.infoValue}>52</Text>
+                    </View>
+
+                    {/*aqui tem uma mudança para tirar a ultima linha da seção(por fins estéti*/}
+                    <View style={[settingsStyles.infoRow, { borderBottomWidth: 0 }]}>
+                        <Text style={settingsStyles.infoLabel}>Presetation</Text>
+                        {/*falta trocar o link fantasia(meusite) pelo link do site*/}
+                        <Text
+                            style={settingsStyles.linkValue}
+                            onPress={() => Linking.openURL('https://google.com')}
+                        > Link </Text> 
+                    </View>
+                </View>
             </View>
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
