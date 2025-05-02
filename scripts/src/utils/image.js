@@ -4,21 +4,32 @@ import { getFromStorage, saveToStorage } from './storage';
 const IMAGE_KEY = '@user_profile_image';
 
 async function saveImage(uri) {
-    // Gera um nome de arquivo a partir da URI original
-    const fileName = uri.split('/').pop();
-    const destPath = FileSystem.documentDirectory + fileName;
+    try {
+        const fileName = uri.split('/').pop();
+        const destPath = FileSystem.documentDirectory + fileName;
 
-    // Copia para o storage interno do app
-    await FileSystem.copyAsync({ from: uri, to: destPath });
-    // Persiste a nova URI
-    await AsyncStorage.setItem(IMAGE_KEY, destPath);
-    return destPath;
+        const fileInfo = await FileSystem.getInfoAsync(destPath);
+        if (fileInfo.exists) return destPath;
+
+        await FileSystem.copyAsync({ from: uri, to: destPath });
+
+        await saveToStorage(IMAGE_KEY, destPath);
+        return destPath;
+    } catch (error) {
+        console.error('Erro ao salvar a imagem:', error);
+        return null;
+    }
 }
 
 async function loadImage() {
-    // Retorna a URI salva (ou null se não houver)
-    const saved = await AsyncStorage.getItem(IMAGE_KEY);
-    return saved;
+    try {
+        const saved = await getFromStorage(IMAGE_KEY);
+
+        return saved;
+    } catch (error) {
+        console.error('Erro ao carregar a imagem:', error);
+        return null;
+    }
 }
 
 export { saveImage, loadImage };
