@@ -1,5 +1,5 @@
 import * as FileSystem from 'expo-file-system';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getFromStorage, saveToStorage } from './storage';
 
 const IMAGE_KEY = '@user_profile_image';
 

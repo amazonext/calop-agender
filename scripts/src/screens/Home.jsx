@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from "react";
 import { View, Text, Image } from "react-native";
 
 // styles
 import { homeStyles } from "../assets/css/homeStyle";
 
-export default function Home() {
-  const [currentDay, setCurrentDay] = useState(new Date().getDate());
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      setCurrentDay(now.getDate());
-    }, 60000);
-    return () => clearInterval(timer);
-  }, []);
+// utils
+import { currentDay, currentMonth, currentWeekday } from "../utils/date";
+import { getUserInfos } from "../utils/user";
 
   return (
     <View style={homeStyles.container}>
