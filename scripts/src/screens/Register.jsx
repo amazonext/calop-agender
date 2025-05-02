@@ -46,9 +46,9 @@ export default function Register({ navigation }) {
     };
 
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.content}>
-                <Text style={styles.title}>Cadastro</Text>
+        <SafeAreaView style={registerStyles.safeArea}>
+            <View style={registerStyles.content}>
+                <Text style={registerStyles.title}>Cadastro</Text>
 
                 <Button
                     title={imageUri ? 'Trocar Imagem' : 'Selecionar Imagem'}
@@ -57,24 +57,24 @@ export default function Register({ navigation }) {
                 />
 
                 {imageUri && (
-                    <Image source={{ uri: imageUri }} style={styles.imagePreview} />
+                    <Image source={{ uri: imageUri }} style={registerStyles.imagePreview} />
                 )}
 
                 <TextInput
-                    style={styles.input}
+                    style={{ ...registerStyles.input, marginTop: 20 }}
                     value={enterpriseName}
                     onChangeText={setEnterpriseName}
                     placeholder="Nome da empresa"
                 />
                 <TextInput
-                    style={styles.input}
-                    value={username}
-                    onChangeText={setUserName}
+                    style={registerStyles.input}
+                    value={name}
+                    onChangeText={setName}
                     placeholder="Seu nome"
                 />
             </View>
 
-            <View style={styles.footer}>
+            <View style={registerStyles.footer}>
                 <Button
                     title="Registrar"
                     color={projectPalete.color9}
@@ -95,7 +95,7 @@ export default function Register({ navigation }) {
                         navigation.replace("HomeTabs");
                     }}
                 >
-                    <Text style={styles.laterText}>Depois</Text>
+                    <Text style={registerStyles.laterText}>Depois</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
