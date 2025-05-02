@@ -1,4 +1,4 @@
-import { createTable, insertRow, updateRow } from "../helpers/db";
+import { createTable, insertRow, selectAll, updateRow } from "../helpers/db";
 
 function createTableUserInfos() {
     createTable('user_infos', `
