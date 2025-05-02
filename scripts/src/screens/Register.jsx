@@ -4,46 +4,17 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 // utils
 import { addUserInfos } from '../utils/user';
-import { getFromStorage, saveToStorage } from '../utils/saveToStorage';
+import { pickAndSaveImage } from '../utils/imagePicker';
+import { saveToStorage } from '../utils/storage';
 
 // style
 import { projectPalete } from '../assets/css/colors';
-import { saveImage, loadImage } from '../utils/image';
+import { registerStyles } from '../assets/css/registerStyles';
 
 export default function Register({ navigation }) {
     const [imageUri, setImageUri] = useState(null);
     const [enterpriseName, setEnterpriseName] = useState("");
-    const [username, setUserName] = useState("");
-
-    useEffect(() => {
-        (async () => {
-            const uri = await loadImage();
-            if (uri) setImageUri(uri);
-        })();
-    }, []);
-
-    const pickAndStore = async () => {
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
-            return Alert.alert(
-                'Permissão negada',
-                'Precisamos de acesso à galeria para selecionar a imagem.'
-            );
-        }
-
-        const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 1,
-        });
-
-        if (!result.canceled) {
-            const localUri = result.assets[0].uri;
-            const savedUri = await saveImage(localUri);
-            setImageUri(savedUri);
-        }
-    };
+    const [name, setName] = useState("");
 
     return (
         <SafeAreaView style={registerStyles.safeArea}>
@@ -53,7 +24,7 @@ export default function Register({ navigation }) {
                 <Button
                     title={imageUri ? 'Trocar Imagem' : 'Selecionar Imagem'}
                     color={projectPalete.color9}
-                    onPress={pickAndStore}
+                    onPress={() => pickAndSaveImage(setImageUri)}
                 />
 
                 {imageUri && (
@@ -78,19 +49,20 @@ export default function Register({ navigation }) {
                 <Button
                     title="Registrar"
                     color={projectPalete.color9}
-                    disabled={!enterpriseName || !username}
-                    onPress={ async () => {
-                        await saveToStorage('hasSeenRegister', true);
-
-                        addUserInfos({ username: username, enterprise_name: enterpriseName });
+                    disabled={!enterpriseName || !name}
+                    onPress={() => {
+                        addUserInfos({
+                            name: name,
+                            enterprise_name: enterpriseName,
+                            image_uri: imageUri || ""
+                        });
 
                         navigation.replace("HomeTabs");
                     }}
                 />
                 <TouchableOpacity
-                    onPress={ async () => {
+                    onPress={async() => {
                         await saveToStorage('hasSeenRegister', true);
-                        console.log(await getFromStorage('hasSeenRegister'));
 
                         navigation.replace("HomeTabs");
                     }}
