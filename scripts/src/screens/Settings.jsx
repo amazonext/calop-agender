@@ -52,13 +52,13 @@ export default function Settings() {
                         <Text style={settingsStyles.infoValue}>52</Text>
                     </View>
 
-                    {/*aqui tem uma mudança para tirar a ultima linha da seção(por fins estéti*/}
+                    {/*aqui tem uma mudança para tirar a ultima linha da seção(por fins estéticos*/}
                     <View style={[settingsStyles.infoRow, { borderBottomWidth: 0 }]}>
-                        <Text style={settingsStyles.infoLabel}>Presetation</Text>
-                        {/*falta trocar o link fantasia(meusite) pelo link do site*/}
+                        <Text style={settingsStyles.infoLabel}>Site do Projeto</Text>
+                        {/*link do site do projeto*/}
                         <Text
                             style={settingsStyles.linkValue}
-                            onPress={() => Linking.openURL('https://google.com')}
+                            onPress={() => Linking.openURL('https://theheapsters.github.io/calop-agender/presentation/')}
                         > Link </Text> 
                     </View>
                 </View>
