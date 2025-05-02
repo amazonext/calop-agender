@@ -1,12 +1,12 @@
 import { View, Text, Image } from 'react-native';
 
 // style
-import styles from '../assets/css/styles';
+import { renderItemStyles } from '../assets/css/renderItemStyles';
 
 export default RenderItem = ({ item }) => (
-    <View style={{ ...styles.slide, backgroundColor: item.backgroundColor }}>
-        <Image style={styles.image} source={item.image} />
-        <Text style={{ ...styles.titleSlide, color: item.colors.title }}>{item.title}</Text>
-        <Text style={{ ...styles.text, color: item.colors.text }}>{item.text}</Text>
+    <View style={{ ...renderItemStyles.slide, backgroundColor: item.backgroundColor }}>
+        <Image style={renderItemStyles.image} source={item.image} />
+        <Text style={{ ...renderItemStyles.titleSlide, color: item.colors.title }}>{item.title}</Text>
+        <Text style={{ ...renderItemStyles.text, color: item.colors.text }}>{item.text}</Text>
     </View>
 );

@@ -2,8 +2,7 @@ import { useState } from "react";
 import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView, Platform, Keyboard } from "react-native";
 
 // styles
-import styles from '../assets/css/styles'
-
+import { addSchedulingStyles } from "../assets/css/addSchedulingStyles";
 // utils
 import { createScheduling, getAllSchedulings } from "../utils/scheduling_models";
 
@@ -27,14 +26,14 @@ export default function AddScheduling() {
                     keyboardShouldPersistTaps="handled"
                 >
                     <View>
-                        <Text style={styles.titleItem}>Novo modelo de agendamento</Text>
+                        <Text style={addSchedulingStyles.titleItem}>Novo modelo de agendamento</Text>
                     </View>
 
-                    <View style={{ ...styles.content, gap: 20, padding: 20 }}>
-                        <View style={styles.field}>
-                            <Text style={styles.label}>Procedimento</Text>
+                    <View style={{ ...addSchedulingStyles.content, gap: 20, padding: 20 }}>
+                        <View style={addSchedulingStyles.field}>
+                            <Text style={addSchedulingStyles.label}>Procedimento</Text>
                             <TextInput
-                                style={styles.input}
+                                style={addSchedulingStyles.input}
                                 value={procedure}
                                 onChangeText={setProcedure}
                                 placeholder="Digite o procedimento"
@@ -42,10 +41,10 @@ export default function AddScheduling() {
                             />
                         </View>
 
-                        <View style={styles.field}>
-                            <Text style={styles.label}>Valor</Text>
+                        <View style={addSchedulingStyles.field}>
+                            <Text style={addSchedulingStyles.label}>Valor</Text>
                             <TextInput
-                                style={styles.input}
+                                style={addSchedulingStyles.input}
                                 value={value}
                                 onChangeText={setValue}
                                 placeholder="Digite o valor"
@@ -54,10 +53,10 @@ export default function AddScheduling() {
                             />
                         </View>
 
-                        <View style={styles.field}>
-                            <Text style={styles.label}>Detalhamento (Opcional)</Text>
+                        <View style={addSchedulingStyles.field}>
+                            <Text style={addSchedulingStyles.label}>Detalhamento (Opcional)</Text>
                             <TextInput
-                                style={styles.input}
+                                style={addSchedulingStyles.input}
                                 value={detailing}
                                 onChangeText={setDetailing}
                                 placeholder="Digite o detalhamento"
@@ -65,10 +64,10 @@ export default function AddScheduling() {
                             />
                         </View>
 
-                        <View style={styles.field}>
-                            <Text style={styles.label}>Profissional</Text>
+                        <View style={addSchedulingStyles.field}>
+                            <Text style={addSchedulingStyles.label}>Profissional</Text>
                             <TextInput
-                                style={styles.input}
+                                style={addSchedulingStyles.input}
                                 value={profissionalName}
                                 onChangeText={setProfissionalName}
                                 placeholder="Digite o nome do profissional"

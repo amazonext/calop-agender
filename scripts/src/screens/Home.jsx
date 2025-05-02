@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Image } from "react-native";
 
 // styles
-import styles from '../assets/css/styles';
+import { homeStyles } from "../assets/css/homeStyle";
 
 export default function Home() {
   const [currentDay, setCurrentDay] = useState(new Date().getDate());
@@ -15,28 +15,28 @@ export default function Home() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <View style={homeStyles.container}>
+      <View style={homeStyles.header}>
         <Image
           source={require('../assets/images/logo-app.png')}
-          style={styles.logo}
+          style={homeStyles.logo}
         />
-        <Text style={styles.title}>Tela inicial</Text>
+        <Text style={homeStyles.title}>Tela inicial</Text>
       </View>
 
-      <View style={styles.welcomeContainer}>
-        <Text style={styles.welcomeText}>Bem-vindo!</Text>
-        <Text style={styles.subtitleText}>Agende seus clientes agora</Text>
+      <View style={homeStyles.welcomeContainer}>
+        <Text style={homeStyles.welcomeText}>Bem-vindo!</Text>
+        <Text style={homeStyles.subtitleText}>Agende seus clientes agora</Text>
       </View>
 
-      <View style={styles.appointmentContainer}>
-        <View style={styles.dateContainer}>
-          <View style={styles.calendarIcon}>
-            <Text style={styles.dateNumber}>{currentDay}</Text>
+      <View style={homeStyles.appointmentContainer}>
+        <View style={homeStyles.dateContainer}>
+          <View style={homeStyles.calendarIcon}>
+            <Text style={homeStyles.dateNumber}>{currentDay}</Text>
           </View>
-          <View style={styles.dateInfo}>
-            <Text style={styles.dateTitle}>Hoje</Text>
-            <Text style={styles.noAppointments}>Nenhum agendamento</Text>
+          <View style={homeStyles.dateInfo}>
+            <Text style={homeStyles.dateTitle}>Hoje</Text>
+            <Text style={homeStyles.noAppointments}>Nenhum agendamento</Text>
           </View>
         </View>
       </View>
