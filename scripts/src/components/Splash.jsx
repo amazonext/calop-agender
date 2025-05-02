@@ -3,7 +3,7 @@ import { View, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 // utils
-import { getFromStorage } from '../utils/saveToStorage';
+import { getFromStorage } from '../utils/storage';
 
 // style
 import { projectPalete } from '../assets/css/colors';

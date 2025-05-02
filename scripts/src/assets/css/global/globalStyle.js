@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { projectPalete } from '../colors';
 
-export const commonStyles = StyleSheet.create({
+export const global = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: projectPalete.color2,

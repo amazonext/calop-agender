@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { commonStyles } from './global/global';
+import { global } from './global/globalStyle';
 import { projectPalete } from './colors';
 
 export const homeStyles = StyleSheet.create({
-    ...commonStyles,
+    ...global,
     welcomeContainer: {
         alignItems: 'center',
         marginBottom: 50,

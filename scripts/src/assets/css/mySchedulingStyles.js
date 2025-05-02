@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { commonStyles } from './global/global';
+import { global } from './global/globalStyle';
 import { projectPalete } from './colors';
 
 export const mySchedulingStyles = StyleSheet.create({
-    ...commonStyles,
+    ...global,
 
     title: {
         fontSize: 24,
