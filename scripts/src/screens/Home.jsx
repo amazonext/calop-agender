@@ -7,6 +7,7 @@ import { homeStyles } from "../assets/css/homeStyle";
 import { currentDay, currentMonth, currentWeekday } from "../utils/date";
 import { getUserInfos } from "../utils/user";
 
+export default function Home() {
   return (
     <View style={homeStyles.container}>
       <View style={homeStyles.header}>
@@ -14,22 +15,18 @@ import { getUserInfos } from "../utils/user";
           source={require('../assets/images/logo-app.png')}
           style={homeStyles.logo}
         />
-        <Text style={homeStyles.title}>Tela inicial</Text>
-      </View>
-
-      <View style={homeStyles.welcomeContainer}>
-        <Text style={homeStyles.welcomeText}>Bem-vindo!</Text>
-        <Text style={homeStyles.subtitleText}>Agende seus clientes agora</Text>
+        <Text style={homeStyles.title}>Bem-vindo, {getUserInfos().name}!</Text>
       </View>
 
       <View style={homeStyles.appointmentContainer}>
         <View style={homeStyles.dateContainer}>
           <View style={homeStyles.calendarIcon}>
-            <Text style={homeStyles.dateNumber}>{currentDay}</Text>
+            <Text style={homeStyles.date}>{currentMonth().name}</Text>
+            <Text style={homeStyles.date}>{currentDay()}</Text>
           </View>
           <View style={homeStyles.dateInfo}>
-            <Text style={homeStyles.dateTitle}>Hoje</Text>
-            <Text style={homeStyles.noAppointments}>Nenhum agendamento</Text>
+            <Text style={homeStyles.dateTitle}>{currentWeekday()}</Text>
+            <Text style={homeStyles.appointments}>Nenhum agendamento</Text>
           </View>
         </View>
       </View>
