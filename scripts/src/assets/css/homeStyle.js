@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { global } from './global/globalStyle';
 import { projectPalete } from './colors';
+import { currentMonth } from '../../utils/date';
 
 export const homeStyles = StyleSheet.create({
     ...global,
