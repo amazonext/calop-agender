@@ -24,29 +24,30 @@ export const homeStyles = StyleSheet.create({
     },
     dateContainer: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: 25,
         paddingHorizontal: 15,
         backgroundColor: '#FFFFFF',
-        borderRadius: 10,
     },
     calendarIcon: {
-        width: 60,
-        height: 60,
+        width: 86,
+        height: 86,
         borderWidth: 5,
-        borderColor: projectPalete.color7,
+        borderColor: currentMonth().color + "90",
+        backgroundColor: currentMonth().color,
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 15,
     },
-    dateNumber: {
-        fontSize: 32,
+    date: {
+        fontSize: 25,
         fontWeight: 'bold',
+        textTransform: 'uppercase',
         color: projectPalete.color7,
     },
     dateInfo: {
-        justifyContent: 'center',
+        alignItems: 'center',
     },
     dateTitle: {
         fontSize: 30,
@@ -54,7 +55,7 @@ export const homeStyles = StyleSheet.create({
         color: projectPalete.color8,
         marginBottom: 5,
     },
-    noAppointments: {
+    appointments: {
         fontSize: 22,
         color: projectPalete.color8,
     },
