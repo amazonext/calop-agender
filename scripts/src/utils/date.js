@@ -1,4 +1,4 @@
-function weekDayName() {
+function currentWeekday() {
     const date = new Date();
 
     switch (date.getDay()) {
@@ -12,7 +12,7 @@ function weekDayName() {
     }
 }
 
-function monthName() {
+function currentMonth() {
     const date = new Date();
 
     switch (date.getMonth()) {
