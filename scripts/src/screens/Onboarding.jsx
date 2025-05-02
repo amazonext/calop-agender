@@ -1,15 +1,15 @@
 import AppIntroSlider from 'react-native-app-intro-slider';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // navigation
 import slides from '../navigation/slides';
 
 // utils
 import RenderItem from '../components/RenderItem';
+import { getFromStorage, saveToStorage } from '../utils/saveToStorage';
 
 export default function Onboarding({ navigation }) {
     const handleFinish = async () => {
-        await AsyncStorage.setItem('hasSeenOnboarding', 'true');
+        await saveToStorage('hasSeenOnboarding', true);
         navigation.replace('Register');
     };
 

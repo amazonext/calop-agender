@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // utils
 import { addUserInfos } from '../utils/user';
+import { getFromStorage, saveToStorage } from '../utils/saveToStorage';
 
 // style
 import { projectPalete } from '../assets/css/colors';
@@ -80,8 +80,8 @@ export default function Register({ navigation }) {
                     title="Registrar"
                     color={projectPalete.color9}
                     disabled={!enterpriseName || !username}
-                    onPress={async () => {
-                        await AsyncStorage.setItem('hasSeenRegister', 'true');
+                    onPress={ async () => {
+                        await saveToStorage('hasSeenRegister', true);
 
                         addUserInfos({ username: username, enterprise_name: enterpriseName });
 
@@ -89,8 +89,9 @@ export default function Register({ navigation }) {
                     }}
                 />
                 <TouchableOpacity
-                    onPress={async () => {
-                        await AsyncStorage.setItem('hasSeenRegister', 'true');
+                    onPress={ async () => {
+                        await saveToStorage('hasSeenRegister', true);
+                        console.log(await getFromStorage('hasSeenRegister'));
 
                         navigation.replace("HomeTabs");
                     }}
