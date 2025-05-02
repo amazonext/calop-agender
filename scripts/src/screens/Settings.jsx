@@ -15,7 +15,7 @@ export default function Settings() {
         <View style={settingsStyles.container}>
             <View style={settingsStyles.userBox}>
                 <Image source={ defaultUserPhoto } style={settingsStyles.userPhoto} />
-                <Text style={settingsStyles.Username}>Nome do Usuário</Text>
+                <Text style={settingsStyles.username}>Nome do Usuário</Text>
             </View>
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView, Platform, Keyboard } from "react-native";
+import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 
 // styles
 import { addSchedulingStyles } from "../assets/css/addSchedulingStyles";
 // utils
-import { createScheduling, getAllSchedulings } from "../utils/scheduling_models";
+import { createScheduling } from "../utils/scheduling_models";
 
 // style
 import { projectPalete } from "../assets/css/colors";
