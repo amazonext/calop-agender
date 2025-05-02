@@ -5,7 +5,7 @@ import slides from '../navigation/slides';
 
 // utils
 import RenderItem from '../components/RenderItem';
-import { getFromStorage, saveToStorage } from '../utils/saveToStorage';
+import { saveToStorage } from '../utils/storage';
 
 export default function Onboarding({ navigation }) {
     const handleFinish = async () => {
