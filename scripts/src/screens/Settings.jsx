@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, Text, Image, Button } from "react-native";
 import { Linking } from 'react-native';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getUserInfos } from "../utils/user";
 
@@ -52,14 +51,12 @@ export default function Settings() {
                         <Text style={settingsStyles.infoValue}>52</Text>
                     </View>
 
-                    {/*aqui tem uma mudança para tirar a ultima linha da seção(por fins estéticos*/}
                     <View style={[settingsStyles.infoRow, { borderBottomWidth: 0 }]}>
                         <Text style={settingsStyles.infoLabel}>Site do Projeto</Text>
-                        {/*link do site do projeto*/}
                         <Text
                             style={settingsStyles.linkValue}
                             onPress={() => Linking.openURL('https://theheapsters.github.io/calop-agender/presentation/')}
-                        > Link </Text> 
+                        > Link </Text>
                     </View>
                 </View>
             </View>

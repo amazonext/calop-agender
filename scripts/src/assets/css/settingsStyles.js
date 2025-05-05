@@ -74,5 +74,5 @@ export const settingsStyles = StyleSheet.create({
         textDecorationLine: 'underline',
         fontSize: 15,
         fontWeight: '450'
-    },    
+    },
 });
