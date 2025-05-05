@@ -1,12 +1,14 @@
 // css
 import { projectPalete, theHeapstersPalete } from '../assets/css/colors';
 
+const LOGO_TEAM = require('../assets/images/logo-team.png');
+
 export default [
     {
         key: 'welcome',
         title: 'Seja muito bem-vindo!',
         text: 'Nós, da equipe The Heapsters, estamos super felizes em ter você no Calop Agender. Aqui você vai descobrir como simplificar o seu dia a dia em poucos toques!',
-        image: require('../assets/images/logo-equipe.jpeg'),
+        image: LOGO_TEAM,
         backgroundColor: theHeapstersPalete.color5,
         colors: {
             title: theHeapstersPalete.color1,
