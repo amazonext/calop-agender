@@ -18,4 +18,11 @@ export const mySchedulingStyles = StyleSheet.create({
         borderRadius: 12,
         marginHorizontal: 16,
     },
+    input: {
+        padding: 10,
+        marginVertical: 5,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+    }
 });
