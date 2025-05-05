@@ -38,3 +38,7 @@ yarn-error.*
 # EAS build
 /android
 /ios
+
+# google
+key-firebase.json
+google-services.json
