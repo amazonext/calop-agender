@@ -12,7 +12,7 @@ export default function Home() {
     <View style={homeStyles.container}>
       <View style={homeStyles.header}>
         <Image
-          source={require('../assets/images/logo-app.png')}
+          source={require('../assets/images/logo-alternative.png')}
           style={homeStyles.logo}
         />
         <Text style={homeStyles.title}>Bem-vindo, {getUserInfos().name}!</Text>
