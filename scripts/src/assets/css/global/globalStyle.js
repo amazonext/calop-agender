@@ -14,6 +14,7 @@ export const global = StyleSheet.create({
     logo: {
         width: 120,
         height: 120,
+        resizeMode: 'contain',
         borderRadius: 20,
         backgroundColor: projectPalete.color6,
     },
