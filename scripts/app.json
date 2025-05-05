@@ -19,7 +19,6 @@
     "newArchEnabled": true,
     "android": {
       "package": "com.theheapsters.calopagender",
-      "googleServicesFile": "./google-services.json",
       "permissions": [
         "READ_CALENDAR",
         "WRITE_CALENDAR"
