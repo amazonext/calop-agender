@@ -18,10 +18,18 @@
     },
     "newArchEnabled": true,
     "android": {
-      "package": "com.project"
+      "package": "com.theheapsters.calopagender",
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "READ_CALENDAR",
+        "WRITE_CALENDAR"
+      ]
     },
     "ios": {
-      "bundleIdentifier": "com.project"
+      "bundleIdentifier": "com.theheapsters.calopagender",
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "Este app precisa acessar seu calendário para adicionar eventos."
+      }
     },
     "extra": {
       "eas": {
@@ -32,6 +40,7 @@
       "barStyle": "dark-content",
       "backgroundColor": "#C0933E"
     },
-    "owner": "the-heapsters"
+    "owner": "the-heapsters",
+    "plugins": []
   }
 }
