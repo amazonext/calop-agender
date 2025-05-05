@@ -11,7 +11,7 @@ export default [
         image: LOGO_TEAM,
         backgroundColor: theHeapstersPalete.color5,
         colors: {
-            title: theHeapstersPalete.color1,
+            title: projectPalete.color1,
             text: theHeapstersPalete.color4
         }
     },
