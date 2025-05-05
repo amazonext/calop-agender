@@ -38,3 +38,6 @@ yarn-error.*
 # EAS build
 /android
 /ios
+
+# lint
+.eslintrc.js
