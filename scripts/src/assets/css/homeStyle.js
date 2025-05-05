@@ -48,6 +48,7 @@ export const homeStyles = StyleSheet.create({
         color: projectPalete.color7,
     },
     dateInfo: {
+        flex: 1,
         alignItems: 'center',
     },
     dateTitle: {
@@ -59,5 +60,6 @@ export const homeStyles = StyleSheet.create({
     appointments: {
         fontSize: 22,
         color: projectPalete.color8,
+        textAlign: 'center',
     },
 });
