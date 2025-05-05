@@ -3,7 +3,7 @@
     "name": "Calop Agender",
     "slug": "calop-agender",
     "splash": {
-      "image": "./src/assets/images/logo-app.png",
+      "image": "./src/assets/images/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#C0933E"
     },
@@ -12,7 +12,10 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/logo-app.png",
+    "icon": "./src/assets/images/icon.png",
+    "web": {
+      "favicon": "./src/assets/images/icon.png"
+    },
     "newArchEnabled": true,
     "android": {
       "package": "com.project"
