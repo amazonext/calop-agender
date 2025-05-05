@@ -26,7 +26,7 @@ export default function Home() {
           </View>
           <View style={homeStyles.dateInfo}>
             <Text style={homeStyles.dateTitle}>{currentWeekday()}</Text>
-            <Text style={homeStyles.appointments}>Nenhum agendamento</Text>
+            <Text style={homeStyles.appointments}>Nenhum agendamento para hoje</Text>
           </View>
         </View>
       </View>
