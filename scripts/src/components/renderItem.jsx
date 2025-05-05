@@ -1,6 +1,4 @@
 import { View, Text, Image } from 'react-native';
-
-// style
 import { renderItemStyles } from '../assets/css/renderItemStyles';
 
 export default RenderItem = ({ item }) => (

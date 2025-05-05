@@ -65,5 +65,5 @@ export default function MySchedulings() {
         <View style={mySchedulingStyles.container}>
             <Text>Tela de Meus agendamentos</Text>
         </View>
-    )
+    );
 }

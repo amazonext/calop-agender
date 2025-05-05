@@ -62,7 +62,7 @@ export default function Settings() {
             </View>
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Button title="Resetar Tela de Introdução" onPress={handleResetOnboarding} />
+                <Button title="Reset" onPress={handleResetOnboarding} />
             </View>
         </View>
     );
