@@ -1,43 +1,56 @@
 import * as Calendar from 'expo-calendar';
 
-async function requestPermissions() {
+const CALENDAR_TITLE = 'Agendamentos do Calop Agender';
+const CALENDAR_COLOR = '#E9B124';
+const TIME_ZONE = 'America/Belem';
+
+async function requestCalendarPermissions() {
     const { status } = await Calendar.requestCalendarPermissionsAsync();
-    if (status !== 'granted') {
-        console.log('Permissão de calendário não concedida');
-        return false;
-    }
+
+    if (status !== 'granted') return false
 
     return true;
 }
 
 async function getDefaultCalendarSource() {
     const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
-    const defaultCalendar = calendars.find(cal => cal.source.name === 'Default');
+    const source = calendars.find(cal => cal.source?.id)?.source;
 
-    return defaultCalendar?.source || calendars[0]?.source;
+    if (!source) {
+        return {
+            isLocalAccount: true,
+            name: 'Expo Calendar',
+            type: Calendar.SourceType.LOCAL,
+            id: undefined,
+        };
+    }
+
+    return source;
 }
 
 async function getOrCreateCalendar() {
     const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
-    const existing = calendars.find(cal => cal.title === 'PROJECT_NAME');
+    const existing = calendars.find(cal => cal.title === CALENDAR_TITLE);
 
     if (existing) return existing.id;
 
-    const defaultCalendarSource = await getDefaultCalendarSource();
+    const defaultSource = await getDefaultCalendarSource();
 
-    return await Calendar.createCalendarAsync({
-        title: 'PROJECT_NAME',
-        color: 'blue',
+    const newCalendarId = await Calendar.createCalendarAsync({
+        title: CALENDAR_TITLE,
+        color: CALENDAR_COLOR,
         entityType: Calendar.EntityTypes.EVENT,
-        sourceId: defaultCalendarSource.id,
-        source: defaultCalendarSource,
-        name: 'PROJECT_NAME',
+        sourceId: defaultSource.id,
+        source: defaultSource,
+        name: CALENDAR_TITLE,
         ownerAccount: 'personal',
         accessLevel: Calendar.CalendarAccessLevel.OWNER,
     });
+
+    return newCalendarId;
 }
 
-function getEventDates({ day, month, hourStart, hourEnd, minuteStart, minuteEnd }) {
+function buildEventDates({ day, month, hourStart, hourEnd, minuteStart, minuteEnd }) {
     const year = new Date().getFullYear();
     const startDate = new Date(year, month - 1, day, hourStart, minuteStart);
     const endDate = new Date(year, month - 1, day, hourEnd, minuteEnd);
@@ -46,8 +59,8 @@ function getEventDates({ day, month, hourStart, hourEnd, minuteStart, minuteEnd 
 }
 
 async function addEvent(eventData) {
-    const hasPermissions = await requestPermissions();
-    if (!hasPermissions) return;
+    const hasPermissions = await requestCalendarPermissions();
+    if (!hasPermissions) return 'Permissões negadas';
 
     const calendarId = await getOrCreateCalendar();
     const {
@@ -55,21 +68,22 @@ async function addEvent(eventData) {
         hourStart, hourEnd, minuteStart, minuteEnd
     } = eventData;
 
-    const { startDate, endDate } = getEventDates({
+    const { startDate, endDate } = buildEventDates({
         day, month, hourStart, hourEnd, minuteStart, minuteEnd
     });
 
     try {
-        await Calendar.createEventAsync(calendarId, {
+        const eventId = await Calendar.createEventAsync(calendarId, {
             title: title || 'Evento sem título',
             startDate,
             endDate,
-            timeZone: 'America/Belem',
+            timeZone: TIME_ZONE,
             notes: description || 'Sem descrição',
         });
 
         return 'Evento adicionado com sucesso!';
     } catch (error) {
+        console.error('[Evento] Erro ao criar evento:', error);
         return 'Erro ao criar evento: ' + error;
     }
 }
@@ -77,19 +91,22 @@ async function addEvent(eventData) {
 async function removeEvent(id) {
     try {
         await Calendar.deleteEventAsync(id);
-        console.log('Evento removido com sucesso!');
     } catch (error) {
-        console.error('Erro ao remover evento:', error);
+        console.error('[Evento] Erro ao remover evento:', error);
     }
 }
 
 async function editEvent(id, updatedData) {
     try {
         await Calendar.updateEventAsync(id, updatedData);
-        console.log('Evento atualizado com sucesso!');
     } catch (error) {
-        console.error('Erro ao editar evento:', error);
+        console.error('[Evento] Erro ao editar evento:', error);
     }
 }
 
-export { addEvent, removeEvent, editEvent }
+async function debugListCalendars() {
+    const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
+    console.log('[Debug] Calendários disponíveis:', JSON.stringify(calendars, null, 2));
+}
+
+export { addEvent, removeEvent, editEvent, debugListCalendars };
