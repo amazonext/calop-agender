@@ -21,7 +21,7 @@ export default function Onboarding({ navigation }) {
             prevLabel='Voltar'
             showNextButton
             nextLabel='Próximo'
-            doneLabel='Feito'
+            doneLabel='Continuar'
             onDone={handleFinish}
             showSkipButton
             skipLabel='Pular'
