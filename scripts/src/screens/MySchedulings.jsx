@@ -63,7 +63,43 @@ export default function MySchedulings() {
 
     return (
         <View style={mySchedulingStyles.container}>
-            <Text>Tela de Meus agendamentos</Text>
+            <Text style={mySchedulingStyles.title}>Agendar serviço</Text>
+            <View>
+                <TouchableOpacity onPress={() => showPicker('date', 'date')} style={mySchedulingStyles.input}>
+                    <Text>Data: {date.toLocaleDateString()}</Text>
+                </TouchableOpacity>
+                {showDatePicker && (
+                    <DateTimePicker
+                        value={date}
+                        mode="date"
+                        display="default"
+                        onChange={onChangeDate}
+                    />
+                )}
+                <TouchableOpacity onPress={() => showPicker('time', 'start')} style={mySchedulingStyles.input}>
+                    <Text>Hora Início: {startTime.toLocaleTimeString()}</Text>
+                </TouchableOpacity>
+                {showStartTimePicker && (
+                    <DateTimePicker
+                        value={startTime}
+                        mode="time"
+                        display="default"
+                        onChange={onChangeStartTime}
+                    />
+                )}
+                <TouchableOpacity onPress={() => showPicker('time', 'end')} style={mySchedulingStyles.input}>
+                    <Text>Hora Fim: {endTime.toLocaleTimeString()}</Text>
+                </TouchableOpacity>
+                {showEndTimePicker && (
+                    <DateTimePicker
+                        value={endTime}
+                        mode="time"
+                        display="default"
+                        onChange={onChangeEndTime}
+                    />
+                )}
+                <Button title="Adicionar Evento" onPress={handleAddEvent} />
+            </View>
         </View>
     );
 }
