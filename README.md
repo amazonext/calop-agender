@@ -59,7 +59,7 @@ O comando acima instalará, no caso atualizará, o **npm** para sua última vers
 1. Clonagem
 
 ```bash
-git clone https://github.com/theheapsters/project.git
+git clone https://github.com/theheapsters/calop-agender.git
 ```
 
 2. Instalação de módulos
