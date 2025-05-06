@@ -28,8 +28,8 @@ export default [
     },
     {
         key: 'about-create-model',
-        title: 'Crie modelos de agendamento',
-        text: 'Agilize a adição de agendamentos com modelos de agendamento.',
+        title: 'Crie modelos de serviços',
+        text: 'Agilize a adição de agendamentos com modelos de serviços.',
         image: require('../assets/images/logo-app.png'),
         backgroundColor: projectPalete.color6,
         colors: {

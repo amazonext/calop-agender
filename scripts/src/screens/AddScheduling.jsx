@@ -26,7 +26,7 @@ export default function AddScheduling() {
                     keyboardShouldPersistTaps="handled"
                 >
                     <View>
-                        <Text style={addSchedulingStyles.titleItem}>Novo modelo de agendamento</Text>
+                        <Text style={addSchedulingStyles.titleItem}>Novo modelo de serviço</Text>
                     </View>
 
                     <View style={{ ...addSchedulingStyles.content, gap: 20, padding: 20 }}>
