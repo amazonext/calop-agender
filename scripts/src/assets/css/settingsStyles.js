@@ -17,11 +17,22 @@ export const settingsStyles = StyleSheet.create({
         width: 60,
         height: 60,
         borderRadius: 30,
+        borderColor: "red",
+        borderWidth: 2,
         marginRight: 16,
+        backgroundColor: "#888",
+        justifyContent: "center",
+        alignItems: "center",
     },
     name: {
         fontSize: 18,
         fontWeight: "bold",
+        color: "#222",
+    },
+    enterprise: {
+        fontSize: 14,
+        fontWeight: "bold",
+        color: "#666",
     },
     button: {
         backgroundColor: projectPalete.color6,

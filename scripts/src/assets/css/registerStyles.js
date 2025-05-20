@@ -41,12 +41,24 @@ export const registerStyles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 10,
     },
-    imagePreview: {
-        width: 120,
-        height: 120,
-        alignSelf: 'center',
-        margin: 20,
-        borderRadius: 60,
+    cameraButton: {
+        borderStyle: 'dashed',
+        borderColor: projectPalete.color3,
+        borderWidth: 4,
+
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        height: 300,
+        width: '100%',
+
+        borderRadius: 5,
+    },
+    cameraText: {
+        ...global.text,
+        color: projectPalete.color3,
+        fontSize: 20,
+        marginTop: 10,
     },
     footer: {
         paddingBottom: 20,

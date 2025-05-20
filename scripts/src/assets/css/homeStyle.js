@@ -10,10 +10,11 @@ export const homeStyles = StyleSheet.create({
         marginBottom: 50,
     },
     welcomeText: {
-        fontSize: 32,
-        fontWeight: '500',
+        fontSize: 36,
+        fontWeight: '600',
         color: projectPalete.color8,
-        marginBottom: 5,
+        marginBottom: 10,
+        textAlign: 'center'
     },
     subtitleText: {
         fontSize: 26,
