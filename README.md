@@ -1,4 +1,4 @@
-# Sem nome (por enquanto)
+# Calop Agender
 
 Projeto de extensão da faculdade.
 
