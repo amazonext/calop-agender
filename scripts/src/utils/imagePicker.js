@@ -1,5 +1,5 @@
 import * as ImagePicker from 'expo-image-picker';
-import { saveImage } from './image';
+import { saveImage } from '../helpers/image';
 import { Alert } from 'react-native';
 
 // solicita permissão para acessar a galeria e seleciona uma imagem
