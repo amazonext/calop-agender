@@ -14,9 +14,7 @@ function query(sql, params = []) {
 
 // cria uma tabela se não existir
 function createTable(tableName, columnsDefinition) {
-    exec(
-        `CREATE TABLE IF NOT EXISTS ${tableName} (${columnsDefinition})`
-    );
+    exec(`CREATE TABLE IF NOT EXISTS ${tableName} (${columnsDefinition})`);
 }
 
 // remove uma tabela do banco de dados
