@@ -40,6 +40,8 @@
       "backgroundColor": "#C0933E"
     },
     "owner": "the-heapsters",
-    "plugins": []
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
