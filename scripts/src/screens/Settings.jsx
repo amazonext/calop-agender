@@ -33,7 +33,12 @@ export default function Settings() {
                 {userInfo?.image_uri ? (
                     <Image source={{ uri: userInfo.image_uri }} style={settingsStyles.userPhoto} />
                 ) : (
-                    <Image source={require('../assets/images/logo-app.png')} style={settingsStyles.userPhoto} />
+                    <Ionicons
+                        name="person-circle-sharp"
+                        size={60}
+                        color="#aaa"
+                    />
+
                 )}
                 <Text style={settingsStyles.name}>{userInfo?.name || 'Nome não encontrado'}</Text>
             </View>
