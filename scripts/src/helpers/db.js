@@ -31,7 +31,13 @@ function selectAll(tableName) {
 function insertRow(tableName, dataObj) {
     const cols = Object.keys(dataObj);
     const placeholders = cols.map(() => '?').join(', ');
-    const values = cols.map(col => dataObj[col]);
+
+    // aplica o trim apenas em valores do tipo string
+    const values = cols.map(col => {
+        const value = dataObj[col];
+        return typeof value === 'string' ? value.trim() : value;
+    });
+
     const sql = `INSERT INTO ${tableName} (${cols.join(', ')}) VALUES (${placeholders})`;
     query(sql, values);
 }
