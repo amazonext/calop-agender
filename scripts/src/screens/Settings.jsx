@@ -40,7 +40,22 @@ export default function Settings() {
                     />
 
                 )}
-                <Text style={settingsStyles.name}>{userInfo?.name || 'Nome não encontrado'}</Text>
+                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View>
+                        <Text style={settingsStyles.name}>{userInfo?.name || 'Nome de usuário indefinido'}</Text>
+                        <Text style={settingsStyles.enterprise}>{userInfo?.enterprise_name || 'Nome da empresa indefinida'}</Text>
+                    </View>
+
+                    <TouchableOpacity
+                        style={{ alignItems: 'center', justifyContent: 'center' }}
+                    >
+                        <FontAwesome6
+                            name="edit"
+                            color="#ccc"
+                            size={30}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
 
             {/* Seção: Informações do App */}
