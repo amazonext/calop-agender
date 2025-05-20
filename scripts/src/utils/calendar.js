@@ -73,12 +73,13 @@ async function addEvent(eventData) {
     });
 
     try {
-        const eventId = await Calendar.createEventAsync(calendarId, {
-            title: title || 'Evento sem título',
+        await Calendar.createEventAsync(calendarId, {
+            title,
+            notes: description,
             startDate,
             endDate,
             timeZone: TIME_ZONE,
-            notes: description || 'Sem descrição',
+            alarms: [{ relativeOffset: -15 }],
         });
 
         return 'Evento adicionado com sucesso!';
@@ -104,9 +105,4 @@ async function editEvent(id, updatedData) {
     }
 }
 
-async function debugListCalendars() {
-    const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
-    console.log('[Debug] Calendários disponíveis:', JSON.stringify(calendars, null, 2));
-}
-
-export { addEvent, removeEvent, editEvent, debugListCalendars };
+export { addEvent, removeEvent, editEvent };
