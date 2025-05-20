@@ -3,7 +3,7 @@ import { View, Text, TextInput, Button, Image, TouchableOpacity } from 'react-na
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // utils
-import { addUserInfos } from '../utils/user';
+import { addUserInfos } from '../utils/user_db';
 import { pickAndSaveImage } from '../utils/imagePicker';
 import { saveToStorage } from '../utils/storage';
 

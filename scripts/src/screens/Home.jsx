@@ -5,9 +5,12 @@ import { homeStyles } from "../assets/css/homeStyle";
 
 // utils
 import { currentDay, currentMonth, currentWeekday } from "../utils/date";
-import { getUserInfos } from "../utils/user";
+import { getUserInfos } from "../utils/user_db";
 
 export default function Home() {
+  const userInfos = getUserInfos();
+  const USERNAME = userInfos && userInfos.name ? userInfos.name : "Usuário";
+
   return (
     <View style={homeStyles.container}>
       <View style={homeStyles.header}>
@@ -15,7 +18,7 @@ export default function Home() {
           source={require('../assets/images/logo-alternative.png')}
           style={homeStyles.logo}
         />
-        <Text style={homeStyles.title}>Bem-vindo, {getUserInfos().name}!</Text>
+        <Text style={homeStyles.welcomeText}>Bem-vindo, {USERNAME}!</Text>
       </View>
 
       <View style={homeStyles.appointmentContainer}>

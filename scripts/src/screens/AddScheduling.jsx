@@ -4,7 +4,7 @@ import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView, Platfo
 // styles
 import { addSchedulingStyles } from "../assets/css/addSchedulingStyles";
 // utils
-import { createScheduling } from "../utils/scheduling_models";
+import { createScheduling } from "../utils/scheduling_db";
 
 // style
 import { projectPalete } from "../assets/css/colors";

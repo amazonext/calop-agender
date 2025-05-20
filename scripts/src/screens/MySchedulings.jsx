@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { View, Button, Alert, Text, TouchableOpacity, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { addEvent, debugListCalendars } from '../utils/calendar';
+import { addEvent } from '../utils/calendar';
 
 // styles
 import { mySchedulingStyles } from "../assets/css/mySchedulingStyles";
@@ -13,10 +13,6 @@ export default function MySchedulings() {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showStartTimePicker, setShowStartTimePicker] = useState(false);
     const [showEndTimePicker, setShowEndTimePicker] = useState(false);
-
-    useEffect(() => {
-        debugListCalendars();
-    }, []);
 
     const handleAddEvent = async () => {
         const day = date.getDate();

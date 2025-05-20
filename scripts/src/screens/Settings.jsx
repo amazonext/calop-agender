@@ -58,7 +58,6 @@ export default function Settings() {
                 </View>
             </View>
 
-            {/* Seção: Informações do App */}
             <View style={settingsStyles.section}>
                 <Text style={settingsStyles.sectionTitle}>App info.</Text>
                 <View style={settingsStyles.infoCard}>
@@ -70,7 +69,7 @@ export default function Settings() {
 
                     <View style={settingsStyles.infoRow}>
                         <Text style={settingsStyles.infoLabel}>SDK Version</Text>
-                        <Text style={settingsStyles.infoValue}>52</Text>
+                        <Text style={settingsStyles.infoValue}>52.0.0</Text>
                     </View>
 
                     <View style={[settingsStyles.infoRow, { borderBottomWidth: 0 }]}>
