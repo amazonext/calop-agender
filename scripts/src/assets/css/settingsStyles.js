@@ -86,4 +86,42 @@ export const settingsStyles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '450'
     },
+    modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContainer: {
+        width: '90%',
+        backgroundColor: '#fff',
+        borderRadius: 12,
+        padding: 20,
+        elevation: 5, // para Android
+        shadowColor: '#000', // para iOS
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+    },
+    modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#222',
+        marginBottom: 12,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 12,
+        borderRadius: 8,
+        fontSize: 16,
+        marginBottom: 12,
+        backgroundColor: '#fafafa',
+        color: '#222',
+    },
+    modalButtonGroup: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginTop: 10,
+    },
 });

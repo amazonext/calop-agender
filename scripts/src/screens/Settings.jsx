@@ -5,12 +5,29 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getUserInfos } from "../utils/user_db";
 import { query } from "../helpers/db";
 import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
+import { Modal, TextInput, Alert } from "react-native";
+
 
 // styles
 import { settingsStyles } from '../assets/css/settingsStyles';
 
 export default function Settings() {
     const [userInfo, setUserInfo] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [editedName, setEditedName] = useState('');
+    const [editedEnterprise, setEditedEnterprise] = useState('');
+
+    const handleSave = () => {
+        setUserInfo({
+            ...userInfo,
+            name: editedName,
+            enterprise_name: editedEnterprise
+        });
+
+        setModalVisible(false);
+        Alert.alert("Sucesso", "Informações atualizadas!");
+    };
+
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -48,6 +65,11 @@ export default function Settings() {
 
                     <TouchableOpacity
                         style={{ alignItems: 'center', justifyContent: 'center' }}
+                        onPress={() => {
+                            setEditedName(userInfo?.name || '');
+                            setEditedEnterprise(userInfo?.enterprise_name || '');
+                            setModalVisible(true);
+                        }}
                     >
                         <FontAwesome6
                             name="edit"
@@ -81,6 +103,39 @@ export default function Settings() {
                     </View>
                 </View>
             </View>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={settingsStyles.modalOverlay}>
+                    <View style={settingsStyles.modalContainer}>
+                        <Text style={settingsStyles.modalTitle}>Editar informações</Text>
+
+                        <TextInput
+                            value={editedName}
+                            onChangeText={setEditedName}
+                            placeholder="Nome do usuário"
+                            style={settingsStyles.input}
+                        />
+
+                        <TextInput
+                            value={editedEnterprise}
+                            onChangeText={setEditedEnterprise}
+                            placeholder="Nome da empresa"
+                            style={settingsStyles.input}
+                        />
+
+                        <View style={settingsStyles.modalButtonGroup}>
+                            <Button title="Cancelar" onPress={() => setModalVisible(false)} />
+                            <View style={{ width: 10 }} />
+                            <Button title="Salvar" onPress={handleSave} />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Button title="Reset" onPress={handleResetOnboarding} />
