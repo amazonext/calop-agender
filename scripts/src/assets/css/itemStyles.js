@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-export const renderItemStyles = StyleSheet.create({
+export const itemStyles = StyleSheet.create({
     slide: {
         flex: 1,
         alignItems: 'center',

@@ -4,7 +4,7 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import slides from '../navigation/slides';
 
 // utils
-import RenderItem from '../components/renderItem';
+import item from '../components/Item';
 import { saveToStorage } from '../utils/storage';
 
 export default function Onboarding({ navigation }) {
@@ -16,7 +16,7 @@ export default function Onboarding({ navigation }) {
     return (
         <AppIntroSlider
             data={slides}
-            renderItem={RenderItem}
+            renderItem={item}
             showPrevButton
             prevLabel='Voltar'
             showNextButton
