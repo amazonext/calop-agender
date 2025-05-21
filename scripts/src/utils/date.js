@@ -7,7 +7,10 @@ function currentWeekday() {
         "Quinta-feira", "Sexta-feira", "Sábado"
     ];
 
-    return weekdays[weekIndex];
+    return {
+        index: weekIndex,
+        name: weekdays[weekIndex]
+    };
 }
 
 function currentMonth() {
