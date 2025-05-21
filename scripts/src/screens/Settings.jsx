@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { View, Text, Image, Button, TouchableOpacity } from "react-native";
-import { Linking } from 'react-native';
+import { View, Text, Image, Button, TouchableOpacity, Linking, Modal, TextInput, Alert } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getUserInfos } from "../utils/user_db";
 import { query } from "../helpers/db";
 import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
-import { Modal, TextInput, Alert } from "react-native";
 
 // components
 import LoadingScreen from "../components/LoadingScreen";
