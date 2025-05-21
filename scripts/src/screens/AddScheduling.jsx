@@ -85,7 +85,7 @@ export default function AddScheduling() {
                                 description: procedure,
                                 value: parseFloat(value),
                                 detailing: detailing || "",
-                                profissionalName: profissionalName
+                                profissional_name: profissionalName
                             });
 
                             setProcedure("");

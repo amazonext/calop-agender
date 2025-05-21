@@ -9,7 +9,7 @@ import { getUserInfos } from "../utils/user_db";
 
 export default function Home() {
   const userInfos = getUserInfos();
-  const USERNAME = userInfos && userInfos.name ? userInfos.name : "Usuário";
+  const USERNAME = userInfos && userInfos.name ? userInfos.name : "usuário";
 
   return (
     <View style={homeStyles.container}>
@@ -29,7 +29,7 @@ export default function Home() {
           </View>
 
           <View style={homeStyles.dateInfo}>
-            <Text style={homeStyles.dateTitle}>{currentWeekday()}</Text>
+            <Text style={homeStyles.dateTitle}>{currentWeekday().name}</Text>
             <Text style={homeStyles.appointments}>Nenhum agendamento para hoje</Text>
           </View>
         </View>
