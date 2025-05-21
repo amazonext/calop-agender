@@ -7,6 +7,8 @@ import { query } from "../helpers/db";
 import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
 import { Modal, TextInput, Alert } from "react-native";
 
+// components
+import LoadingScreen from "../components/LoadingScreen";
 
 // styles
 import { settingsStyles } from '../assets/css/settingsStyles';
@@ -43,6 +45,8 @@ export default function Settings() {
         await AsyncStorage.removeItem('hasSeenRegister');
         console.log('A tela de introdução será exibida na próxima vez que o app for aberto.');
     };
+
+    if (userInfo === null) return (<LoadingScreen message="Carregando informações" />);
 
     return (
         <View style={settingsStyles.container}>
@@ -139,6 +143,8 @@ export default function Settings() {
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Button title="Reset" onPress={handleResetOnboarding} />
+                <Button title="Select All" onPress={() => console.log(getUserInfos())} />
+                <Button title="Drop table" onPress={() => query('DELETE FROM user_infos')} />
             </View>
         </View>
     );
