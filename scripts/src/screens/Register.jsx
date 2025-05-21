@@ -97,6 +97,7 @@ export default function Register({ navigation }) {
                         await saveToStorage('hasSeenRegister', true);
 
                         navigation.replace("HomeTabs");
+                        initializeApp();
                     }}
                 >
                     <Text style={registerStyles.laterText}>Depois</Text>

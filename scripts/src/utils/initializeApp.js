@@ -1,0 +1,122 @@
+// [x]: criar o banco de dados de agendamentos
+// [x]: criar o storage de mensagens personalizadas
+// [ ]: fazer uma condição para verificar se os procedimentos já foram realizados
+
+import { createTable } from "../helpers/db";
+import { saveToStorage } from "./storage";
+
+export default function initializeApp() {
+    // db
+    createTable('scheduling_models', `
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        description TEXT NOT NULL,
+        value REAL NOT NULL,
+        detailing TEXT,
+        profissional_name TEXT NOT NULL
+    `);
+
+    // storage de mensagens
+    saveToStorage('messages', {
+        week: {
+            0: [ // Domingo
+                "Domingo tranquilo por aí? Ótimo dia pra recarregar as energias!",
+                "Amanhã começa tudo de novo. Hoje é dia de descanso 😌",
+                "Dia perfeito pra organizar a mente e o coração.",
+                "Domingo com poucas marcações? Aproveite esse respiro!",
+                "Um bom domingo prepara uma ótima semana!"
+            ],
+            1: [ // Segunda
+                "Bom início de semana! Vamos com tudo!",
+                "Segunda chegou! Hora de recomeçar com energia.",
+                "Café na mão e semana começando no ritmo certo ☕️",
+                "Segunda-feira: a chance de começar do zero com tudo!",
+                "Dia de alinhar metas e começar forte!"
+            ],
+            2: [ // Terça
+                "Terça tá com cara de produtividade!",
+                "A semana tá só começando, bora pra cima!",
+                "Terça com ritmo forte! Excelente!",
+                "A constância de hoje é o sucesso de amanhã.",
+                "Você já dominou a segunda, agora é só manter o foco!"
+            ],
+            3: [ // Quarta
+                "Quarta-feira: o meio da batalha! Você tá indo muito bem 💪",
+                "Metade da semana vencida. Parabéns pela dedicação!",
+                "Já é quarta? O tempo voa quando estamos produtivos!",
+                "Se chegou até aqui, vai até o fim!",
+                "Hoje é dia de manter o ritmo e olhar o progresso."
+            ],
+            4: [ // Quinta
+                "Quinta é a nova sexta! Já dá pra sentir o fim de semana chegando 😎",
+                "Mais um pouco e a semana vira história!",
+                "Quinta é dia de não desistir!",
+                "Hoje é o empurrão final até a sexta!",
+                "Persistência é o nome do jogo de quinta-feira."
+            ],
+            5: [ // Sexta
+                "Sextou com estilo! Que tal fechar a semana com chave de ouro?",
+                "Hoje é dia de finalizar e desacelerar. Aproveite seu dia!",
+                "Fechando a semana com força total 💥",
+                "Sexta com produtividade é fim de semana com tranquilidade.",
+                "Sorria: hoje é sexta-feira!"
+            ],
+            6: [ // Sábado
+                "Sábado com agenda cheia? Isso é sucesso!",
+                "Dia de cuidar e ser cuidado. Feliz sábado!",
+                "Aproveite o sábado com equilíbrio entre trabalho e descanso.",
+                "Seu sábado tá sendo incrível por aqui!",
+                "Agenda de sábado cheia de boas energias!"
+            ]
+        },
+
+        hour: {
+            morning: [
+                "Bom dia! Um dia inteiro pela frente pra fazer acontecer ✨",
+                "Começando cedo? Isso é foco!",
+                "Manhã produtiva é sinal de uma tarde tranquila!",
+                "Café, agenda e foco: a manhã já começa com energia!",
+                "Aproveite as primeiras horas do dia para brilhar!"
+            ],
+            afternoon: [
+                "Boa tarde! Ainda dá tempo de realizar muita coisa hoje 😊",
+                "Meio do dia, hora de dar aquele gás final!",
+                "Tarde em movimento, continue nesse ritmo!",
+                "A produtividade da tarde depende da motivação da manhã!",
+                "Hora perfeita pra ajustar os detalhes do dia!"
+            ],
+            night: [
+                "Boa noite! Hora de desacelerar (ou continuar brilhando, se for o caso ✨)",
+                "Mais um dia vencido. Que orgulho do seu trabalho!",
+                "Fim do dia com sensação de dever cumprido!",
+                "Se ainda tiver algo pra fazer, você dá conta!",
+                "Hora de agradecer e descansar. Amanhã tem mais!"
+            ]
+        },
+
+        conditionals: {
+            busyDay: {
+                messages: [
+                    "Uau, hoje tá movimentado, hein?! Bora com tudo 💥",
+                    "Agenda lotada é sinônimo de sucesso! 👏",
+                    "Dia puxado? Isso mostra que o trabalho tá rendendo!",
+                    "Muitas marcações hoje! Parabéns pela organização.",
+                    "Movimentação intensa por aqui. Que ótimo sinal!"
+                ]
+            },
+            busyEmployee: {
+                messages: [
+                    "{{name}} tá voando hoje! Que dedicação 👏",
+                    "Destaque do dia: {{name}}! Obrigado pelo empenho incrível.",
+                    "{{name}} está cuidando de tudo hoje! Que orgulho da equipe!",
+                    "{{name}}, você é o motor da produtividade hoje!",
+                    "O dia tá cheio pro(a) {{name}}, mas o desempenho tá lá em cima!"
+                ]
+            }
+        }
+    });
+
+    // storage de agendamentos
+    // saveToStorage('appointments', {
+    //     "dia-mes": {}
+    // });
+}
