@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { addUserInfos } from '../utils/user_db';
 import { pickAndSaveImage } from '../utils/imagePicker';
 import { saveToStorage } from '../utils/storage';
+import initializeApp from '../utils/initializeApp';
 
 // style
 import { projectPalete } from '../assets/css/colors';
