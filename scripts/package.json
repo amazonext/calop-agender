@@ -10,8 +10,7 @@
     "build": "eas build -p android --profile preview",
     "expo-install-check": "expo install --check",
     "expo-lint": "expo lint",
-    "expo-doctor": "expo doctor",
-    "lint": "expo lint"
+    "expo-doctor": "expo doctor"
   },
   "dependencies": {
     "@expo/metro-runtime": "~5.0.4",
@@ -36,6 +35,7 @@
     "expo-router": "~5.0.7",
     "expo-splash-screen": "~0.30.8",
     "expo-sqlite": "~15.2.10",
+    "expo-status-bar": "^2.2.3",
     "expo-updates": "~0.28.13",
     "prettier": "^3.5.3",
     "react": "19.0.0",
@@ -56,8 +56,8 @@
     "@babel/core": "^7.20.0",
     "@react-native-community/cli": "^18.0.0",
     "@types/react": "^19.0.0",
-    "typescript": "^5.3.3",
-    "eslint-config-expo": "~9.2.0"
+    "eslint-config-expo": "~9.2.0",
+    "typescript": "^5.3.3"
   },
   "private": true,
   "expo": {

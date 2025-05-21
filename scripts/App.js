@@ -39,7 +39,7 @@ export default function App() {
                     }}
                 />
             </Stack.Navigator>
-            <StatusBar style="dark" backgroundColor={projectPalete.color1} />
+            <StatusBar style="inverted" animated={true} />
         </NavigationContainer>
     );
 }
