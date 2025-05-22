@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { View, Text, Image, Button, TouchableOpacity, Linking, Modal, TextInput, Alert } from "react-native";
+import { useEffect, useState, useRef } from "react";
+import {View, Text, Image, Button, TouchableOpacity, Linking, Modal, TextInput, Animated, Easing} from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getUserInfos } from "../utils/user_db";
 import { query } from "../helpers/db";
@@ -16,6 +16,27 @@ export default function Settings() {
     const [modalVisible, setModalVisible] = useState(false);
     const [editedName, setEditedName] = useState('');
     const [editedEnterprise, setEditedEnterprise] = useState('');
+    const [toastMessage, setToastMessage] = useState('');
+    const toastAnim = useRef(new Animated.Value(100)).current;
+
+    const showToast = (message) => {
+        setToastMessage(message);
+        Animated.sequence([
+            Animated.timing(toastAnim, {
+                toValue: 0,
+                duration: 400,
+                easing: Easing.out(Easing.ease),
+                useNativeDriver: true,
+            }),
+            Animated.delay(2000),
+            Animated.timing(toastAnim, {
+                toValue: 100,
+                duration: 400,
+                easing: Easing.in(Easing.ease),
+                useNativeDriver: true,
+            }),
+        ]).start();
+    };
 
     const handleSave = () => {
         setUserInfo({
@@ -25,9 +46,8 @@ export default function Settings() {
         });
 
         setModalVisible(false);
-        Alert.alert("Sucesso", "Informações atualizadas!");
+        showToast("Informações atualizadas!");
     };
-
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -52,12 +72,7 @@ export default function Settings() {
                 {userInfo?.image_uri ? (
                     <Image source={{ uri: userInfo.image_uri }} style={settingsStyles.userPhoto} />
                 ) : (
-                    <Ionicons
-                        name="person-circle-sharp"
-                        size={60}
-                        color="#aaa"
-                    />
-
+                    <Ionicons name="person-circle-sharp" size={60} color="#aaa" />
                 )}
                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <View>
@@ -73,11 +88,7 @@ export default function Settings() {
                             setModalVisible(true);
                         }}
                     >
-                        <FontAwesome6
-                            name="edit"
-                            color="#ccc"
-                            size={30}
-                        />
+                        <FontAwesome6 name="edit" color="#ccc" size={30} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -85,17 +96,14 @@ export default function Settings() {
             <View style={settingsStyles.section}>
                 <Text style={settingsStyles.sectionTitle}>App info.</Text>
                 <View style={settingsStyles.infoCard}>
-
                     <View style={settingsStyles.infoRow}>
                         <Text style={settingsStyles.infoLabel}>Versão</Text>
                         <Text style={settingsStyles.infoValue}>1.0.0</Text>
                     </View>
-
                     <View style={settingsStyles.infoRow}>
                         <Text style={settingsStyles.infoLabel}>SDK Version</Text>
                         <Text style={settingsStyles.infoValue}>53.0.0</Text>
                     </View>
-
                     <View style={[settingsStyles.infoRow, { borderBottomWidth: 0 }]}>
                         <Text style={settingsStyles.infoLabel}>Site do Projeto</Text>
                         <Text
@@ -115,21 +123,18 @@ export default function Settings() {
                 <View style={settingsStyles.modalOverlay}>
                     <View style={settingsStyles.modalContainer}>
                         <Text style={settingsStyles.modalTitle}>Editar informações</Text>
-
                         <TextInput
                             value={editedName}
                             onChangeText={setEditedName}
                             placeholder="Nome do usuário"
                             style={settingsStyles.input}
                         />
-
                         <TextInput
                             value={editedEnterprise}
                             onChangeText={setEditedEnterprise}
                             placeholder="Nome da empresa"
                             style={settingsStyles.input}
                         />
-
                         <View style={settingsStyles.modalButtonGroup}>
                             <Button title="Cancelar" onPress={() => setModalVisible(false)} />
                             <View style={{ width: 10 }} />
@@ -144,6 +149,13 @@ export default function Settings() {
                 <Button title="Select All" onPress={() => console.log(getUserInfos())} />
                 <Button title="Drop table" onPress={() => query('DELETE FROM user_infos')} />
             </View>
+
+            <Animated.View style={[
+                settingsStyles.toastContainer,
+                { transform: [{ translateY: toastAnim }] }
+            ]}>
+                <Text style={settingsStyles.toastText}>{toastMessage}</Text>
+            </Animated.View>
         </View>
     );
 }
