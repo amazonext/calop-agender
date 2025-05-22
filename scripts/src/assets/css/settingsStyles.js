@@ -87,18 +87,18 @@ export const settingsStyles = StyleSheet.create({
         fontWeight: '450'
     },
     modalOverlay: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)',
     },
     modalContainer: {
         width: '90%',
         backgroundColor: '#fff',
         borderRadius: 12,
         padding: 20,
-        elevation: 5, // para Android
-        shadowColor: '#000', // para iOS
+        elevation: 5,
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.25,
         shadowRadius: 4,
@@ -124,4 +124,26 @@ export const settingsStyles = StyleSheet.create({
         justifyContent: 'flex-end',
         marginTop: 10,
     },
+    toastContainer: {
+        position: 'absolute',
+        bottom: 50,
+        left: 20,
+        right: 20,
+        backgroundColor: 'white',
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        alignItems: 'center',
+    },
+    toastText: {
+        color: '#222',
+        fontSize: 14,
+        textAlign: 'center',
+        fontWeight: '500',
+    }
 });
