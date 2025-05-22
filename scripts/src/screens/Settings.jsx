@@ -93,7 +93,7 @@ export default function Settings() {
 
                     <View style={settingsStyles.infoRow}>
                         <Text style={settingsStyles.infoLabel}>SDK Version</Text>
-                        <Text style={settingsStyles.infoValue}>52.0.0</Text>
+                        <Text style={settingsStyles.infoValue}>53.0.0</Text>
                     </View>
 
                     <View style={[settingsStyles.infoRow, { borderBottomWidth: 0 }]}>

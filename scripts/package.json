@@ -10,7 +10,8 @@
     "build": "eas build -p android --profile preview",
     "expo-install-check": "expo install --check",
     "expo-lint": "expo lint",
-    "expo-doctor": "expo doctor"
+    "expo-doctor": "expo doctor",
+    "lint": "expo lint"
   },
   "dependencies": {
     "@expo/metro-runtime": "~5.0.4",
