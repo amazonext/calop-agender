@@ -1,12 +1,8 @@
 import { useState } from "react";
-import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 
-// styles
 import { addSchedulingStyles } from "../assets/css/addSchedulingStyles";
-// utils
 import { createScheduling } from "../utils/scheduling_db";
-
-// style
 import { projectPalete } from "../assets/css/colors";
 
 export default function AddScheduling() {
@@ -15,85 +11,116 @@ export default function AddScheduling() {
     const [detailing, setDetailing] = useState("");
     const [profissionalName, setProfissionalName] = useState("");
 
+    const handleCreateScheduling = () => {
+        createScheduling({
+            description: procedure,
+            value: parseFloat(value),
+            detailing: detailing || "",
+            profissional_name: profissionalName
+        });
+
+        setProcedure("");
+        setValue("");
+        setDetailing("");
+        setProfissionalName("");
+    };
+
+    const isFormValid = procedure && value && profissionalName;
+
     return (
-        <View style={{ flex: 1 }}>
+        <View style={addSchedulingStyles.container}>
             <KeyboardAvoidingView
-                style={{ flex: 1 }}
+                style={addSchedulingStyles.keyboardView}
                 behavior={Platform.OS === 'ios' ? 'padding' : undefined}
             >
                 <ScrollView
-                    contentContainerStyle={{ flexGrow: 1, padding: 20, gap: 30 }}
+                    contentContainerStyle={addSchedulingStyles.scrollContainer}
                     keyboardShouldPersistTaps="handled"
+                    showsVerticalScrollIndicator={false}
                 >
-                    <View>
+                    <View style={addSchedulingStyles.header}>
                         <Text style={addSchedulingStyles.titleItem}>Novo modelo de serviço</Text>
+                        <View style={addSchedulingStyles.titleUnderline} />
                     </View>
 
-                    <View style={{ ...addSchedulingStyles.content, gap: 20, padding: 20 }}>
+                    <View style={addSchedulingStyles.formCard}>
                         <View style={addSchedulingStyles.field}>
                             <Text style={addSchedulingStyles.label}>Procedimento</Text>
-                            <TextInput
-                                style={addSchedulingStyles.input}
-                                value={procedure}
-                                onChangeText={setProcedure}
-                                placeholder="Digite o procedimento"
-                                placeholderTextColor="#fff"
-                            />
+                            <View style={addSchedulingStyles.inputContainer}>
+                                <TextInput
+                                    style={addSchedulingStyles.input}
+                                    value={procedure}
+                                    onChangeText={setProcedure}
+                                    placeholder="Digite o procedimento"
+                                    placeholderTextColor={projectPalete.color5}
+                                />
+                            </View>
                         </View>
 
                         <View style={addSchedulingStyles.field}>
                             <Text style={addSchedulingStyles.label}>Valor</Text>
-                            <TextInput
-                                style={addSchedulingStyles.input}
-                                value={value}
-                                onChangeText={setValue}
-                                placeholder="Digite o valor"
-                                placeholderTextColor="#fff"
-                                keyboardType="number-pad"
-                            />
+                            <View style={addSchedulingStyles.inputContainer}>
+                                <Text style={addSchedulingStyles.currencySymbol}>R$</Text>
+                                <TextInput
+                                    style={[addSchedulingStyles.input, addSchedulingStyles.currencyInput]}
+                                    value={value}
+                                    onChangeText={setValue}
+                                    placeholder="0,00"
+                                    placeholderTextColor={projectPalete.color5}
+                                    keyboardType="numeric"
+                                />
+                            </View>
                         </View>
 
                         <View style={addSchedulingStyles.field}>
-                            <Text style={addSchedulingStyles.label}>Detalhamento (Opcional)</Text>
-                            <TextInput
-                                style={addSchedulingStyles.input}
-                                value={detailing}
-                                onChangeText={setDetailing}
-                                placeholder="Digite o detalhamento"
-                                placeholderTextColor="#fff"
-                            />
+                            <Text style={addSchedulingStyles.label}>
+                                Detalhamento 
+                                <Text style={addSchedulingStyles.optionalText}> (Opcional)</Text>
+                            </Text>
+                            <View style={addSchedulingStyles.inputContainer}>
+                                <TextInput
+                                    style={[addSchedulingStyles.input, addSchedulingStyles.textArea]}
+                                    value={detailing}
+                                    onChangeText={setDetailing}
+                                    placeholder="Digite o detalhamento do serviço"
+                                    placeholderTextColor={projectPalete.color5}
+                                    multiline
+                                    numberOfLines={3}
+                                    textAlignVertical="top"
+                                />
+                            </View>
                         </View>
 
                         <View style={addSchedulingStyles.field}>
                             <Text style={addSchedulingStyles.label}>Profissional</Text>
-                            <TextInput
-                                style={addSchedulingStyles.input}
-                                value={profissionalName}
-                                onChangeText={setProfissionalName}
-                                placeholder="Digite o nome do profissional"
-                                placeholderTextColor="#fff"
-                            />
+                            <View style={addSchedulingStyles.inputContainer}>
+                                <TextInput
+                                    style={addSchedulingStyles.input}
+                                    value={profissionalName}
+                                    onChangeText={setProfissionalName}
+                                    placeholder="Digite o nome do profissional"
+                                    placeholderTextColor={projectPalete.color5}
+                                />
+                            </View>
                         </View>
                     </View>
 
-                    <Button
-                        title="Criar modelo"
-                        color={projectPalete.color6}
-                        disabled={!procedure || !value || !profissionalName}
-                        onPress={() => {
-                            createScheduling({
-                                description: procedure,
-                                value: parseFloat(value),
-                                detailing: detailing || "",
-                                profissional_name: profissionalName
-                            });
-
-                            setProcedure("");
-                            setValue("");
-                            setDetailing("");
-                            setProfissionalName("");
-                        }}
-                    />
+                    <TouchableOpacity
+                        style={[
+                            addSchedulingStyles.submitButton,
+                            !isFormValid && addSchedulingStyles.submitButtonDisabled
+                        ]}
+                        disabled={!isFormValid}
+                        onPress={handleCreateScheduling}
+                        activeOpacity={0.8}
+                    >
+                        <Text style={[
+                            addSchedulingStyles.submitButtonText,
+                            !isFormValid && addSchedulingStyles.submitButtonTextDisabled
+                        ]}>
+                            Criar modelo
+                        </Text>
+                    </TouchableOpacity>
                 </ScrollView>
             </KeyboardAvoidingView>
         </View>
