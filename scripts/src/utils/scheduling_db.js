@@ -1,4 +1,4 @@
-import { createTable, deleteRow, insertRow, selectAll, updateRow } from "../helpers/db";
+import { createTable, deleteRow, insertRow, selectAll, updateRow, query } from "../helpers/db";
 
 function createTableSchedulings() {
     createTable('scheduling_models', `
@@ -43,7 +43,14 @@ function generateUniqueKeyIdentifier(callback) {
 function createScheduling(scheduling) {
     createTableSchedulings();
 
-    insertRow('scheduling_models', scheduling);
+    generateUniqueKeyIdentifier(key_identifier => {
+        const newScheduling = {
+            ...scheduling,
+            key_identifier,
+        };
+
+        insertRow('scheduling_models', newScheduling);
+    });
 }
 
 function getAllSchedulings() {
