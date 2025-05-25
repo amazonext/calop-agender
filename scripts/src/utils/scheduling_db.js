@@ -11,6 +11,35 @@ function createTableSchedulings() {
     `);
 }
 
+// função para checar se o keyIdentifier já existe
+function checkKeyIdentifier(randomKey, callback, tryGenerate) {
+    try {
+        const rows = query(
+            'SELECT 1 FROM scheduling_models WHERE key_identifier = ? LIMIT 1',
+            [randomKey]
+        );
+
+        if (rows.length === 0) callback(randomKey);
+        else tryGenerate();
+
+    } catch (error) {
+        console.error('Erro ao verificar keyIdentifier:', error);
+    }
+}
+
+// função para gerar um keyIdentifier único (usando recursão)
+function generateUniqueKeyIdentifier(callback) {
+    const randomKey = Math.floor(Math.random() * 1000000);
+
+    function tryGenerate() {
+        checkKeyIdentifier(randomKey, callback, () => {
+            generateUniqueKeyIdentifier(callback);
+        });
+    }
+
+    tryGenerate();
+}
+
 function createScheduling(scheduling) {
     createTableSchedulings();
 
