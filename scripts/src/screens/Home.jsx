@@ -4,7 +4,7 @@ import { View, Text, Image } from "react-native";
 import { homeStyles } from "../assets/css/homeStyle";
 
 // utils
-import { currentDay, currentMonth, currentWeekday } from "../utils/date";
+import { getCurrentDay, getCurrentMonth, getCurrentWeekday } from "../utils/date";
 import { getUserInfos } from "../utils/user_db";
 
 export default function Home() {
@@ -39,12 +39,12 @@ export default function Home() {
       <View style={homeStyles.appointmentContainer}>
         <View style={homeStyles.dateContainer}>
           <View style={homeStyles.calendarIcon}>
-            <Text style={homeStyles.date}>{currentMonth().name}</Text>
-            <Text style={homeStyles.date}>{currentDay()}</Text>
+            <Text style={homeStyles.date}>{getCurrentMonth().name}</Text>
+            <Text style={homeStyles.date}>{getCurrentDay()}</Text>
           </View>
 
           <View style={homeStyles.dateInfo}>
-            <Text style={homeStyles.dateTitle}>{currentWeekday().name}</Text>
+            <Text style={homeStyles.dateTitle}>{getCurrentWeekday().name}</Text>
             <Text style={homeStyles.appointments}>Nenhum agendamento para hoje</Text>
           </View>
         </View>

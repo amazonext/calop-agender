@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { global } from './global/globalStyle';
 import { projectPalete } from './colors';
-import { currentMonth } from '../../utils/date';
+import { getCurrentMonth } from '../../utils/date';
 
 export const homeStyles = StyleSheet.create({
     ...global,
@@ -35,8 +35,8 @@ export const homeStyles = StyleSheet.create({
         width: 86,
         height: 86,
         borderWidth: 5,
-        borderColor: currentMonth().color + "90",
-        backgroundColor: currentMonth().color,
+        borderColor: getCurrentMonth().color + "90",
+        backgroundColor: getCurrentMonth().color,
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
@@ -97,7 +97,7 @@ export const homeStyles = StyleSheet.create({
     cardNumber: {
         fontSize: 36,
         fontWeight: 'bold',
-        color: currentMonth().color,
+        color: getCurrentMonth().color,
         marginBottom: 8,
     },
     cardLabel: {

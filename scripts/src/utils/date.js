@@ -1,4 +1,4 @@
-function currentWeekday() {
+function getCurrentWeekday() {
     const date = new Date();
     const weekIndex = date.getDay();
 
@@ -13,7 +13,7 @@ function currentWeekday() {
     };
 }
 
-function currentMonth() {
+function getCurrentMonth() {
     const date = new Date();
     const monthIndex = date.getMonth();
 
@@ -33,7 +33,7 @@ function currentMonth() {
     };
 }
 
-function currentDay() {
+function getCurrentDay() {
     const date = new Date();
     return date.getDate();
 }
