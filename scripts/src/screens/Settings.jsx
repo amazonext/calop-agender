@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import {View, Text, Image, Button, TouchableOpacity, Linking, Modal, TextInput, Animated, Easing} from "react-native";
+import { View, Text, Image, Button, TouchableOpacity, Linking, Animated, Easing } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getUserInfos } from "../utils/user_db";
 import { query } from "../helpers/db";
@@ -69,28 +69,27 @@ export default function Settings() {
     return (
         <View style={settingsStyles.container}>
             <View style={settingsStyles.userBox}>
-                {userInfo?.image_uri ? (
+                {userInfo.image_uri ? (
                     <Image source={{ uri: userInfo.image_uri }} style={settingsStyles.userPhoto} />
                 ) : (
                     <Ionicons name="person-circle-sharp" size={60} color="#aaa" />
                 )}
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <View>
-                        <Text style={settingsStyles.name}>{userInfo?.name || 'Nome de usuário indefinido'}</Text>
-                        <Text style={settingsStyles.enterprise}>{userInfo?.enterprise_name || 'Nome da empresa indefinida'}</Text>
-                    </View>
 
-                    <TouchableOpacity
-                        style={{ alignItems: 'center', justifyContent: 'center' }}
-                        onPress={() => {
-                            setEditedName(userInfo?.name || '');
-                            setEditedEnterprise(userInfo?.enterprise_name || '');
-                            setModalVisible(true);
-                        }}
-                    >
-                        <FontAwesome6 name="edit" color="#ccc" size={30} />
-                    </TouchableOpacity>
+                <View>
+                    <Text style={settingsStyles.name}>{userInfo?.name || 'Nome de usuário indefinido'}</Text>
+                    <Text style={settingsStyles.enterprise}>{userInfo?.enterprise_name || 'Nome da empresa ainda não definida'}</Text>
                 </View>
+
+                <TouchableOpacity
+                    style={{ alignItems: 'center', justifyContent: 'center' }}
+                    onPress={() => {
+                        setEditedName(userInfo?.name || '');
+                        setEditedEnterprise(userInfo?.enterprise_name || '');
+                        setModalVisible(true);
+                    }}
+                >
+                    <FontAwesome6 name="edit" color="#ccc" size={30} />
+                </TouchableOpacity>
             </View>
 
             <View style={settingsStyles.section}>
