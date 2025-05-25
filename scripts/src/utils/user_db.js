@@ -4,7 +4,7 @@ function createTableUserInfos() {
     createTable('user_infos', `
         name TEXT NOT NULL,
         enterprise_name TEXT NOT NULL,
-        image_uri TEXT NOT NULL
+        image_uri TEXT
     `);
 }
 

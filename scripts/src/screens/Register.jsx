@@ -34,7 +34,7 @@ export default function Register({ navigation }) {
             addUserInfos({
                 name: name.trim(),
                 enterprise_name: enterpriseName.trim(),
-                image_uri: imageUri || ""
+                image_uri: imageUri
             });
 
             navigation.replace("HomeTabs");
