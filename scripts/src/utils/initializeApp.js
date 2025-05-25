@@ -12,7 +12,8 @@ export default function initializeApp() {
         description TEXT NOT NULL,
         value REAL NOT NULL,
         detailing TEXT,
-        profissional_name TEXT NOT NULL
+        profissional_name TEXT NOT NULL,
+        key_identifier INTEGER NOT NULL UNIQUE
     `);
 
     // storage de mensagens
