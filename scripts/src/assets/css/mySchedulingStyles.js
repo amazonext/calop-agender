@@ -24,5 +24,16 @@ export const mySchedulingStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
+    },
+    addScheduling: {
+        position: 'absolute',
+        height: 60,
+        width: 60,
+        right: 20,
+        bottom: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 15,
+        backgroundColor: projectPalete.color6,
     }
 });
