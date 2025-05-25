@@ -74,7 +74,7 @@ export default function AddScheduling() {
 
                         <View style={addSchedulingStyles.field}>
                             <Text style={addSchedulingStyles.label}>
-                                Detalhamento 
+                                Detalhamento
                                 <Text style={addSchedulingStyles.optionalText}> (Opcional)</Text>
                             </Text>
                             <View style={addSchedulingStyles.inputContainer}>
