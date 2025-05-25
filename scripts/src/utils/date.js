@@ -38,4 +38,13 @@ function getCurrentDay() {
     return date.getDate();
 }
 
-export { currentDay, currentMonth, currentWeekday };
+function getCurrentTurn() {
+    const date = new Date();
+    const hour = date.getHours();
+
+    if (hour >= 5 && hour < 12) return "morning";
+    if (hour >= 12 && hour < 18) return "afternoon";
+    return "night";
+}
+
+export { getCurrentDay, getCurrentMonth, getCurrentWeekday, getCurrentTurn };
