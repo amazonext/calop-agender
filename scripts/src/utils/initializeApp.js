@@ -117,8 +117,5 @@ export default function initializeApp() {
         }
     });
 
-    // storage de agendamentos
-    // saveToStorage('appointments', {
-    //     "dia-mes": {}
-    // });
+    saveToStorage('appointments', []);
 }
