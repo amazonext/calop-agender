@@ -7,6 +7,7 @@ import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
 
 // components
 import LoadingScreen from "../components/LoadingScreen";
+import ModalSettings from "../components/ModalSettings";
 
 // styles
 import { settingsStyles } from '../assets/css/settingsStyles';
@@ -113,35 +114,15 @@ export default function Settings() {
                 </View>
             </View>
 
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => setModalVisible(false)}
-            >
-                <View style={settingsStyles.modalOverlay}>
-                    <View style={settingsStyles.modalContainer}>
-                        <Text style={settingsStyles.modalTitle}>Editar informações</Text>
-                        <TextInput
-                            value={editedName}
-                            onChangeText={setEditedName}
-                            placeholder="Nome do usuário"
-                            style={settingsStyles.input}
-                        />
-                        <TextInput
-                            value={editedEnterprise}
-                            onChangeText={setEditedEnterprise}
-                            placeholder="Nome da empresa"
-                            style={settingsStyles.input}
-                        />
-                        <View style={settingsStyles.modalButtonGroup}>
-                            <Button title="Cancelar" onPress={() => setModalVisible(false)} />
-                            <View style={{ width: 10 }} />
-                            <Button title="Salvar" onPress={handleSave} />
-                        </View>
-                    </View>
-                </View>
-            </Modal>
+            <ModalSettings
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+                editedName={editedName}
+                setEditedName={setEditedName}
+                editedEnterprise={editedEnterprise}
+                setEditedEnterprise={setEditedEnterprise}
+                handleSave={handleSave}
+            />
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Button title="Reset" onPress={handleResetOnboarding} />
