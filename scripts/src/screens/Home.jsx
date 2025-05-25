@@ -6,12 +6,18 @@ import { homeStyles } from "../assets/css/homeStyle";
 // utils
 import { getCurrentDay, getCurrentMonth, getCurrentWeekday } from "../utils/date";
 import { getUserInfos } from "../utils/user_db";
+import { getAppointments } from "../utils/appointments";
+
+// [ ]: adicionar o getTurn no Home
 
 export default function Home() {
   const userInfos = getUserInfos();
   const USERNAME = userInfos && userInfos.name ? userInfos.name : "usuário";
 
-  const monthlyServicesCount = 0;
+  // const appointments = getFromStorage('appointments').length || 0;
+  const appointments = async () => await getAppointments();
+  const appointmentsLength = appointments.length;
+
   const todayServices = [];
 
   const tips = [
@@ -51,10 +57,10 @@ export default function Home() {
 
         <View style={homeStyles.summaryContainer}>
           <Text style={homeStyles.summaryTitle}>Resumo</Text>
-          
+
           <View style={homeStyles.summaryCards}>
             <View style={homeStyles.summaryCard}>
-              <Text style={homeStyles.cardNumber}>{monthlyServicesCount}</Text>
+              <Text style={homeStyles.cardNumber}>{appointmentsLength}</Text>
               <Text style={homeStyles.cardLabel}>Serviços do mês</Text>
             </View>
 
