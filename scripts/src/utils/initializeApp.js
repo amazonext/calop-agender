@@ -70,7 +70,8 @@ export default function initializeApp() {
             ]
         ],
 
-        hour: {
+        turn: {
+            // manhã
             morning: [
                 "Bom dia! Um dia inteiro pela frente pra fazer acontecer ✨",
                 "Começando cedo? Isso é foco!",
@@ -78,6 +79,7 @@ export default function initializeApp() {
                 "Café, agenda e foco: a manhã já começa com energia!",
                 "Aproveite as primeiras horas do dia para brilhar!"
             ],
+            // tarde
             afternoon: [
                 "Boa tarde! Ainda dá tempo de realizar muita coisa hoje 😊",
                 "Meio do dia, hora de dar aquele gás final!",
@@ -85,6 +87,7 @@ export default function initializeApp() {
                 "A produtividade da tarde depende da motivação da manhã!",
                 "Hora perfeita pra ajustar os detalhes do dia!"
             ],
+            // noite
             night: [
                 "Boa noite! Hora de desacelerar (ou continuar brilhando, se for o caso ✨)",
                 "Mais um dia vencido. Que orgulho do seu trabalho!",
@@ -95,24 +98,22 @@ export default function initializeApp() {
         },
 
         conditionals: {
-            busyDay: {
-                messages: [
-                    "Uau, hoje tá movimentado, hein?! Bora com tudo 💥",
-                    "Agenda lotada é sinônimo de sucesso! 👏",
-                    "Dia puxado? Isso mostra que o trabalho tá rendendo!",
-                    "Muitas marcações hoje! Parabéns pela organização.",
-                    "Movimentação intensa por aqui. Que ótimo sinal!"
-                ]
-            },
-            busyEmployee: {
-                messages: [
-                    "{{name}} tá voando hoje! Que dedicação 👏",
-                    "Destaque do dia: {{name}}! Obrigado pelo empenho incrível.",
-                    "{{name}} está cuidando de tudo hoje! Que orgulho da equipe!",
-                    "{{name}}, você é o motor da produtividade hoje!",
-                    "O dia tá cheio pro(a) {{name}}, mas o desempenho tá lá em cima!"
-                ]
-            }
+            // dia movimentado
+            busyDay: [
+                "Uau, hoje tá movimentado, hein?! Bora com tudo 💥",
+                "Agenda lotada é sinônimo de sucesso! 👏",
+                "Dia puxado? Isso mostra que o trabalho tá rendendo!",
+                "Muitas marcações hoje! Parabéns pela organização.",
+                "Movimentação intensa por aqui. Que ótimo sinal!"
+            ],
+            // funcionário ocupado
+            busyEmployee: [
+                "{{name}} tá voando hoje! Que dedicação 👏",
+                "Destaque do dia: {{name}}! Obrigado pelo empenho incrível.",
+                "{{name}} está cuidando de tudo hoje! Que orgulho da equipe!",
+                "{{name}}, você é o motor da produtividade hoje!",
+                "O dia tá cheio pro(a) {{name}}, mas o desempenho tá lá em cima!"
+            ]
         }
     });
 
