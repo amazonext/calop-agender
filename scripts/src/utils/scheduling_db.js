@@ -7,7 +7,7 @@ function createTableSchedulings() {
         value REAL NOT NULL,
         detailing TEXT,
         profissional_name TEXT NOT NULL,
-        keyIdentifier INTEGER NOT NULL UNIQUE
+        key_identifier INTEGER NOT NULL UNIQUE
     `);
 }
 
