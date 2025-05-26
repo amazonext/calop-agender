@@ -22,7 +22,7 @@ export default function initializeApp() {
             [ // domingo
                 "Domingo tranquilo por aí? Ótimo dia pra recarregar as energias!",
                 "Amanhã começa tudo de novo. Hoje é dia de descanso 😌",
-                "Dia perfeito pra organizar a mente e o coração.",
+                "Domingo, dia perfeito pra organizar a mente e o coração.",
                 "Domingo com poucas marcações? Aproveite esse respiro!",
                 "Um bom domingo prepara uma ótima semana!"
             ],
