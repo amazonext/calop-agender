@@ -2,6 +2,16 @@ function getCurrentWeekday() {
     const date = new Date();
     const weekIndex = date.getDay();
 
+    const colors = [
+        "#E6C87D",
+        "#D9B86A",
+        "#F4D160",
+        "#E3C17A",
+        "#FBC798",
+        "#EFD393",
+        "#D4B16A",
+    ];
+
     const weekdays = [
         "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira",
         "Quinta-feira", "Sexta-feira", "Sábado"
@@ -9,7 +19,8 @@ function getCurrentWeekday() {
 
     return {
         index: weekIndex,
-        name: weekdays[weekIndex]
+        name: weekdays[weekIndex],
+        color: colors[weekIndex % colors.length]
     };
 }
 
@@ -23,8 +34,8 @@ function getCurrentMonth() {
     ];
 
     const monthNames = [
-        "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
-        "Jul", "Ago", "Set", "Out", "Nov", "Dez"
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
     ];
 
     return {

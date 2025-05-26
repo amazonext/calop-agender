@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { global } from './global/globalStyle';
 import { projectPalete } from './colors';
-import { getCurrentMonth } from '../../utils/date';
+import { getCurrentMonth, getCurrentWeekday } from '../../utils/date';
 
 export const homeStyles = StyleSheet.create({
     ...global,
@@ -46,7 +46,7 @@ export const homeStyles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         textTransform: 'uppercase',
-        color: projectPalete.color7,
+        color: getCurrentWeekday().color,
     },
     dateInfo: {
         flex: 1,
