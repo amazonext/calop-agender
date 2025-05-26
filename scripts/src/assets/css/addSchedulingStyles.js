@@ -117,7 +117,7 @@ export const addSchedulingStyles = StyleSheet.create({
         marginTop: 10,
     },
     submitButtonDisabled: {
-        backgroundColor: projectPalete.color5,
+        opacity: .6,
         shadowOpacity: 0,
         elevation: 0,
     },
@@ -128,6 +128,6 @@ export const addSchedulingStyles = StyleSheet.create({
         letterSpacing: 0.5,
     },
     submitButtonTextDisabled: {
-        color: projectPalete.color8,
+        opacity: .6,
     },
 });
