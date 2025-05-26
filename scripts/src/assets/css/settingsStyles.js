@@ -4,12 +4,10 @@ import { global } from './global/globalStyle';
 
 export const settingsStyles = StyleSheet.create({
     ...global,
-
     userBox: {
         flexDirection: "row",
         justifyContent: "space-between",
         gap: 10,
-        alignItems: "center",
         padding: 10,
         backgroundColor: "#f0f0f0",
         borderRadius: 12,
@@ -44,7 +42,6 @@ export const settingsStyles = StyleSheet.create({
     buttonText: {
         color: projectPalete.color8,
         fontSize: 14,
-        textAlign: 'center',
         fontWeight: 'bold',
     },
     section: {
@@ -66,7 +63,6 @@ export const settingsStyles = StyleSheet.create({
     infoRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
         paddingVertical: 12,
         borderBottomWidth: 1,
         borderBottomColor: '#ddd',
