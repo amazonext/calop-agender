@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native';
-import { itemStyles } from '../assets/css/itemStyles';
+import { itemStyles } from '../assets/styles/itemStyles';
 
 export default function item({ item }) {
     return (

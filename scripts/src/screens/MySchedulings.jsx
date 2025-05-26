@@ -11,8 +11,8 @@ import { addEvent } from '../utils/calendar';
 import { getAppointments } from '../utils/appointments';
 
 // styles
-import { mySchedulingStyles } from "../assets/css/mySchedulingStyles";
-import { projectPalete } from '../assets/css/colors';
+import { mySchedulingStyles } from "../assets/styles/mySchedulingStyles";
+import { projectPalete } from '../assets/styles/colors';
 
 export default function MySchedulings() {
     const [modalVisible, setModalVisible] = useState(false);

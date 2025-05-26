@@ -12,7 +12,7 @@ import Register from './src/screens/Register';
 import Splash from './src/components/Splash';
 
 // colors
-import { projectPalete } from './src/assets/css/colors';
+import { projectPalete } from './src/assets/styles/colors';
 
 // navigation
 const Stack = createStackNavigator();

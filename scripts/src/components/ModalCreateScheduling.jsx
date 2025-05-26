@@ -189,7 +189,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                         >
                             <Text style={styles.cancelButtonText}>Cancelar</Text>
                         </TouchableOpacity>
-                        
+
                         <TouchableOpacity
                             style={styles.confirmButton}
                             onPress={() => {

@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { getFromStorage } from '../utils/storage';
 
 // style
-import { projectPalete } from '../assets/css/colors';
+import { projectPalete } from '../assets/styles/colors';
 
 export default function Splash() {
     const navigation = useNavigation();

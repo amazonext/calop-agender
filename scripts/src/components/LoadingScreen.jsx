@@ -1,5 +1,5 @@
 import { View, Text, ActivityIndicator } from 'react-native';
-import { projectPalete } from '../assets/css/colors';
+import { projectPalete } from '../assets/styles/colors';
 
 export default function LoadingScreen({ message = 'Carregando...' }) {
     return (

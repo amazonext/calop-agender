@@ -10,8 +10,8 @@ import { saveToStorage } from '../utils/storage';
 import initializeApp from '../utils/initializeApp';
 
 // style
-import { projectPalete } from '../assets/css/colors';
-import { registerStyles } from '../assets/css/registerStyles';
+import { projectPalete } from '../assets/styles/colors';
+import { registerStyles } from '../assets/styles/registerStyles';
 
 export default function Register({ navigation }) {
     const [imageUri, setImageUri] = useState(null);

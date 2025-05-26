@@ -9,7 +9,7 @@ import AddScheduling from '../screens/AddScheduling';
 import MySchedulings from '../screens/MySchedulings';
 
 // Cores
-import { projectPalete } from '../assets/css/colors';
+import { projectPalete } from '../assets/styles/colors';
 
 // navigation
 const Tab = createBottomTabNavigator();

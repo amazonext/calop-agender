@@ -10,7 +10,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import ModalSettings from "../components/ModalSettings";
 
 // styles
-import { settingsStyles } from '../assets/css/settingsStyles';
+import { settingsStyles } from '../assets/styles/settingsStyles';
 
 export default function Settings() {
     const [userInfo, setUserInfo] = useState(null);

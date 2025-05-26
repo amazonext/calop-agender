@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 
-import { addSchedulingStyles } from "../assets/css/addSchedulingStyles";
+import { addSchedulingStyles } from "../assets/styles/addSchedulingStyles";
 import { createScheduling } from "../utils/scheduling_db";
-import { projectPalete } from "../assets/css/colors";
+import { projectPalete } from "../assets/styles/colors";
 
 export default function AddScheduling() {
     const [procedure, setProcedure] = useState("");

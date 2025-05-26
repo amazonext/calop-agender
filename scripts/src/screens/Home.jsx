@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 
 // styles
-import { homeStyles } from "../assets/css/homeStyle";
+import { homeStyles } from "../assets/styles/homeStyle";
 
 // utils
 import { getCurrentDay, getCurrentMonth, getCurrentWeekday } from "../utils/date";

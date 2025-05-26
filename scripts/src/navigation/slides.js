@@ -1,5 +1,5 @@
 // css
-import { projectPalete, theHeapstersPalete } from '../assets/css/colors';
+import { projectPalete, theHeapstersPalete } from '../assets/styles/colors';
 
 const LOGO_TEAM = require('../assets/images/logo-team.png');
 

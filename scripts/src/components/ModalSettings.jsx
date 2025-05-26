@@ -1,6 +1,6 @@
 import { Modal, Text, View, Button, TextInput } from "react-native";
-import { settingsStyles } from '../assets/css/settingsStyles';
-import { settings } from "../assets/css/ModalsStyles";
+import { settingsStyles } from '../assets/styles/settingsStyles';
+import { settings } from "../assets/styles/ModalsStyles";
 
 export default function ModalSettings({
     modalVisible,
