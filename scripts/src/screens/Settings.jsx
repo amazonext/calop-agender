@@ -82,7 +82,6 @@ export default function Settings() {
                 </View>
 
                 <TouchableOpacity
-                    style={{ alignItems: 'center', justifyContent: 'center' }}
                     onPress={() => {
                         setEditedName(userInfo?.name || '');
                         setEditedEnterprise(userInfo?.enterprise_name || '');
@@ -94,7 +93,7 @@ export default function Settings() {
             </View>
 
             <View style={settingsStyles.section}>
-                <Text style={settingsStyles.sectionTitle}>App info.</Text>
+                <Text style={settingsStyles.sectionTitle}>App info</Text>
                 <View style={settingsStyles.infoCard}>
                     <View style={settingsStyles.infoRow}>
                         <Text style={settingsStyles.infoLabel}>Versão</Text>
@@ -109,7 +108,9 @@ export default function Settings() {
                         <Text
                             style={settingsStyles.linkValue}
                             onPress={() => Linking.openURL('https://theheapsters.github.io/calop-agender/presentation/')}
-                        > Link </Text>
+                        >
+                            Link
+                        </Text>
                     </View>
                 </View>
             </View>
