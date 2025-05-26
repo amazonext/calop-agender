@@ -7,18 +7,19 @@ import { homeStyles } from "../assets/css/homeStyle";
 import { getCurrentDay, getCurrentMonth, getCurrentWeekday } from "../utils/date";
 import { getUserInfos } from "../utils/user_db";
 import { getAppointments } from "../utils/appointments";
-
-// [ ]: adicionar o getTurn no Home
+import { getMessage } from "../utils/messages";
 
 export default function Home() {
   const userInfos = getUserInfos();
-  const USERNAME = userInfos && userInfos.name ? userInfos.name : "usuário";
+  const USERNAME = userInfos && userInfos.name ?
+    <Text style={{ fontWeight: 'bold' }}>{userInfos.name}</Text> : "usuário";
+  const ENTERPRISE_NAME = userInfos && userInfos.enterprise ?
+    <Text style={{ fontWeight: 'bold' }}>{userInfos.enterprise}</Text> : "sua empresa";
 
-  // const appointments = getFromStorage('appointments').length || 0;
   const appointments = async () => await getAppointments();
   const appointmentsLength = appointments.length;
 
-  const todayServices = [];
+  const message = getMessage();
 
   const tips = [
     "🦜 Psiu! Use a aba 'Criar Serviços' à esquerda para adicionar novos tipos de atendimento!",
@@ -39,19 +40,17 @@ export default function Home() {
           source={require('../assets/images/logo-alternative.png')}
           style={homeStyles.logo}
         />
-        <Text style={homeStyles.welcomeText}>Bem-vindo, {USERNAME}!</Text>
+        <Text style={homeStyles.welcomeTextUser}>Bem-vindo, {USERNAME}!</Text>
+        <Text style={homeStyles.welcomeTextEnterprise}>Como vai a {ENTERPRISE_NAME}?</Text>
       </View>
 
       <View style={homeStyles.appointmentContainer}>
         <View style={homeStyles.dateContainer}>
-          <View style={homeStyles.calendarIcon}>
-            <Text style={homeStyles.date}>{getCurrentMonth().name}</Text>
-            <Text style={homeStyles.date}>{getCurrentDay()}</Text>
-          </View>
-
           <View style={homeStyles.dateInfo}>
-            <Text style={homeStyles.dateTitle}>{getCurrentWeekday().name}</Text>
-            <Text style={homeStyles.appointments}>Nenhum agendamento para hoje</Text>
+            <Text style={homeStyles.weekTextBefore}>
+              Hoje é <Text style={homeStyles.weekText}>{getCurrentWeekday().name}</Text>
+            </Text>
+            <Text style={homeStyles.message}>{message}</Text>
           </View>
         </View>
 
@@ -60,21 +59,21 @@ export default function Home() {
 
           <View style={homeStyles.summaryCards}>
             <View style={homeStyles.summaryCard}>
-              <Text style={homeStyles.cardNumber}>{appointmentsLength}</Text>
               <Text style={homeStyles.cardLabel}>Serviços do mês</Text>
+              <Text style={homeStyles.cardNumber}>{appointmentsLength}</Text>
             </View>
 
             <View style={homeStyles.summaryCard}>
               <Text style={homeStyles.cardLabel}>Serviços de hoje</Text>
               <View style={homeStyles.todayServicesContainer}>
-                {todayServices.length > 0 ? (
-                  todayServices.map((service, index) => (
+                {appointmentsLength > 0 ? (
+                  appointments.map((service, index) => (
                     <Text key={index} style={homeStyles.serviceItem}>
                       • {service}
                     </Text>
                   ))
                 ) : (
-                  <Text style={homeStyles.noServicesText}>Nenhum serviço hoje</Text>
+                  <Text style={homeStyles.servicesText}>{appointmentsLength}</Text>
                 )}
               </View>
             </View>
