@@ -4,7 +4,6 @@ import { projectPalete } from './colors';
 
 export const mySchedulingStyles = StyleSheet.create({
     ...global,
-
     title: {
         fontSize: 24,
         fontWeight: 'bold',
@@ -35,5 +34,15 @@ export const mySchedulingStyles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 15,
         backgroundColor: projectPalete.color6,
+    },
+    noSchedulingContent: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: projectPalete.color2,
+    },
+    noSchedulingText: {
+        fontSize: 18,
+        color: '#00000050'
     }
 });
