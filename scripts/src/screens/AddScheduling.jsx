@@ -52,7 +52,7 @@ export default function AddScheduling() {
                                     value={procedure}
                                     onChangeText={setProcedure}
                                     placeholder="Digite o procedimento"
-                                    placeholderTextColor={projectPalete.color5}
+                                    placeholderTextColor={projectPalete.color2 + '50'}
                                 />
                             </View>
                         </View>
@@ -66,7 +66,7 @@ export default function AddScheduling() {
                                     value={value}
                                     onChangeText={setValue}
                                     placeholder="0,00"
-                                    placeholderTextColor={projectPalete.color5}
+                                    placeholderTextColor={projectPalete.color2 + '50'}
                                     keyboardType="numeric"
                                 />
                             </View>
@@ -83,7 +83,7 @@ export default function AddScheduling() {
                                     value={detailing}
                                     onChangeText={setDetailing}
                                     placeholder="Digite o detalhamento do serviço"
-                                    placeholderTextColor={projectPalete.color5}
+                                    placeholderTextColor={projectPalete.color2 + '50'}
                                     multiline
                                     numberOfLines={3}
                                     textAlignVertical="top"
@@ -99,7 +99,7 @@ export default function AddScheduling() {
                                     value={profissionalName}
                                     onChangeText={setProfissionalName}
                                     placeholder="Digite o nome do profissional"
-                                    placeholderTextColor={projectPalete.color5}
+                                    placeholderTextColor={projectPalete.color2 + '50'}
                                 />
                             </View>
                         </View>
