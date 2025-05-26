@@ -1,9 +1,9 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState, useEffect } from "react";
 import { Modal, Text, View, TouchableOpacity, FlatList } from "react-native";
-import styles from '../assets/css/modalcreateschedulingStyle';
+import { createScheduling } from '../assets/styles/modals';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
-import { projectPalete } from '../assets/css/colors';
+import { projectPalete } from '../assets/styles/colors';
 
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
@@ -45,15 +45,15 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
     const renderServiceItem = ({ item, index }) => (
         <TouchableOpacity
             style={[
-                styles.dropdownItem,
-                index === services.length - 1 ? styles.lastDropdownItem : {}
+                createScheduling.dropdownItem,
+                index === services.length - 1 ? createScheduling.lastDropdownItem : {}
             ]}
             onPress={() => {
                 setSelectedService(item);
                 setIsServiceDropdownVisible(false);
             }}
         >
-            <Text style={styles.dropdownItemText}>{item.name || item}</Text>
+            <Text style={createScheduling.dropdownItemText}>{item.name || item}</Text>
         </TouchableOpacity>
     );
 
@@ -64,21 +64,21 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
             visible={modalVisible}
             onRequestClose={() => setModalVisible(!modalVisible)}
         >
-            <View style={styles.modalOverlay}>
-                <View style={styles.modalContainer}>
-                    <View style={styles.headerSection}>
-                        <View style={styles.headerIconContainer}>
+            <View style={createScheduling.modalOverlay}>
+                <View style={createScheduling.modalContainer}>
+                    <View style={createScheduling.headerSection}>
+                        <View style={createScheduling.headerIconContainer}>
                             <Ionicons name="calendar" size={28} color="#fff" />
                         </View>
-                        <Text style={styles.headerTitle}>Novo Agendamento</Text>
-                        <Text style={styles.headerSubtitle}>Selecione a data, horário e serviço</Text>
+                        <Text style={createScheduling.headerTitle}>Novo Agendamento</Text>
+                        <Text style={createScheduling.headerSubtitle}>Selecione a data, horário e serviço</Text>
                     </View>
 
-                    <View style={styles.pickersContainer}>
+                    <View style={createScheduling.pickersContainer}>
                         <View>
-                            <Text style={styles.labelInput}>Data</Text>
+                            <Text style={createScheduling.labelInput}>Data</Text>
                             <TouchableOpacity
-                                style={styles.dateTimePickerButton}
+                                style={createScheduling.dateTimePickerButton}
                                 onPress={() => {
                                     setIsServiceDropdownVisible(false);
                                     setShowHourPicker(false);
@@ -86,21 +86,21 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }}
                                 activeOpacity={0.7}
                             >
-                                <View style={styles.dateTimePickerIconContainer}>
+                                <View style={createScheduling.dateTimePickerIconContainer}>
                                     <Ionicons name="calendar-outline" size={22} color="#fff" />
                                 </View>
-                                <View style={styles.dateTimePickerTextContainer}>
-                                    <Text style={styles.dateTimePickerValueText}>{dateFormatted}</Text>
-                                    <Text style={styles.dateTimePickerHelpText}>Toque para alterar</Text>
+                                <View style={createScheduling.dateTimePickerTextContainer}>
+                                    <Text style={createScheduling.dateTimePickerValueText}>{dateFormatted}</Text>
+                                    <Text style={createScheduling.dateTimePickerHelpText}>Toque para alterar</Text>
                                 </View>
                                 <Ionicons name="chevron-forward" size={20} color="#666" />
                             </TouchableOpacity>
                         </View>
 
                         <View>
-                            <Text style={styles.labelInput}>Horário</Text>
+                            <Text style={createScheduling.labelInput}>Horário</Text>
                             <TouchableOpacity
-                                style={styles.dateTimePickerButton}
+                                style={createScheduling.dateTimePickerButton}
                                 onPress={() => {
                                     setIsServiceDropdownVisible(false);
                                     setShowDatePicker(false);
@@ -108,21 +108,21 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }}
                                 activeOpacity={0.7}
                             >
-                                <View style={styles.dateTimePickerIconContainer}>
+                                <View style={createScheduling.dateTimePickerIconContainer}>
                                     <AntDesign name="clockcircleo" size={20} color="#fff" />
                                 </View>
-                                <View style={styles.dateTimePickerTextContainer}>
-                                    <Text style={styles.dateTimePickerValueText}>{hourFormatted}</Text>
-                                    <Text style={styles.dateTimePickerHelpText}>Toque para alterar</Text>
+                                <View style={createScheduling.dateTimePickerTextContainer}>
+                                    <Text style={createScheduling.dateTimePickerValueText}>{hourFormatted}</Text>
+                                    <Text style={createScheduling.dateTimePickerHelpText}>Toque para alterar</Text>
                                 </View>
                                 <Ionicons name="chevron-forward" size={20} color="#666" />
                             </TouchableOpacity>
                         </View>
 
-                        <View style={styles.dropdownContainer}>
-                            <Text style={styles.labelInput}>Serviço</Text>
+                        <View style={createScheduling.dropdownContainer}>
+                            <Text style={createScheduling.labelInput}>Serviço</Text>
                             <TouchableOpacity
-                                style={styles.dropdownButton}
+                                style={createScheduling.dropdownButton}
                                 onPress={() => {
                                     if (services.length > 0) {
                                         setShowDatePicker(false);
@@ -132,7 +132,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }}
                                 activeOpacity={services.length > 0 ? 0.7 : 1}
                             >
-                                <Text style={styles.dropdownButtonText}>
+                                <Text style={createScheduling.dropdownButtonText}>
                                     {(selectedService && (selectedService.name || selectedService)) || 'Nenhum serviço disponível'}
                                 </Text>
                                 {services.length > 0 && (
@@ -144,7 +144,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 )}
                             </TouchableOpacity>
                             {isServiceDropdownVisible && services.length > 0 && (
-                                <View style={styles.dropdownList}>
+                                <View style={createScheduling.dropdownList}>
                                     <FlatList
                                         data={services}
                                         renderItem={renderServiceItem}
@@ -181,17 +181,17 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                         )}
                     </View>
 
-                    <View style={styles.buttonsRow}>
+                    <View style={createScheduling.buttonsRow}>
                         <TouchableOpacity
-                            style={styles.cancelButton}
+                            style={createScheduling.cancelButton}
                             onPress={() => setModalVisible(false)}
                             activeOpacity={0.8}
                         >
-                            <Text style={styles.cancelButtonText}>Cancelar</Text>
+                            <Text style={createScheduling.cancelButtonText}>Cancelar</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                            style={styles.confirmButton}
+                            style={createScheduling.confirmButton}
                             onPress={() => {
                                 console.log('Data:', dateFormatted);
                                 console.log('Hora:', hourFormatted);
@@ -200,7 +200,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                             }}
                             activeOpacity={0.8}
                         >
-                            <Text style={styles.confirmButtonText}>Criar Agendamento</Text>
+                            <Text style={createScheduling.confirmButtonText}>Criar Agendamento</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
