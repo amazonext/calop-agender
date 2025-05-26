@@ -5,16 +5,17 @@ import { getCurrentMonth, getCurrentWeekday } from '../../utils/date';
 
 export const homeStyles = StyleSheet.create({
     ...global,
-    welcomeContainer: {
-        alignItems: 'center',
-        marginBottom: 50,
-    },
-    welcomeText: {
+    welcomeTextUser: {
         fontSize: 36,
-        fontWeight: '600',
         color: projectPalete.color8,
         marginBottom: 10,
         textAlign: 'center'
+    },
+    welcomeTextEnterprise: {
+        fontSize: 26,
+        fontWeight: '400',
+        color: projectPalete.color8,
+        marginBottom: 10,
     },
     subtitleText: {
         fontSize: 26,
@@ -22,44 +23,53 @@ export const homeStyles = StyleSheet.create({
     },
     appointmentContainer: {
         flex: 1,
-        marginTop: 20,
+        marginTop: 10,
     },
     dateContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 15,
-        backgroundColor: '#FFFFFF',
+        paddingHorizontal: 15
     },
     calendarIcon: {
         width: 86,
         height: 86,
-        borderWidth: 5,
-        borderColor: getCurrentMonth().color + "90",
-        backgroundColor: getCurrentMonth().color,
-        borderRadius: 5,
+        backgroundColor: "#fff",
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 15,
+        borderRadius: 12,
+
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 5,
+
+        boxShadow: '0 1px 1px'
     },
-    date: {
-        fontSize: 25,
+    weekTextBefore: {
+        fontSize: 30,
+        color: projectPalete.color8
+    },
+    weekText: {
+        fontSize: 30,
         fontWeight: 'bold',
-        textTransform: 'uppercase',
+        marginBottom: 5,
         color: getCurrentWeekday().color,
     },
     dateInfo: {
-        flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
+        gap: 5
     },
-    dateTitle: {
-        fontSize: 30,
-        fontWeight: '500',
-        color: projectPalete.color8,
-        marginBottom: 5,
-    },
-    appointments: {
-        fontSize: 22,
+    message: {
+        fontSize: 20,
+        fontStyle: 'italic',
+        marginTop: 5,
         color: projectPalete.color8,
         textAlign: 'center',
     },
@@ -108,7 +118,8 @@ export const homeStyles = StyleSheet.create({
         marginBottom: 10,
     },
     todayServicesContainer: {
-        alignItems: 'flex-start',
+        alignItems: 'center',
+        justifyContent: 'center',
         width: '100%',
     },
     serviceItem: {
@@ -116,13 +127,13 @@ export const homeStyles = StyleSheet.create({
         color: projectPalete.color8,
         marginBottom: 4,
         paddingLeft: 5,
+        alignItems: 'center',
     },
-    noServicesText: {
-        fontSize: 14,
-        color: projectPalete.color8,
-        fontStyle: 'italic',
-        textAlign: 'center',
-        width: '100%',
+    servicesText: {
+        fontSize: 36,
+        fontWeight: 'bold',
+        color: getCurrentMonth().color,
+        marginBottom: 8,
     },
     tipContainer: {
         marginTop: 25,
