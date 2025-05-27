@@ -39,7 +39,7 @@ export default function App() {
                     }}
                 />
             </Stack.Navigator>
-            <StatusBar style="inverted" animated={true} />
+            <StatusBar style="light" animated={true} />
         </NavigationContainer>
     );
 }
