@@ -4,7 +4,7 @@ import { projectPalete } from './colors';
 const createScheduling = StyleSheet.create({
     modalOverlay: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.6)',
+        backgroundColor: 'rgba(0,0,0,0.2)',
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: 20
@@ -15,7 +15,7 @@ const createScheduling = StyleSheet.create({
         padding: 30,
         width: '100%',
         maxWidth: 400,
-        shadowColor: '#000',
+        shadowColor: projectPalete.color1,
         shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.25,
         shadowRadius: 20,

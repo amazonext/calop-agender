@@ -7,12 +7,17 @@ export const settingsStyles = StyleSheet.create({
     userBox: {
         flexDirection: "row",
         justifyContent: "space-between",
-        gap: 10,
+        alignItems: "center",
         padding: 10,
         backgroundColor: "#f0f0f0",
         borderRadius: 12,
         marginBottom: 20,
         marginVertical: 15,
+    },
+    userInfo: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10
     },
     userPhoto: {
         width: 60,
@@ -22,7 +27,7 @@ export const settingsStyles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    name: {
+    username: {
         fontSize: 18,
         fontWeight: "bold",
         color: "#222",
