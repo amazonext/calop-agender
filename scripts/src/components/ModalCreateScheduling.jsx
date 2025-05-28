@@ -7,11 +7,15 @@ import { Ionicons, AntDesign } from '@expo/vector-icons';
 // components
 import ServiceItem from '../components/ServiceItem';
 
-import { projectPalete } from '../assets/styles/colors';
+// utils
+import { getAllSchedulings } from '../utils/scheduling_db';
+import { addAppointment } from '../utils/appointments';
 
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showHourPicker, setShowHourPicker] = useState(false);
+
+    const schedulings = getAllSchedulings();
 
     const [date, setDate] = useState(() => {
         const d = new Date();
@@ -41,7 +45,9 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
 
     useEffect(() => {
         if (modalVisible) {
-            setServices([]);
+            const schedulings = getAllSchedulings();
+            const descriptions = schedulings.map(item => item.description).filter(Boolean); // Remove null/undefined
+            setServices(descriptions);
             setSelectedService(null);
         }
     }, [modalVisible]);
