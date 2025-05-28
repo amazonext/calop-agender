@@ -16,7 +16,7 @@ import { settingsStyles } from '../assets/styles/settingsStyles';
 
 import cleanApp from "../utils/cleaner";
 
-export default function Settings() {
+export default function Settings({ navigation }) {
     const [userInfoUpdate, setUserInfoUpdate] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
     const [editedName, setEditedName] = useState('');
@@ -98,9 +98,11 @@ export default function Settings() {
 
                 <TouchableOpacity
                     onPress={() => {
-                        setEditedName((userInfoUpdate?.name ?? useUser.name) || '');
-                        setEditedEnterprise((userInfoUpdate?.enterprise_name ?? useUser.enterprise_name) || '');
-                        setModalVisible(true);
+                        // setEditedName((userInfoUpdate?.name ?? useUser.name) || '');
+                        // setEditedEnterprise((userInfoUpdate?.enterprise_name ?? useUser.enterprise_name) || '');
+                        // setModalVisible(true);
+
+                        navigation.navigate("Profile");
                     }}
                 >
                     <FontAwesome6 name="edit" color="#ccc" size={30} />
