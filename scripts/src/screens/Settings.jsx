@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { View, Text, Image, Button, TouchableOpacity, Linking, Animated, Easing, Alert } from "react-native";
 import { query } from "../helpers/db";
-import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
+import { Ionicons, FontAwesome6, FontAwesome5 } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
 // hooks
@@ -105,7 +105,7 @@ export default function Settings({ navigation }) {
                         navigation.navigate("Profile");
                     }}
                 >
-                    <FontAwesome6 name="edit" color="#ccc" size={30} />
+                    <FontAwesome6 name="chevron-right" color="#ccc" size={35} />
                 </TouchableOpacity>
             </View>
 
@@ -120,14 +120,22 @@ export default function Settings({ navigation }) {
                         <Text style={settingsStyles.infoLabel}>SDK Version</Text>
                         <Text style={settingsStyles.infoValue}>53.0.0</Text>
                     </View>
+
                     <View style={[settingsStyles.infoRow, { borderBottomWidth: 0 }]}>
                         <Text style={settingsStyles.infoLabel}>Site do Projeto</Text>
-                        <Text
-                            style={settingsStyles.linkValue}
-                            onPress={() => Linking.openURL('https://theheapsters.github.io/calop-agender/presentation/')}
-                        >
-                            Link
-                        </Text>
+                        <View style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: 5
+                        }}>
+                            <Text
+                                style={settingsStyles.linkValue}
+                                onPress={() => Linking.openURL('https://theheapsters.github.io/calop-agender/presentation/')}
+                            >
+                                Calop Agender
+                            </Text>
+                            <FontAwesome5 name="link" size={12} color="#ccc" />
+                        </View>
                     </View>
                 </View>
             </View>

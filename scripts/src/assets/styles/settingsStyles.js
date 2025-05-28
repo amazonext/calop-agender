@@ -73,19 +73,20 @@ export const settingsStyles = StyleSheet.create({
         borderBottomColor: '#ddd',
     },
     infoLabel: {
-        fontSize: 14,
-        color: '#555',
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#444',
     },
     infoValue: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#111',
+        color: '#666',
     },
     linkValue: {
-        color: 'blue',
+        color: '#555',
         textDecorationLine: 'underline',
-        fontSize: 15,
-        fontWeight: '450'
+        fontSize: 14,
+        fontWeight: 'bold'
     },
     toastContainer: {
         position: 'absolute',
