@@ -100,13 +100,13 @@ export default function Register({ navigation }) {
                 />
                 <TouchableOpacity
                     onPress={async () => {
+                        // initializeApp();
                         await saveToStorage('hasSeenRegister', true);
 
                         navigation.replace("HomeTabs");
-                        initializeApp();
                     }}
                 >
-                    <Text style={registerStyles.laterText}>Depois</Text>
+                    <Text style={registerStyles.laterText}>Ir para a Home</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
