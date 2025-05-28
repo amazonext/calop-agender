@@ -1,11 +1,21 @@
-import { getFromStorage, saveToStorage } from "./storage";
+import { getItemFromStorage, saveToStorage } from "./storage";
 
 async function getAppointments() {
-    const appointments = await getFromStorage('appointments');
-
-    return appointments
+    return await getItemFromStorage('appointments');
 }
 
-function addAppointment(appointment) { }
+async function addAppointment(data, hour, model) {
+    const appointments = await getAppointments();
+
+    const newAppointment = {
+        ...model,
+        hour,
+    };
+
+    if (appointments[data]) appointments[data].push(newAppointment);
+    else appointments[data] = [newAppointment];
+
+    await saveToStorage('appointments', appointments);
+}
 
 export { getAppointments, addAppointment };
