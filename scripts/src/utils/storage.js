@@ -54,4 +54,8 @@ async function getItemFromStorage(key) {
     }
 }
 
-export { saveToStorage, getFromStorage };
+function removeItemFromStorage(key) {
+    AsyncStorage.removeItem(key);
+}
+
+export { saveToStorage, getItemFromStorage, removeItemFromStorage };
