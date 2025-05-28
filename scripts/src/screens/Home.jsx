@@ -7,8 +7,7 @@ import useUserInfo from "../hooks/useUserInfo";
 import { homeStyles } from "../assets/styles/homeStyle";
 
 // utils
-import { getCurrentDay, getCurrentMonth, getCurrentWeekday } from "../utils/date";
-import { getUserInfos } from "../utils/user_db";
+import { getCurrentWeekday } from "../utils/date";
 import { getAppointments } from "../utils/appointments";
 import { getMessage } from "../utils/messages";
 
