@@ -1,5 +1,5 @@
 import * as FileSystem from 'expo-file-system';
-import { getFromStorage, saveToStorage } from '../utils/storage';
+import { getItemFromStorage, saveToStorage } from '../utils/storage';
 
 const IMAGE_KEY = '@user_profile_image';
 
@@ -23,7 +23,7 @@ async function saveImage(uri) {
 
 async function loadImage() {
     try {
-        const saved = await getFromStorage(IMAGE_KEY);
+        const saved = await getItemFromStorage(IMAGE_KEY);
 
         return saved;
     } catch (error) {

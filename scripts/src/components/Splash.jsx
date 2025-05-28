@@ -3,7 +3,7 @@ import { View, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 // utils
-import { getFromStorage } from '../utils/storage';
+import { getItemFromStorage } from '../utils/storage';
 
 // style
 import { projectPalete } from '../assets/styles/colors';
@@ -13,8 +13,8 @@ export default function Splash() {
 
     useEffect(() => {
         const checkFlow = async () => {
-            const onboarding = await getFromStorage('hasSeenOnboarding');
-            const register = await getFromStorage('hasSeenRegister');
+            const onboarding = await getItemFromStorage('hasSeenOnboarding');
+            const register = await getItemFromStorage('hasSeenRegister');
 
             if (onboarding !== true) navigation.replace('Onboarding');
             else if (register !== true) navigation.replace('Register');
