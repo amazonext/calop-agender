@@ -13,6 +13,7 @@ import Splash from './src/components/Splash';
 
 // colors
 import { projectPalete } from './src/assets/styles/colors';
+import Profile from './src/screens/Profile';
 
 // navigation
 const Stack = createStackNavigator();
@@ -28,6 +29,16 @@ export default function App() {
                 <Stack.Screen name="Onboarding" component={Onboarding} />
                 <Stack.Screen name="Register" component={Register} />
                 <Stack.Screen name="HomeTabs" component={HomeTabs} />
+                <Stack.Screen
+                    name="Profile"
+                    component={Profile}
+                    options={{
+                        headerShown: true,
+                        headerTitle: 'Perfil',
+                        headerTintColor: projectPalete.color3,
+                        headerStyle: { backgroundColor: projectPalete.color1 }
+                    }}
+                />
                 <Stack.Screen
                     name="Settings"
                     component={Settings}
