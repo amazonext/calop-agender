@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { View, Text, Image, Button, TouchableOpacity, Linking, Animated, Easing } from "react-native";
+import { View, Text, Image, Button, TouchableOpacity, Linking, Animated, Easing, Alert } from "react-native";
 import { query } from "../helpers/db";
 import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
@@ -13,6 +13,8 @@ import ModalSettings from "../components/ModalSettings";
 
 // styles
 import { settingsStyles } from '../assets/styles/settingsStyles';
+
+import cleanApp from "../utils/cleaner";
 
 export default function Settings() {
     const [userInfoUpdate, setUserInfoUpdate] = useState(null);
@@ -139,8 +141,19 @@ export default function Settings() {
             />
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Button title="Select All" onPress={() => console.log(getUserInfos())} />
-                <Button title="Drop table" onPress={() => query('DELETE FROM user_infos')} />
+                <Button title="Reset" onPress={() => {
+                    cleanApp();
+
+                    console.log('A tela de introdução será exibida na próxima vez que o app for aberto.');
+                }} />
+                <Button
+                    title='Select All alguma coisa'
+                    onPress={() => {
+                        console.log(query('SELECT * FROM user_infos'));
+                        console.log(query('SELECT * FROM scheduling_models'));
+                    }}
+                />
+                <Button title="Drop table" onPress={() => query('DROP TABLE scheduling_models')} />
             </View>
 
             <Animated.View style={[
