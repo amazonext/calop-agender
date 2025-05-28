@@ -38,7 +38,7 @@ async function saveToStorage(key, newValue, options = {}) {
     }
 }
 
-async function getFromStorage(key) {
+async function getItemFromStorage(key) {
     try {
         const rawValue = await AsyncStorage.getItem(key);
         if (rawValue === null) return null;

@@ -1,10 +1,10 @@
-import { getFromStorage } from "./storage";
+import { getItemFromStorage } from "./storage";
 import { getAppointments } from "./appointments";
 import { drawRandomNumber } from "../helpers/drawRandomNumber";
 import { getCurrentWeekday, getCurrentTurn } from "./date";
 
 function getMessagesFromStorage() {
-    const messages = getFromStorage('messages');
+    const messages = getItemFromStorage('messages');
 
     return messages;
 }
