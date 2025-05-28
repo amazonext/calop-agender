@@ -27,6 +27,12 @@ function selectAll(tableName) {
     return query(`SELECT * FROM ${tableName}`);
 }
 
+// seleciona linhas com filtro
+function selectWhere(tableName, column, value) {
+    const sql = `SELECT * FROM ${tableName} WHERE ${column} LIKE ?`;
+    return query(sql, [`%${value}%`]);
+}
+
 // insere um objeto
 function insertRow(tableName, dataObj) {
     const cols = Object.keys(dataObj);
@@ -56,4 +62,4 @@ function deleteRow(tableName, id) {
     exec(`DELETE FROM ${tableName} WHERE id = ?`, [id]);
 }
 
-export { createTable, dropTable, selectAll, insertRow, updateRow, deleteRow, query };
+export { createTable, dropTable, selectAll, insertRow, updateRow, deleteRow, query, selectWhere };

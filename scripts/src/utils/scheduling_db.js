@@ -1,4 +1,4 @@
-import { createTable, deleteRow, insertRow, selectAll, updateRow, query } from "../helpers/db";
+import { createTable, deleteRow, insertRow, selectAll, updateRow, query, selectWhere } from "../helpers/db";
 
 function createTableSchedulings() {
     createTable('scheduling_models', `
@@ -57,6 +57,10 @@ function getAllSchedulings() {
     return selectAll('scheduling_models');
 }
 
+function getSelectedSchedulings(procedure) {
+    selectWhere('scheduling_models', 'description',procedure);
+}
+
 function editScheduling(id, scheduling) {
     updateRow('scheduling_models', id, scheduling);
 }
@@ -65,4 +69,4 @@ function deleteScheduling(id) {
     deleteRow('scheduling_models', id);
 }
 
-export { createScheduling, getAllSchedulings, editScheduling, deleteScheduling };
+export { createScheduling, getAllSchedulings, editScheduling, deleteScheduling, getSelectedSchedulings };
