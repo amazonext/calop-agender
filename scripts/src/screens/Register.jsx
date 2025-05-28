@@ -22,6 +22,7 @@ export default function Register({ navigation }) {
     const handleRegister = () => {
         let hasError = false;
         const newErrors = { name: '' };
+        navigation.replace("HomeTabs");
 
         if (!name.trim()) {
             newErrors.name = "Seu nome é obrigatório";
@@ -91,7 +92,11 @@ export default function Register({ navigation }) {
                 <Button
                     title="Registrar"
                     color={projectPalete.color9}
-                    onPress={handleRegister}
+                    onPress={async () => {
+                        await saveToStorage('hasSeenRegister', true);
+                        initializeApp();
+                        handleRegister()
+                    }}
                 />
                 <TouchableOpacity
                     onPress={async () => {
