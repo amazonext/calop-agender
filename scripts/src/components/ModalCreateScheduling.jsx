@@ -54,7 +54,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
 
     return (
         <Modal
-            animationType="slide"
+            animationType="fade"
             transparent={true}
             visible={modalVisible}
             onRequestClose={() => setModalVisible(!modalVisible)}
