@@ -198,7 +198,9 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                         <TouchableOpacity
                             style={createScheduling.confirmButton}
                             onPress={() => {
-                                console.log('Data:', dateFormatted);
+                                const date = dateFormatted.replace('/', '_');
+                                addAppointment();
+                                console.log('Data:', dateFormatted.replace('/', '-'));
                                 console.log('Hora:', hourFormatted);
                                 console.log('Serviço:', selectedService);
                                 setModalVisible(false);
