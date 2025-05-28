@@ -1,5 +1,8 @@
 import { View, Text, Image } from "react-native";
 
+// hooks
+import useUserInfo from "../hooks/useUserInfo";
+
 // styles
 import { homeStyles } from "../assets/styles/homeStyle";
 
@@ -10,11 +13,11 @@ import { getAppointments } from "../utils/appointments";
 import { getMessage } from "../utils/messages";
 
 export default function Home() {
-  const userInfos = getUserInfos();
-  const USERNAME = userInfos && userInfos.name ?
-    <Text style={{ fontWeight: 'bold' }}>{userInfos.name}</Text> : "usuário";
-  const ENTERPRISE_NAME = userInfos && userInfos.enterprise ?
-    <Text style={{ fontWeight: 'bold' }}>{userInfos.enterprise}</Text> : "sua empresa";
+  const userInfo = useUserInfo();
+  const USERNAME = userInfo && userInfo.name ?
+    <Text style={{ fontWeight: 'bold' }}>{userInfo.name}</Text> : "usuário";
+  const ENTERPRISE_NAME = userInfo && userInfo.enterprise_name ?
+    <Text style={{ fontWeight: 'bold' }}>{userInfo.enterprise_name}</Text> : "sua empresa";
 
   const appointments = async () => await getAppointments();
   const appointmentsLength = appointments.length;
@@ -32,6 +35,8 @@ export default function Home() {
   ];
 
   const randomTip = tips[Math.floor(Math.random() * tips.length)];
+
+  if (useUserInfo() === null) return <Loading />;
 
   return (
     <View style={homeStyles.container}>
