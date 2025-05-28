@@ -1,24 +1,26 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { View, Text, Image, Button, TouchableOpacity, Linking, Animated, Easing } from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getUserInfos } from "../utils/user_db";
 import { query } from "../helpers/db";
 import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
 
+// hooks
+import useUserInfo from '../hooks/useUserInfo';
+
 // components
-import LoadingScreen from "../components/LoadingScreen";
+import Loading from "../components/Loading";
 import ModalSettings from "../components/ModalSettings";
 
 // styles
 import { settingsStyles } from '../assets/styles/settingsStyles';
 
 export default function Settings() {
-    const [userInfo, setUserInfo] = useState(null);
+    const [userInfoUpdate, setUserInfoUpdate] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
     const [editedName, setEditedName] = useState('');
     const [editedEnterprise, setEditedEnterprise] = useState('');
     const [toastMessage, setToastMessage] = useState('');
     const toastAnim = useRef(new Animated.Value(100)).current;
+    const useUser = useUserInfo();
 
     const showToast = (message) => {
         setToastMessage(message);
@@ -40,8 +42,8 @@ export default function Settings() {
     };
 
     const handleSave = () => {
-        setUserInfo({
-            ...userInfo,
+        setUserInfoUpdate({
+            ...userInfoUpdate,
             name: editedName,
             enterprise_name: editedEnterprise
         });
@@ -50,41 +52,31 @@ export default function Settings() {
         showToast("Informações atualizadas!");
     };
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            const data = await getUserInfos();
-            setUserInfo(data);
-        };
-
-        fetchUser();
-    }, []);
-
-    const handleResetOnboarding = async () => {
-        await AsyncStorage.removeItem('hasSeenOnboarding');
-        await AsyncStorage.removeItem('hasSeenRegister');
-        console.log('A tela de introdução será exibida na próxima vez que o app for aberto.');
-    };
-
-    if (userInfo === null) return (<LoadingScreen message="Carregando informações" />);
+    if (useUser === null) return <Loading />;
 
     return (
         <View style={settingsStyles.container}>
             <View style={settingsStyles.userBox}>
-                {userInfo.image_uri ? (
-                    <Image source={{ uri: userInfo.image_uri }} style={settingsStyles.userPhoto} />
-                ) : (
-                    <Ionicons name="person-circle-sharp" size={60} color="#aaa" />
-                )}
-
-                <View>
-                    <Text style={settingsStyles.name}>{userInfo?.name || 'Nome de usuário indefinido'}</Text>
-                    <Text style={settingsStyles.enterprise}>{userInfo?.enterprise_name || 'Nome da empresa ainda não definida'}</Text>
+                <View style={settingsStyles.userInfo}>
+                    {useUser?.image_uri ? (
+                        <Image source={{ uri: useUser.image_uri }} style={settingsStyles.userPhoto} />
+                    ) : (
+                        <Ionicons name="person-circle-sharp" size={60} color="#aaa" />
+                    )}
+                    <View>
+                        <Text style={settingsStyles.username}>
+                            {(userInfoUpdate?.name || useUser.name) ?? 'Nome de usuário indefinido'}
+                        </Text>
+                        <Text style={settingsStyles.enterprise}>
+                            {(userInfoUpdate?.enterprise_name || useUser.enterprise_name) ?? 'Nome da empresa ainda não definida'}
+                        </Text>
+                    </View>
                 </View>
 
                 <TouchableOpacity
                     onPress={() => {
-                        setEditedName(userInfo?.name || '');
-                        setEditedEnterprise(userInfo?.enterprise_name || '');
+                        setEditedName((userInfoUpdate?.name ?? useUser.name) || '');
+                        setEditedEnterprise((userInfoUpdate?.enterprise_name ?? useUser.enterprise_name) || '');
                         setModalVisible(true);
                     }}
                 >
@@ -126,7 +118,6 @@ export default function Settings() {
             />
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Button title="Reset" onPress={handleResetOnboarding} />
                 <Button title="Select All" onPress={() => console.log(getUserInfos())} />
                 <Button title="Drop table" onPress={() => query('DELETE FROM user_infos')} />
             </View>
