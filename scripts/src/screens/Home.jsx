@@ -10,6 +10,7 @@ import { homeStyles } from "../assets/styles/homeStyle";
 import { getCurrentWeekday } from "../utils/date";
 import { getAppointments } from "../utils/appointments";
 import { getMessage } from "../utils/messages";
+import Loading from "../components/Loading";
 
 export default function Home() {
   const userInfo = useUserInfo();
