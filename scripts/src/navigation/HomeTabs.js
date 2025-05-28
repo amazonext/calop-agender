@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { Image, Keyboard, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 
 // Telas
 import Home from '../screens/Home';
@@ -10,6 +9,9 @@ import MySchedulings from '../screens/MySchedulings';
 
 // Cores
 import { projectPalete } from '../assets/styles/colors';
+
+// hooks
+import useKeyboardVisible from '../hooks/useKeyboardVisible';
 
 // navigation
 const Tab = createBottomTabNavigator();
@@ -21,21 +23,7 @@ const ROUTES = {
 };
 
 export default function HomeTabs({ navigation }) {
-    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
-    useEffect(() => {
-        const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
-            setKeyboardVisible(true);
-        });
-        const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-            setKeyboardVisible(false);
-        });
-
-        return () => {
-            keyboardDidShowListener.remove();
-            keyboardDidHideListener.remove();
-        };
-    }, []);
+    const keyboardVisible = useKeyboardVisible();
 
     return (
         <Tab.Navigator
@@ -59,7 +47,7 @@ export default function HomeTabs({ navigation }) {
                 tabBarInactiveTintColor: projectPalete.color3,
                 tabBarStyle: {
                     backgroundColor: "#F4ECDD",
-                    display: isKeyboardVisible ? 'none' : 'flex'
+                    display: keyboardVisible ? 'none' : 'flex'
                 },
                 tabBarIcon: ({ color, size, focused }) => {
                     let iconName;
