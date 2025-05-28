@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { View, Text, Platform, TouchableOpacity, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
@@ -16,16 +16,7 @@ import { projectPalete } from '../assets/styles/colors';
 
 export default function MySchedulings() {
     const [modalVisible, setModalVisible] = useState(false);
-    const [appointments, setAppointments] = useState([]);
-
-    useEffect(() => {
-        const fetchAppointments = async () => {
-            const data = await getAppointments();
-            setAppointments(data);
-        };
-
-        fetchAppointments();
-    }, []);
+    const appointments = getAppointments();
 
     return (
         <View style={mySchedulingStyles.container}>
