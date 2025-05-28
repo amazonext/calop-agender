@@ -26,7 +26,7 @@ export default function Splash() {
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <ActivityIndicator size="large" color={projectPalete.color3} />
+            <ActivityIndicator size="large" color={projectPalete.color1} />
         </View>
     );
 }
