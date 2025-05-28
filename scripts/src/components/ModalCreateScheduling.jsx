@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import { Modal, Text, View, TouchableOpacity, FlatList } from "react-native";
 import { createScheduling } from '../assets/styles/modals';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
+
+// components
+import ServiceItem from '../components/ServiceItem';
+
 import { projectPalete } from '../assets/styles/colors';
 
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
@@ -41,21 +45,6 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
             setSelectedService(null);
         }
     }, [modalVisible]);
-
-    const renderServiceItem = ({ item, index }) => (
-        <TouchableOpacity
-            style={[
-                createScheduling.dropdownItem,
-                index === services.length - 1 ? createScheduling.lastDropdownItem : {}
-            ]}
-            onPress={() => {
-                setSelectedService(item);
-                setIsServiceDropdownVisible(false);
-            }}
-        >
-            <Text style={createScheduling.dropdownItemText}>{item.name || item}</Text>
-        </TouchableOpacity>
-    );
 
     return (
         <Modal
@@ -147,7 +136,17 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 <View style={createScheduling.dropdownList}>
                                     <FlatList
                                         data={services}
-                                        renderItem={renderServiceItem}
+                                        renderItem={({ item, index }) => (
+                                            <ServiceItem
+                                                item={item}
+                                                index={index}
+                                                servicesLength={services.length}
+                                                onSelect={(selected) => {
+                                                    setSelectedService(selected);
+                                                    setIsServiceDropdownVisible(false);
+                                                }}
+                                            />
+                                        )}
                                         keyExtractor={(item, index) => item.id || index.toString()}
                                         nestedScrollEnabled={true}
                                     />
