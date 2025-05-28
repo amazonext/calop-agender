@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { View, Text, Image, Button, TouchableOpacity, Linking, Animated, Easing } from "react-native";
 import { query } from "../helpers/db";
 import { Ionicons, FontAwesome6 } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
 // hooks
 import useUserInfo from '../hooks/useUserInfo';
@@ -20,6 +21,7 @@ export default function Settings() {
     const [editedEnterprise, setEditedEnterprise] = useState('');
     const [toastMessage, setToastMessage] = useState('');
     const toastAnim = useRef(new Animated.Value(100)).current;
+    const [editedImage, setEditedImage] = useState(null);
     const useUser = useUserInfo();
 
     const showToast = (message) => {
@@ -53,6 +55,25 @@ export default function Settings() {
     };
 
     if (useUser === null) return <Loading />;
+
+    const handlePickImage = async () => {
+        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (permissionResult.granted === false) {
+            Alert.alert("Permissão negada", "Você precisa permitir o acesso às imagens.");
+            return;
+        }
+
+        const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            quality: 1,
+            allowsEditing: true,
+            aspect: [1, 1],
+        });
+
+        if (!result.canceled) {
+            setEditedImage(result.assets[0].uri);
+        }
+    };
 
     return (
         <View style={settingsStyles.container}>

@@ -9,7 +9,10 @@ export default function ModalSettings({
     setEditedName,
     editedEnterprise,
     setEditedEnterprise,
-    handleSave
+    handleSave,
+    handlePickImage,
+    editedImage,
+    setEditedImage,
 }) {
     return (
         <Modal
@@ -21,12 +24,25 @@ export default function ModalSettings({
             <View style={settings.overlay}>
                 <View style={settings.container}>
                     <Text style={settings.title}>Editar informações</Text>
+
+                    <TouchableOpacity
+                        onPress={handlePickImage}
+                        style={settingsStyles.imagePicker}
+                    >
+                        {editedImage ? (
+                            <Image source={{ uri: editedImage }} style={settingsStyles.imagePreview} />
+                        ) : (
+                            <Text style={settingsStyles.imagePickerText}>Selecionar imagem</Text>
+                        )}
+                    </TouchableOpacity>
+
                     <TextInput
                         value={editedName}
                         onChangeText={setEditedName}
                         placeholder="Nome do usuário"
                         style={settingsStyles.input}
                     />
+
                     <TextInput
                         value={editedEnterprise}
                         onChangeText={setEditedEnterprise}
