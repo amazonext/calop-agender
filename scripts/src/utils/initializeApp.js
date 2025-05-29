@@ -85,7 +85,7 @@ export default function initializeApp() {
                 "Meio do dia, hora de dar aquele gás final!",
                 "Tarde em movimento, continue nesse ritmo!",
                 "A produtividade da tarde depende da motivação da manhã!",
-                "Hora perfeita pra ajustar os detalhes do dia!"
+                "A Hora perfeita pra ajustar os detalhes do dia!"
             ],
             // noite
             night: [

@@ -18,7 +18,7 @@ const Tab = createBottomTabNavigator();
 const ROUTES = {
     HOME: 'Tela inicial',
     ADD: 'Criar serviço',
-    MY: 'Agendar serviço',
+    MY_SCHEDULINGS: 'Agendar serviço',
     SETTINGS: 'Settings',
 };
 
@@ -53,14 +53,14 @@ export default function HomeTabs({ navigation }) {
                     let iconName;
                     if (route.name === ROUTES.HOME) iconName = focused ? 'home' : 'home-outline';
                     else if (route.name === ROUTES.ADD) iconName = focused ? 'add-circle' : 'add-circle-outline';
-                    else if (route.name === ROUTES.MY) iconName = focused ? 'calendar' : 'calendar-outline';
+                    else if (route.name === ROUTES.MY_SCHEDULINGS) iconName = focused ? 'calendar' : 'calendar-outline';
                     return <Ionicons name={iconName} size={focused ? size + 4 : size} color={color} />;
                 },
             })}
         >
             <Tab.Screen name={ROUTES.ADD} component={AddScheduling} />
             <Tab.Screen name={ROUTES.HOME} component={Home} />
-            <Tab.Screen name={ROUTES.MY} component={MySchedulings} />
+            <Tab.Screen name={ROUTES.MY_SCHEDULINGS} component={MySchedulings} />
         </Tab.Navigator>
     );
 }

@@ -154,7 +154,7 @@ export default function Settings({ navigation }) {
                 <Button title="Reset" onPress={() => {
                     cleanApp();
 
-                    console.log('A tela de introdução será exibida na próxima vez que o app for aberto.');
+                    console.log('Resetando app...');
                 }} />
                 <Button
                     title='Select All alguma coisa'
