@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 // utils
@@ -26,7 +26,14 @@ export default function Splash() {
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <ActivityIndicator size="large" color={projectPalete.color1} />
+            <Image
+                source={require('../assets/images/splash-icon.png')}
+                style={{
+                    height: 200,
+                    width: 200,
+                    borderRadius: 100
+                }}
+            />
         </View>
     );
 }
