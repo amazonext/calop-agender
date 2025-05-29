@@ -16,7 +16,11 @@ const projectPalete = {
     color7: "#515151",
     color8: "#3A3C3F",
     color9: "#E9B124",
-    color10: "#493918"
+    color10: "#493918",
+    color11: "#D39D38",
+    color12: "#bd8b30",
+    color13: "#e4ae49",
+    color14: "#c29137",
 }
 
 export { theHeapstersPalete, projectPalete };
