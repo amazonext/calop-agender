@@ -54,8 +54,12 @@ async function getItemFromStorage(key) {
     }
 }
 
-function removeItemFromStorage(key) {
-    AsyncStorage.removeItem(key);
+async function removeItemFromStorage(key) {
+    try {
+        await AsyncStorage.removeItem(key);
+    } catch (error) {
+        console.error(`Erro ao remover a chave "${key}" do AsyncStorage `, error);
+    }
 }
 
 export { saveToStorage, getItemFromStorage, removeItemFromStorage };
