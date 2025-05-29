@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { getItemFromStorage, saveToStorage } from "./storage";
 
 async function getAppointments() {
@@ -18,4 +19,19 @@ async function addAppointment(data, hour, model) {
     await saveToStorage('appointments', appointments);
 }
 
-export { getAppointments, addAppointment };
+function useAppointments() {
+    const [appointment, setAppointment] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            const appointments = await getAppointments();
+            setAppointment(appointments);
+        }
+
+        fetchData();
+    }, []);
+
+    return appointment;
+}
+
+export { getAppointments, addAppointment, useAppointments };
