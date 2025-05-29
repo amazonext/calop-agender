@@ -20,6 +20,7 @@ const ROUTES = {
     ADD: 'Criar serviço',
     MY_SCHEDULINGS: 'Agendar serviço',
     SETTINGS: 'Settings',
+    TESTS: 'Testes',
 };
 
 export default function HomeTabs({ navigation }) {

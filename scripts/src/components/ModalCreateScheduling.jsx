@@ -6,16 +6,17 @@ import { Ionicons, AntDesign } from '@expo/vector-icons';
 
 // components
 import ServiceItem from '../components/ServiceItem';
+import Loading from './Loading';
 
 // utils
 import { getAllSchedulings } from '../utils/scheduling_db';
-import { addAppointment } from '../utils/appointments';
+import { addAppointment, getAppointments, useAppointments } from '../utils/appointments';
 
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showHourPicker, setShowHourPicker] = useState(false);
 
-    const schedulings = getAllSchedulings();
+    const appointments = useAppointments();
 
     const [date, setDate] = useState(() => {
         const d = new Date();
@@ -52,6 +53,10 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
         }
     }, [modalVisible]);
 
+    console.log(appointments);
+
+    if (appointments === null) return <Loading />;
+
     return (
         <Modal
             animationType="fade"
@@ -66,7 +71,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                             <Ionicons name="calendar" size={28} color="#fff" />
                         </View>
                         <Text style={createScheduling.headerTitle}>Novo Agendamento</Text>
-                        <Text style={createScheduling.headerSubtitle}>Selecione a data, horário e serviço</Text>
+                        <Text style={createScheduling.headerSubtitle}>Selecione a data, o horário e o serviço</Text>
                     </View>
 
                     <View style={createScheduling.pickersContainer}>
@@ -199,11 +204,11 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                             style={createScheduling.confirmButton}
                             onPress={() => {
                                 const date = dateFormatted.replace('/', '_');
-                                addAppointment();
-                                console.log('Data:', dateFormatted.replace('/', '-'));
-                                console.log('Hora:', hourFormatted);
-                                console.log('Serviço:', selectedService);
-                                setModalVisible(false);
+                                addAppointment(date, hourFormatted, selectedService);
+
+                                // setModalVisible(false);
+
+                                (async () => console.log(await getAppointments()))();
                             }}
                             activeOpacity={0.8}
                         >

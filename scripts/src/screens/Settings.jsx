@@ -15,6 +15,7 @@ import ModalSettings from "../components/ModalSettings";
 import { settingsStyles } from '../assets/styles/settingsStyles';
 
 import cleanApp from "../utils/cleaner";
+import { removeItemFromStorage } from "../utils/storage";
 
 export default function Settings({ navigation }) {
     const [userInfoUpdate, setUserInfoUpdate] = useState(null);
@@ -152,7 +153,7 @@ export default function Settings({ navigation }) {
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Button title="Reset" onPress={() => {
-                    cleanApp();
+                    removeItemFromStorage('hasSeenRegister');
 
                     console.log('Resetando app...');
                 }} />
