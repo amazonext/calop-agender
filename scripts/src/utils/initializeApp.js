@@ -117,5 +117,5 @@ export default function initializeApp() {
         }
     });
 
-    saveToStorage('appointments', []);
+    saveToStorage('appointments', {});
 }
