@@ -8,12 +8,12 @@ async function addAppointment(data, hour, model) {
     const appointments = await getAppointments();
 
     const newAppointment = {
-        ...model,
-        hour,
+        model,
+        hour
     };
 
-    if (appointments[data]) appointments[data].push(newAppointment);
-    else appointments[data] = [newAppointment];
+    if (!appointments[data]) appointments[data] = [newAppointment];
+    else appointments[data].push(newAppointment);
 
     await saveToStorage('appointments', appointments);
 }
