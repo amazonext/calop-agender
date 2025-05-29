@@ -9,7 +9,7 @@ export default function initializeApp() {
     // db
     createTable('scheduling_models', `
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        description TEXT NOT NULL,
+        name TEXT NOT NULL,
         value REAL NOT NULL,
         detailing TEXT,
         profissional_name TEXT NOT NULL,

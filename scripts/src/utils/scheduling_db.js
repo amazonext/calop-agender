@@ -3,7 +3,7 @@ import { createTable, deleteRow, insertRow, selectAll, updateRow, query, selectW
 function createTableSchedulings() {
     createTable('scheduling_models', `
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        description TEXT NOT NULL,
+        name TEXT NOT NULL,
         value REAL NOT NULL,
         detailing TEXT,
         profissional_name TEXT NOT NULL,
