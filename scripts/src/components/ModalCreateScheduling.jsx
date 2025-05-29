@@ -10,7 +10,7 @@ import Loading from './Loading';
 
 // utils
 import { getAllSchedulings } from '../utils/scheduling_db';
-import { addAppointment, getAppointments, useAppointments } from '../utils/appointments';
+import { addAppointment, useAppointments } from '../utils/appointments';
 
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
@@ -47,13 +47,10 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
     useEffect(() => {
         if (modalVisible) {
             const schedulings = getAllSchedulings();
-            const descriptions = schedulings.map(item => item.description).filter(Boolean); // Remove null/undefined
-            setServices(descriptions);
+            setServices(schedulings);
             setSelectedService(null);
         }
     }, [modalVisible]);
-
-    console.log(appointments);
 
     if (appointments === null) return <Loading />;
 
@@ -133,7 +130,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 activeOpacity={services.length > 0 ? 0.7 : 1}
                             >
                                 <Text style={createScheduling.dropdownButtonText}>
-                                    {(selectedService && (selectedService.name || selectedService)) || 'Nenhum serviço disponível'}
+                                    {selectedService?.name || (services?.length ? 'Escolha um serviço' : 'Nenhum serviço disponível')}
                                 </Text>
                                 {services.length > 0 && (
                                     <Ionicons
@@ -152,14 +149,13 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                                 item={item}
                                                 index={index}
                                                 servicesLength={services.length}
-                                                onSelect={(selected) => {
+                                                onSelect={selected => {
                                                     setSelectedService(selected);
                                                     setIsServiceDropdownVisible(false);
                                                 }}
                                             />
                                         )}
-                                        keyExtractor={(item, index) => item.id || index.toString()}
-                                        nestedScrollEnabled={true}
+                                        keyExtractor={(item, index) => item.key_identifier || index.toString()}
                                     />
                                 </View>
                             )}
@@ -203,12 +199,17 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                         <TouchableOpacity
                             style={createScheduling.confirmButton}
                             onPress={() => {
-                                const date = dateFormatted.replace('/', '_');
-                                addAppointment(date, hourFormatted, selectedService);
+                                if (!selectedService) {
+                                    alert('Por favor, selecione um serviço antes de continuar.');
+                                    return;
+                                }
 
-                                // setModalVisible(false);
+                                const formattedDate = dateFormatted.replace("/", "_");
+                                console.log(formattedDate, hourFormatted, selectedService);
+                                addAppointment(formattedDate, hourFormatted, selectedService);
 
                                 (async () => console.log(await getAppointments()))();
+                                setModalVisible(false);
                             }}
                             activeOpacity={0.8}
                         >

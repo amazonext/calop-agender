@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getUserInfos } from '../utils/user_db';
 
-export default function useUserInfo() {
+export function useUserInfo() {
     const [userInfos, setUserInfos] = useState(null);
 
     useEffect(() => {

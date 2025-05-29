@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 
 // hooks
-import useUserInfo from "../hooks/useUserInfo";
+import { useUserInfo } from "../hooks/useUserInfo";
 
 // styles
 import { homeStyles } from "../assets/styles/homeStyle";

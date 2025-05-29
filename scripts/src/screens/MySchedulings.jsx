@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, Platform, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, RefreshControl } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
@@ -10,6 +10,9 @@ import ModalCreateScheduling from '../components/ModalCreateScheduling';
 import { addEvent } from '../utils/calendar';
 import { getAppointments } from '../utils/appointments';
 
+// hooks
+import { useRefresh } from '../hooks/useRefresh';
+
 // styles
 import { mySchedulingStyles } from "../assets/styles/mySchedulingStyles";
 import { projectPalete } from '../assets/styles/colors';
@@ -17,9 +20,21 @@ import { projectPalete } from '../assets/styles/colors';
 export default function MySchedulings() {
     const [modalVisible, setModalVisible] = useState(false);
     const appointments = getAppointments();
+    const { refreshing, onRefresh } = useRefresh();
 
     return (
-        <View style={mySchedulingStyles.container}>
+        <ScrollView
+            contentContainerStyle={mySchedulingStyles.container}
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                    colors={[projectPalete.color1]}
+                    tintColor={projectPalete.color1}
+                    progressViewOffset={5}
+                />
+            }
+        >
             {
                 appointments.length > 0 ? (
                     <View style={mySchedulingStyles.content}>
@@ -28,7 +43,7 @@ export default function MySchedulings() {
                         </Text>
                     </View>
                 ) : (
-                        <View style={mySchedulingStyles.noSchedulingContent}>
+                    <View style={mySchedulingStyles.noSchedulingContent}>
                         <Text style={mySchedulingStyles.noSchedulingText}>
                             Você não tem agendamentos pendentes
                         </Text>

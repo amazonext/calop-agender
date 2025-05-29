@@ -55,6 +55,7 @@ export default function HomeTabs({ navigation }) {
                     if (route.name === ROUTES.HOME) iconName = focused ? 'home' : 'home-outline';
                     else if (route.name === ROUTES.ADD) iconName = focused ? 'add-circle' : 'add-circle-outline';
                     else if (route.name === ROUTES.MY_SCHEDULINGS) iconName = focused ? 'calendar' : 'calendar-outline';
+                    else if (route.name === ROUTES.TESTS) iconName = focused ? 'flask' : 'flask-outline';
                     return <Ionicons name={iconName} size={focused ? size + 4 : size} color={color} />;
                 },
             })}
@@ -62,6 +63,7 @@ export default function HomeTabs({ navigation }) {
             <Tab.Screen name={ROUTES.ADD} component={AddScheduling} />
             <Tab.Screen name={ROUTES.HOME} component={Home} />
             <Tab.Screen name={ROUTES.MY_SCHEDULINGS} component={MySchedulings} />
+            <Tab.Screen name={ROUTES.TESTS} component={Tests} />
         </Tab.Navigator>
     );
 }

@@ -26,7 +26,6 @@ export const registerStyles = StyleSheet.create({
         color: projectPalete.color10
     },
     imagePickerButton: {
-        backgroundColor: projectPalete.color9,
         padding: 10,
         borderRadius: 5,
         alignItems: 'center',

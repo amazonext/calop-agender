@@ -27,7 +27,8 @@
     "ios": {
       "bundleIdentifier": "com.theheapsters.calopagender",
       "infoPlist": {
-        "NSCalendarsUsageDescription": "Este app precisa acessar seu calendário para adicionar eventos."
+        "NSCalendarsUsageDescription": "Este app precisa acessar seu calendário para adicionar eventos.",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "extra": {

@@ -35,7 +35,7 @@ export const pickImage = async () => {
 };
 
 // salva a imagem no storage e retorna a URI salva
-export const savePickedImage = async (uri) => {
+export const savePickedImage = async uri => {
     if (!uri) {
         console.warn('Nenhuma URI fornecida para salvar.');
         return null;
@@ -48,14 +48,14 @@ export const savePickedImage = async (uri) => {
 };
 
 // função para escolher e salvar uma imagem
-export const pickAndSaveImage = async (setImageUri) => {
+export const pickAndSaveImage = async setImageUri => {
     console.log('Iniciando processo de escolha e salvamento de imagem...');
     const pickedImageUri = await pickImage();
 
     if (pickedImageUri) {
-        console.log('Imagem escolhida com sucesso. Salvando...');
         const savedUri = await savePickedImage(pickedImageUri);
-        console.log(`Imagem salva. URI final: ${savedUri}`);
+        console.log('Imagem escolhida com sucesso. Salvando...');
+
         setImageUri(savedUri);
     } else {
         console.warn('Nenhuma imagem foi escolhida.');

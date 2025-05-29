@@ -1,7 +1,7 @@
 import { TouchableOpacity, Text } from 'react-native';
 import { createScheduling } from '../assets/styles/modals';
 
-export default function ServiceItem({ item, index, servicesLength, onSelect }) {
+export default function ServiceItem({ item, onSelect }) {
     return (
         <TouchableOpacity
             style={[
@@ -11,7 +11,7 @@ export default function ServiceItem({ item, index, servicesLength, onSelect }) {
             onPress={() => onSelect(item)}
         >
             <Text style={createScheduling.dropdownItemText}>
-                {item.name || item}
+                {item.name}
             </Text>
         </TouchableOpacity>
     );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform, Keyboard } from "react-native";
 
 import { addSchedulingStyles } from "../assets/styles/addSchedulingStyles";
 import { createScheduling } from "../utils/scheduling_db";
@@ -12,8 +12,10 @@ export default function AddScheduling() {
     const [profissionalName, setProfissionalName] = useState("");
 
     const handleCreateScheduling = () => {
+        Keyboard.dismiss();
+
         createScheduling({
-            description: procedure,
+            name: name,
             value: parseFloat(value),
             detailing: detailing || "",
             profissional_name: profissionalName
@@ -25,7 +27,7 @@ export default function AddScheduling() {
         setProfissionalName("");
     };
 
-    const isFormValid = procedure && value && profissionalName;
+    const isFormValid = name && value && profissionalName;
 
     return (
         <View style={addSchedulingStyles.container}>
@@ -49,8 +51,8 @@ export default function AddScheduling() {
                             <View style={addSchedulingStyles.inputContainer}>
                                 <TextInput
                                     style={addSchedulingStyles.input}
-                                    value={procedure}
-                                    onChangeText={setProcedure}
+                                    value={name}
+                                    onChangeText={setName}
                                     placeholder="Digite o procedimento"
                                     placeholderTextColor={projectPalete.color2 + '50'}
                                 />

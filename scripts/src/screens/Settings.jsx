@@ -5,7 +5,7 @@ import { Ionicons, FontAwesome6, FontAwesome5 } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
 // hooks
-import useUserInfo from '../hooks/useUserInfo';
+import { useUserInfo } from "../hooks/useUserInfo";
 
 // components
 import Loading from "../components/Loading";
@@ -73,9 +73,7 @@ export default function Settings({ navigation }) {
             aspect: [1, 1],
         });
 
-        if (!result.canceled) {
-            setEditedImage(result.assets[0].uri);
-        }
+        if (!result.canceled) setEditedImage(result.assets[0].uri);
     };
 
     return (
@@ -154,6 +152,8 @@ export default function Settings({ navigation }) {
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Button title="Reset" onPress={() => {
                     removeItemFromStorage('hasSeenRegister');
+                    removeItemFromStorage('hasSeenOnboarding');
+                    cleanApp();
 
                     console.log('Resetando app...');
                 }} />
