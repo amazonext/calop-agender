@@ -4,10 +4,7 @@ import { createScheduling } from '../assets/styles/modals';
 export default function ServiceItem({ item, onSelect }) {
     return (
         <TouchableOpacity
-            style={[
-                createScheduling.dropdownItem,
-                index === servicesLength - 1 ? createScheduling.lastDropdownItem : {}
-            ]}
+            style={createScheduling.dropdownItem}
             onPress={() => onSelect(item)}
         >
             <Text style={createScheduling.dropdownItemText}>
