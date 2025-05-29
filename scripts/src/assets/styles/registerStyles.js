@@ -6,7 +6,6 @@ export const registerStyles = StyleSheet.create({
     safeArea: {
         flex: 1,
         backgroundColor: projectPalete.color6,
-        padding: 25,
     },
     container: {
         ...global.container,
@@ -16,6 +15,7 @@ export const registerStyles = StyleSheet.create({
     content: {
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
         gap: 10
     },
     title: {
@@ -25,15 +25,6 @@ export const registerStyles = StyleSheet.create({
         textAlign: 'center',
         color: projectPalete.color10
     },
-    input: {
-        height: 40,
-        borderColor: 'transparent',
-        borderRadius: 15,
-        backgroundColor: projectPalete.color1,
-        color: '#fff',
-        borderWidth: 1,
-        paddingLeft: 8,
-    },
     imagePickerButton: {
         backgroundColor: projectPalete.color9,
         padding: 10,
@@ -41,30 +32,73 @@ export const registerStyles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 10,
     },
-    cameraButton: {
-        borderStyle: 'dashed',
+    photoButton: {
         borderColor: projectPalete.color3,
-        borderWidth: 4,
-
-        justifyContent: 'center',
+        borderStyle: 'dashed',
+        borderWidth: 5,
         alignItems: 'center',
-
-        height: 300,
-        width: '100%',
-
-        borderRadius: 5,
+        borderRadius: 500,
+        padding: 25,
+        height: 225,
+        width: 225,
+        justifyContent: 'center'
     },
-    cameraText: {
+    photoText: {
         ...global.text,
         color: projectPalete.color3,
         fontSize: 20,
-        marginTop: 10,
+        marginTop: 15,
     },
-    footer: {
-        paddingBottom: 20,
+    form: {
+        paddingHorizontal: 10,
+        paddingTop: 25,
+        paddingBottom: 60,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        backgroundColor: projectPalete.color11
     },
-    laterText: {
-        ...global.text,
+    inputsGroup: {
+        marginBottom: 30,
+        gap: 15
+    },
+    inputs: {
+        gap: 10
+    },
+    label: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: projectPalete.color3
+    },
+    inputAndIcon: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderColor: "#000"
+    },
+    icon: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 5,
+        height: '100%',
+        borderTopLeftRadius: 8,
+        borderBottomLeftRadius: 8,
+        backgroundColor: projectPalete.color12,
+        color: projectPalete.color10,
+        borderColor: projectPalete.color10,
+        borderWidth: 1,
+        borderRightWidth: 0
+    },
+    input: {
+        flexGrow: 1,
+        borderTopRightRadius: 8,
+        borderBottomRightRadius: 8,
+        backgroundColor: projectPalete.color13,
         color: '#fff',
+        borderColor: projectPalete.color10,
+        borderWidth: 1,
+        borderLeftWidth: 0
     },
+    buttonRegister: {
+        borderWidth: 2,
+        borderRadius: 100,
+    }
 });

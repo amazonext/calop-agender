@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { View, Text, TextInput, Button, Image, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5, FontAwesome6 } from '@expo/vector-icons';
 
 // utils
 import { addUserInfos } from '../utils/user_db';
@@ -22,7 +21,6 @@ export default function Register({ navigation }) {
     const handleRegister = () => {
         let hasError = false;
         const newErrors = { name: '' };
-        navigation.replace("HomeTabs");
 
         if (!name.trim()) {
             newErrors.name = "Seu nome é obrigatório";
@@ -43,72 +41,111 @@ export default function Register({ navigation }) {
     };
 
     return (
-        <SafeAreaView style={registerStyles.safeArea}>
+        <View style={registerStyles.safeArea}>
             <View style={registerStyles.content}>
-                <Text style={registerStyles.title}>Cadastro</Text>
-
                 <TouchableOpacity
-                    style={registerStyles.cameraButton}
+                    style={registerStyles.photoButton}
                     onPress={() => pickAndSaveImage(setImageUri)}
                 >
-                    <Ionicons
-                        name="image-outline"
+                    <FontAwesome5
+                        name="camera"
                         size={100}
-                        color={projectPalete.color3 + "90"}
+                        color={projectPalete.color3}
                     />
-                    <Text style={registerStyles.cameraText}>Adicione sua foto de perfil</Text>
+                    <Text style={registerStyles.photoText}>Adicionar foto de perfil</Text>
                 </TouchableOpacity>
 
                 {imageUri && (
                     <Image source={{ uri: imageUri }} style={registerStyles.imagePreview} />
                 )}
-
-                <TextInput
-                    style={{ ...registerStyles.input, marginTop: 20 }}
-                    value={enterpriseName}
-                    onChangeText={text => {
-                        setEnterpriseName(text);
-                        if (errors.enterprise) setErrors({ ...errors, enterprise: '' });
-                    }}
-                    maxLength={30}
-                    placeholder="Nome da empresa (opcional)"
-                />
-                {errors.enterprise !== '' && <Text style={{ color: 'red' }}>{errors.enterprise}</Text>}
-
-                <TextInput
-                    style={registerStyles.input}
-                    value={name}
-                    onChangeText={text => {
-                        setName(text);
-                        if (errors.name) setErrors({ ...errors, name: '' });
-                    }}
-                    maxLength={15}
-                    placeholder="Seu nome"
-                />
-                {errors.name !== '' && <Text style={{ color: 'red' }}>{errors.name}</Text>}
             </View>
 
-            <View style={registerStyles.footer}>
-                <Button
-                    title="Registrar"
-                    color={projectPalete.color9}
-                    onPress={async () => {
-                        await saveToStorage('hasSeenRegister', true);
-                        initializeApp();
-                        handleRegister()
-                    }}
-                />
-                <TouchableOpacity
-                    onPress={async () => {
-                        // initializeApp();
-                        await saveToStorage('hasSeenRegister', true);
+            <View style={registerStyles.form}>
+                <View style={registerStyles.inputsGroup}>
+                    <View
+                        style={registerStyles.inputs}
+                    >
+                        <Text style={registerStyles.label}>
+                            Nome da empresa
+                            <Text style={{ color: '#00000050', fontWeight: 'normal' }}> (opcional)</Text>
+                        </Text>
 
-                        navigation.replace("HomeTabs");
-                    }}
-                >
-                    <Text style={registerStyles.laterText}>Ir para a Home</Text>
-                </TouchableOpacity>
+                        <View
+                            style={registerStyles.inputAndIcon}
+                        >
+                            <FontAwesome6
+                                name="building-user"
+                                size={25}
+                                style={registerStyles.icon}
+                            />
+                            <TextInput
+                                style={registerStyles.input}
+                                value={enterpriseName}
+                                onChangeText={text => {
+                                    setEnterpriseName(text);
+                                    if (errors.enterprise) setErrors({ ...errors, enterprise: '' });
+                                }}
+                                maxLength={30}
+                                placeholder="Digite o nome da sua empresa"
+                            />
+                        </View>
+                        {errors.enterprise !== '' ? null : <Text style={{ color: 'red' }}>{errors.enterprise}</Text>}
+                    </View>
+
+                    <View
+                        style={registerStyles.inputs}
+                    >
+                        <Text style={registerStyles.label}>Seu nome</Text>
+
+                        <View
+                            style={registerStyles.inputAndIcon}
+                        >
+                            <FontAwesome6
+                                name="user-large"
+                                size={25}
+                                style={registerStyles.icon}
+                            />
+                            <TextInput
+                                style={registerStyles.input}
+                                value={name}
+                                onChangeText={text => {
+                                    setName(text);
+                                    if (errors.name) setErrors({ ...errors, name: '' });
+                                }}
+                                maxLength={15}
+                                placeholder="Digite o seu nome"
+                            />
+                        </View>
+                        {errors.name !== '' && <Text style={{ color: 'red' }}>{errors.name}</Text>}
+                    </View>
+                </View>
+
+                <View style={registerStyles.inputs}>
+                    <Button
+                        title="Registrar-se"
+                        color={projectPalete.color14}
+                        onPress={async () => {
+                            await saveToStorage('hasSeenRegister', true);
+                            initializeApp();
+                            handleRegister()
+                        }}
+                    />
+                    <TouchableOpacity
+                        onPress={async () => {
+                            // initializeApp();
+                            await saveToStorage('hasSeenRegister', true);
+                            navigation.replace("HomeTabs");
+                        }}
+                    >
+                        <Text style={{
+                            fontSize: 16,
+                            textAlign: 'center',
+                            marginTop: 16,
+                            color: '#fff',
+                        }}>Ir para a Home</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </SafeAreaView>
+        </View>
     );
 }

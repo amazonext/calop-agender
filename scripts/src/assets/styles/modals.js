@@ -185,6 +185,11 @@ const settings = StyleSheet.create({
         color: '#222',
         marginBottom: 12,
     },
+    imagePickerText: {
+        borderStyle: 'dashed',
+        borderColor: projectPalete.color3,
+        borderWidth: 4,
+    },
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
@@ -199,6 +204,18 @@ const settings = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         marginTop: 10,
+    },
+    button: {
+        backgroundColor: projectPalete.color6,
+        padding: 16,
+        marginVertical: 5,
+        marginHorizontal: 10,
+        borderRadius: 12,
+    },
+    buttonText: {
+        color: projectPalete.color8,
+        fontSize: 14,
+        fontWeight: 'bold',
     },
 });
 

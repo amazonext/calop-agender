@@ -59,7 +59,7 @@ export const addSchedulingStyles = StyleSheet.create({
     },
     optionalText: {
         fontSize: 14,
-        color: projectPalete.color5,
+        color: "#00000075",
         fontWeight: '400',
     },
     inputContainer: {
