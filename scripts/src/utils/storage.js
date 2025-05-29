@@ -9,8 +9,8 @@ async function saveToStorage(key, newValue, options = {}) {
             let current = existingData ? JSON.parse(existingData) : [];
 
             if (!Array.isArray(current)) {
-                console.warn(`O valor atual em "${key}" não é um array. Sobrescrevendo.`);
-                current = [];
+                console.warn(`O valor atual em "${key}" não é um array. Abortando operação...`);
+                return current;
             }
 
             if (uniqueBy) {
