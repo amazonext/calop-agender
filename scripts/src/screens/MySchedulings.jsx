@@ -69,6 +69,6 @@ export default function MySchedulings() {
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
             />
-        </View>
+        </ScrollView >
     );
 }
