@@ -105,6 +105,15 @@ export default function Settings({ navigation }) {
                         </View>
                         <Switch
                             // TODO: estilizar o switch
+                            // trackColor={{ false: '#767577', true: '#81b0ff' }}
+                            // thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                            onValueChange={toggleSwitchDate}
+                            value={isEnabledDate}
+                        />
+                    </View>
+                </View>
+            </View>
+
             <View style={settingsStyles.section}>
                 <Text style={settingsStyles.sectionTitle}>App info</Text>
                 <View style={settingsStyles.infoCard}>
