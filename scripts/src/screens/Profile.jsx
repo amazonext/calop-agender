@@ -1,45 +1,59 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
- import { profileStyles as styles } from "../assets/styles/profileStyles";
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import { profileStyles } from "../assets/styles/profileStyles";
+import { FontAwesome, FontAwesome6, Ionicons } from '@expo/vector-icons';
 
-export default function Profile({ navigation, user }) {
+// hooks
+import { useUserInfo } from "../hooks/useUserInfo";
+
+// components
+import Loading from "../components/Loading";
+
+export default function Profile() {
+  const { name, enterprise_name, image_uri } = useUserInfo() || {};
+
+  if (!name && !enterprise_name && !image_uri) return <Loading />;
 
   return (
-    <View style={styles.container}>
-
-      {/* Header */}
-      <View style={profileStyles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={profileStyles.backButton}>
-          <Ionicons name="chevron-back" size={24} color="#222" />
-        </TouchableOpacity>
-        <Text style={profileStyles.headerTitle}>Perfil</Text>
-        <View style={{ width: 24 }} /> 
-      </View>
-
-      {/* imagem do Profile */}
+    <View style={profileStyles.container}>
       <View style={profileStyles.photoContainer}>
-        {user?.image_uri ? (
-          <Image source={{ uri: user.image_uri }} style={profileStyles.userPhoto} />
+        {image_uri ? (
+          <Image source={{ uri: image_uri }} style={profileStyles.userPhoto} />
         ) : (
-          <Ionicons name="person-circle-outline" size={120} color="#888" />
+          <Ionicons name="person-circle-sharp" size={120} color="#aaa" />
         )}
-        <TouchableOpacity style={profileStyles.changePhotoButton}>
-          <Text style={profileStyles.changePhotoButtonText}>Alterar imagem de perfil</Text>
+        <TouchableOpacity style={profileStyles.changePhotoButton} activeOpacity={.8}>
+          <FontAwesome name="camera" size={20} color="#fff" />
         </TouchableOpacity>
       </View>
 
       {/* nomes e inputs relacionados*/}
-      <TouchableOpacity style={profileStyles.inputButton}>
+      <View style={profileStyles.inputButton}>
         <Text style={profileStyles.inputButtonLabel}>Nome do usuário</Text>
-        <Text style={profileStyles.inputButtonValue}>{user?.name || "Nome não definido"}</Text>
-      </TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
+          <Text style={profileStyles.inputButtonValue}>{name || "Nome não definido"}</Text>
+          <FontAwesome6 name="edit" size={20} color="aaa" />
+        </View>
+      </View>
 
-      <TouchableOpacity style={profileStyles.inputButton}>
+      <View style={profileStyles.inputButton}>
         <Text style={profileStyles.inputButtonLabel}>Nome da empresa</Text>
-        <Text style={profileStyles.inputButtonValue}>{user?.enterprise_name || "Empresa não definida"}</Text>
-      </TouchableOpacity>
-
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
+          <Text style={profileStyles.inputButtonValue}>{enterprise_name || "Empresa não definida"}</Text>
+          <FontAwesome6 name="edit" size={20} color="aaa" />
+        </View>
+      </View>
     </View>
   );
 }
