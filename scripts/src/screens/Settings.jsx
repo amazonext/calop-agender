@@ -134,40 +134,12 @@ export default function Settings({ navigation }) {
                 </View>
             </View>
 
-            <ModalSettings
-                modalVisible={modalVisible}
-                setModalVisible={setModalVisible}
-                editedName={editedName}
-                setEditedName={setEditedName}
-                editedEnterprise={editedEnterprise}
-                setEditedEnterprise={setEditedEnterprise}
-                handleSave={handleSave}
-            />
-
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Button title="Reset" onPress={() => {
-                    removeItemFromStorage('hasSeenRegister');
-                    removeItemFromStorage('hasSeenOnboarding');
-                    cleanApp();
-
-                    console.log('Resetando app...');
-                }} />
-                <Button
-                    title='Select All alguma coisa'
-                    onPress={() => {
-                        console.log(query('SELECT * FROM user_infos'));
-                        console.log(query('SELECT * FROM scheduling_models'));
-                    }}
-                />
-                <Button title="Drop table" onPress={() => query('DROP TABLE scheduling_models')} />
-            </View>
-
-            <Animated.View style={[
+            {/* <Animated.View style={[
                 settingsStyles.toastContainer,
                 { transform: [{ translateY: toastAnim }] }
             ]}>
                 <Text style={settingsStyles.toastText}>{toastMessage}</Text>
-            </Animated.View>
+            </Animated.View> */}
         </View>
     );
 }
