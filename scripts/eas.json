@@ -12,13 +12,22 @@
       "android": {
         "buildType": "apk"
       },
+      "ios": {
+        "simulator": false,
+        "buildType": "adhoc"
+      },
       "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "buildType": "adhoc",
+        "enterpriseProvisioning": "adhoc"
+      },
+      "distribution": "internal"
     }
-  },
-  "submit": {
-    "production": {}
   }
 }
