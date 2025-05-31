@@ -1,13 +1,16 @@
 import { useState } from 'react';
 
-export function useRefresh(delay = 2000) {
+export function useRefresh(callback, delay = 2000) {
     const [refreshing, setRefreshing] = useState(false);
 
     const onRefresh = () => {
         setRefreshing(true);
-        setTimeout(() => {
-            setRefreshing(false);
-        }, delay);
+        Promise.resolve(callback())
+            .finally(() => {
+                setTimeout(() => {
+                    setRefreshing(false);
+                }, delay);
+            });
     };
 
     return { refreshing, onRefresh };
