@@ -47,7 +47,6 @@ export default function Home() {
     "🦜 Organize-se como uma calopsita esperta: crie seus serviços primeiro, depois agende!",
     "🦜 Dica de ouro: Use a navegação inferior para voar rapidamente entre as funcionalidades!"
   ];
-
   const randomTip = tips[Math.floor(Math.random() * tips.length)];
 
   const fetchAppointments = async () => {

@@ -3,13 +3,8 @@ function getCurrentWeekday() {
     const weekIndex = date.getDay();
 
     const colors = [
-        "#E6C87D",
-        "#D9B86A",
-        "#F4D160",
-        "#E3C17A",
-        "#FBC798",
-        "#EFD393",
-        "#D4B16A",
+        "#E6C87D", "#D9B86A", "#F4D160", "#E3C17A",
+        "#FBC798", "#EFD393", "#D4B16A",
     ];
 
     const weekdays = [
