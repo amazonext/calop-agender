@@ -6,7 +6,6 @@ import { Ionicons, AntDesign } from '@expo/vector-icons';
 
 // components
 import ServiceItem from '../components/ServiceItem';
-import Loading from './Loading';
 
 // utils
 import { getAllSchedulings } from '../utils/scheduling_db';
@@ -199,10 +198,9 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }
 
                                 const formattedDate = dateFormatted.replace("/", "_");
-                                console.log(formattedDate, hourFormatted, selectedService);
+                                console.log(typeof formattedDate, typeof hourFormatted, typeof selectedService);
                                 addAppointment(formattedDate, hourFormatted, selectedService);
 
-                                (async () => console.log(await getAppointments()))();
                                 setModalVisible(false);
                             }}
                             activeOpacity={0.8}
