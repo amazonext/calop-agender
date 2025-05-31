@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView, RefreshControl } from "react-native";
 
 // hooks
 import { useUserInfo } from "../hooks/useUserInfo";
@@ -61,55 +61,62 @@ export default function Home() {
 
   return (
     <View style={homeStyles.container}>
-      <View style={homeStyles.header}>
-        <Image
-          source={require('../assets/images/logo-alternative.png')}
-          style={homeStyles.logo}
-        />
-        <Text style={homeStyles.welcomeTextUser}>Bem-vindo, {USERNAME}!</Text>
-        <Text style={homeStyles.welcomeTextEnterprise}>Como vai a {ENTERPRISE_NAME}?</Text>
-      </View>
-
-      <View style={homeStyles.appointmentContainer}>
-        <View style={homeStyles.dateContainer}>
-          <View style={homeStyles.dateInfo}>
-            <Text style={homeStyles.weekTextBefore}>
-              Hoje é <Text style={homeStyles.weekText}>{getCurrentWeekday().name}</Text>
-            </Text>
-            <Text style={homeStyles.message}>{message}</Text>
-          </View>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={handleRefresh}
+            colors={[projectPalete.color1]}
+            tintColor={projectPalete.color1}
+            progressViewOffset={5}
+          />
+        }
+      >
+        <View style={homeStyles.header}>
+          <Image
+            source={require('../assets/images/logo-alternative.png')}
+            style={homeStyles.logo}
+          />
+          <Text style={homeStyles.welcomeTextUser}>Bem-vindo, {USERNAME}!</Text>
+          <Text style={homeStyles.welcomeTextEnterprise}>Como vai a {ENTERPRISE_NAME}?</Text>
         </View>
-
-        <View style={homeStyles.summaryContainer}>
-          <Text style={homeStyles.summaryTitle}>Resumo</Text>
-
-          <View style={homeStyles.summaryCards}>
-            <View style={homeStyles.summaryCard}>
-              <Text style={homeStyles.cardLabel}>Serviços do mês</Text>
-              <Text style={homeStyles.cardNumber}>{appointmentsLength}</Text>
+        <View style={homeStyles.appointmentContainer}>
+          <View style={homeStyles.dateContainer}>
+            <View style={homeStyles.dateInfo}>
+              <Text style={homeStyles.weekTextBefore}>
+                Hoje é <Text style={homeStyles.weekText}>{getCurrentWeekday().name}</Text>
+              </Text>
+              <Text style={homeStyles.message}>{message}</Text>
             </View>
-
-            <View style={homeStyles.summaryCard}>
-              <Text style={homeStyles.cardLabel}>Serviços de hoje</Text>
-              <View style={homeStyles.todayServicesContainer}>
-                {appointmentsLength > 0 ? (
-                  appointments.map((service, index) => (
-                    <Text key={index} style={homeStyles.serviceItem}>
-                      • {service}
-                    </Text>
-                  ))
-                ) : (
-                  <Text style={homeStyles.servicesText}>{appointmentsLength}</Text>
-                )}
+          </View>
+          <View style={homeStyles.summaryContainer}>
+            <Text style={homeStyles.summaryTitle}>Resumo</Text>
+            <View style={homeStyles.summaryCards}>
+              <View style={homeStyles.summaryCard}>
+                <Text style={homeStyles.cardLabel}>Serviços do mês</Text>
+                <Text style={homeStyles.cardNumber}>{appointmentsLength}</Text>
+              </View>
+              <View style={homeStyles.summaryCard}>
+                <Text style={homeStyles.cardLabel}>Serviços de hoje</Text>
+                <View style={homeStyles.todayServicesContainer}>
+                  {appointmentsLength > 0 ? (
+                    appointmentsArray.map((service, index) => (
+                      <Text key={index} style={homeStyles.serviceItem}>
+                        • {service}
+                      </Text>
+                    ))
+                  ) : (
+                    <Text style={homeStyles.servicesText}>{appointmentsLength}</Text>
+                  )}
+                </View>
               </View>
             </View>
           </View>
+          <View style={homeStyles.tipContainer}>
+            <Text style={homeStyles.tipText}>{randomTip}</Text>
+          </View>
         </View>
-
-        <View style={homeStyles.tipContainer}>
-          <Text style={homeStyles.tipText}>{randomTip}</Text>
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
