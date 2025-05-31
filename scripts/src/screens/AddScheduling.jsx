@@ -6,10 +6,10 @@ import { createScheduling } from "../utils/scheduling_db";
 import { projectPalete } from "../assets/styles/colors";
 
 export default function AddScheduling() {
-    const [procedure, setProcedure] = useState("");
     const [value, setValue] = useState("");
     const [detailing, setDetailing] = useState("");
     const [profissionalName, setProfissionalName] = useState("");
+    const [name, setName] = useState("");
 
     const handleCreateScheduling = () => {
         Keyboard.dismiss();
