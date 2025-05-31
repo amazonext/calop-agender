@@ -6,7 +6,7 @@ export const mySchedulingStyles = StyleSheet.create({
     ...global,
     container: {
         flex: 1,
-        justifyContent: 'center',
+        padding: 20
     },
     title: {
         fontSize: 24,
@@ -38,14 +38,15 @@ export const mySchedulingStyles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 15,
         backgroundColor: projectPalete.color6,
+        zIndex: 100
     },
     noSchedulingContent: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: projectPalete.color2,
     },
     noSchedulingText: {
+        justifyContent: 'center',
         fontSize: 18,
         color: '#00000050'
     }

@@ -67,6 +67,7 @@ export const settingsStyles = StyleSheet.create({
     },
     infoRow: {
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
         paddingVertical: 12,
         borderBottomWidth: 1,
