@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, RefreshControl } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 // components
 import ModalCreateScheduling from '../components/ModalCreateScheduling';
 
 // utils
-import { addEvent } from '../utils/calendar';
 import { getAppointments } from '../utils/appointments';
 
 // hooks

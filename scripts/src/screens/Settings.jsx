@@ -2,20 +2,15 @@ import { useState, useRef } from "react";
 import { View, Text, Image, Button, TouchableOpacity, Linking, Animated, Easing, Alert } from "react-native";
 import { query } from "../helpers/db";
 import { Ionicons, FontAwesome6, FontAwesome5 } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
 
 // hooks
 import { useUserInfo } from "../hooks/useUserInfo";
 
 // components
 import Loading from "../components/Loading";
-import ModalSettings from "../components/ModalSettings";
 
 // styles
 import { settingsStyles } from '../assets/styles/settingsStyles';
-
-import cleanApp from "../utils/cleaner";
-import { removeItemFromStorage } from "../utils/storage";
 
 export default function Settings({ navigation }) {
     const [userInfoUpdate, setUserInfoUpdate] = useState(null);
