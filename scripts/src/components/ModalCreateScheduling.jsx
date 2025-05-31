@@ -161,7 +161,6 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                             <DateTimePicker
                                 value={date}
                                 mode="date"
-                                display="default"
                                 onChange={(event, selectedDateValue) => {
                                     setShowDatePicker(false);
                                     if (selectedDateValue) setDate(selectedDateValue);
@@ -173,7 +172,6 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                             <DateTimePicker
                                 value={hour}
                                 mode="time"
-                                display="default"
                                 is24Hour={true}
                                 onChange={(event, selectedTime) => {
                                     setShowHourPicker(false);
