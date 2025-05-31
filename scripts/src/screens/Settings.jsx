@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { View, Text, Image, Button, TouchableOpacity, Linking, Animated, Easing, Alert } from "react-native";
-import { query } from "../helpers/db";
+import { useState } from "react";
+import { View, Text, Image, TouchableOpacity, Linking, Switch } from "react-native";
 import { Ionicons, FontAwesome6, FontAwesome5 } from '@expo/vector-icons';
 
 // hooks
@@ -96,13 +96,36 @@ export default function Settings({ navigation }) {
                         // setEditedEnterprise((userInfoUpdate?.enterprise_name ?? useUser.enterprise_name) || '');
                         // setModalVisible(true);
 
-                        navigation.navigate("Profile");
-                    }}
+                    onPress={() => navigation.navigate("Profile")}
                 >
                     <FontAwesome6 name="chevron-right" color="#ccc" size={35} />
                 </TouchableOpacity>
             </View>
 
+            <View style={settingsStyles.section}>
+                <Text style={settingsStyles.sectionTitle}>Ajustes</Text>
+                <View style={settingsStyles.infoCard}>
+                    <View style={settingsStyles.infoRow}>
+                        <View>
+                            <Text style={settingsStyles.infoLabel}>Modo empresário autônomo</Text>
+                            <Text>A opção de selecionar um profissional é removida</Text>
+                        </View>
+                        <Switch
+                            // NOTE: trackColor -> barra de fundo por onde o botão redondo (thumb) desliza
+                            // NOTE: thumbColor -> botão redondo (thumb) que desliza da esquerda para a direita ao alternar
+                            // trackColor={{ false: '#767577', true: '#81b0ff' }}
+                            // thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                            onValueChange={toggleSwitchEnterprise}
+                            value={isEnabledEnterpriseSingular}
+                        />
+                    </View>
+                    <View style={settingsStyles.infoRow}>
+                        <View>
+                            <Text style={settingsStyles.infoLabel}>Data por extenso</Text>
+                            <Text>A data na lista de agendamentos será exibida por extenso (por exemplo: 10 de maio)</Text>
+                        </View>
+                        <Switch
+                            // TODO: estilizar o switch
             <View style={settingsStyles.section}>
                 <Text style={settingsStyles.sectionTitle}>App info</Text>
                 <View style={settingsStyles.infoCard}>
