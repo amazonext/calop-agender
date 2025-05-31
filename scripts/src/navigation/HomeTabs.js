@@ -11,7 +11,7 @@ import MySchedulings from '../screens/MySchedulings';
 import { projectPalete } from '../assets/styles/colors';
 
 // hooks
-import useKeyboardVisible from '../hooks/useKeyboardVisible';
+import { useKeyboardVisible } from '../hooks/useKeyboardVisible';
 
 // navigation
 const Tab = createBottomTabNavigator();
