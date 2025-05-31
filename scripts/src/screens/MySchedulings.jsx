@@ -35,33 +35,31 @@ export default function MySchedulings() {
     if (appointments === null) return <Loading />;
 
     return (
-        <ScrollView
-            contentContainerStyle={mySchedulingStyles.container}
-            refreshControl={
-                <RefreshControl
-                    refreshing={refreshing}
-                    onRefresh={onRefresh}
-                    colors={[projectPalete.color1]}
-                    tintColor={projectPalete.color1}
-                    progressViewOffset={5}
-                />
-            }
-        >
-            {
-                appointments.length > 0 ? (
-                    <View style={mySchedulingStyles.content}>
-                        <Text style={mySchedulingStyles.text}>
-                            Agendamentos pendentes({appointments.length})
-                        </Text>
-                    </View>
-                ) : (
-                    <View style={mySchedulingStyles.noSchedulingContent}>
-                        <Text style={mySchedulingStyles.noSchedulingText}>
-                            Você não tem agendamentos pendentes
-                        </Text>
-                    </View>
-                )
-            }
+        <View style={{flex: 1}}>
+            <ScrollView
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={handleRefresh}
+                        colors={[projectPalete.color1]}
+                        tintColor={projectPalete.color1}
+                        progressViewOffset={5}
+                    />
+                }
+                contentContainerStyle={mySchedulingStyles.container}
+            >
+                {
+                    appointments && Object.values(appointments).flat().length > 0 ? (
+                        <Appointments data={appointments} />
+                    ) : (
+                        <View style={mySchedulingStyles.noSchedulingContent}>
+                            <Text style={mySchedulingStyles.noSchedulingText}>
+                                Você não tem agendamentos pendentes
+                            </Text>
+                        </View>
+                    )
+                }
+            </ScrollView>
 
             <TouchableOpacity
                 style={mySchedulingStyles.addScheduling}
@@ -81,6 +79,6 @@ export default function MySchedulings() {
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
             />
-        </ScrollView >
+        </View>
     );
 }
