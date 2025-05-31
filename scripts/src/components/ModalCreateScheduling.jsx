@@ -10,13 +10,11 @@ import Loading from './Loading';
 
 // utils
 import { getAllSchedulings } from '../utils/scheduling_db';
-import { addAppointment, useAppointments } from '../utils/appointments';
+import { addAppointment } from '../utils/appointments';
 
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showHourPicker, setShowHourPicker] = useState(false);
-
-    const appointments = useAppointments();
 
     const [date, setDate] = useState(() => {
         const d = new Date();
@@ -51,8 +49,6 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
             setSelectedService(null);
         }
     }, [modalVisible]);
-
-    if (appointments === null) return <Loading />;
 
     return (
         <Modal
