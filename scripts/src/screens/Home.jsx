@@ -23,8 +23,18 @@ export default function Home() {
   const ENTERPRISE_NAME = enterprise_name ?
     <Text style={{ fontWeight: 'bold' }}>{enterprise_name}</Text> : "sua empresa";
 
-  const appointments = async () => await getAppointments();
-  const appointmentsLength = appointments.length;
+
+  const dateFormatter = new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+  });
+  const date = new Date();
+  const dateFormatted = dateFormatter.format(date).replace('/', '_');
+  const dateToday = dateFormatted;
+  console.log(getAppointmentsWithDate(dateToday));
+
+  const appointmentsArray = async () => await getAppointmentsToday();
+  const appointmentsLength = appointmentsArray.length;
 
   const message = getMessage();
 
