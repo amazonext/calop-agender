@@ -198,7 +198,6 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }
 
                                 const formattedDate = dateFormatted.replace("/", "_");
-                                console.log(typeof formattedDate, typeof hourFormatted, typeof selectedService);
                                 addAppointment(formattedDate, hourFormatted, selectedService);
 
                                 setModalVisible(false);
