@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, RefreshControl } from 'react-native';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 // components
 import ModalCreateScheduling from '../components/ModalCreateScheduling';
+import Loading from '../components/Loading';
+import Appointments from '../components/Appointments';
 
 // utils
 import { getAppointments } from '../utils/appointments';
@@ -17,8 +19,20 @@ import { projectPalete } from '../assets/styles/colors';
 
 export default function MySchedulings() {
     const [modalVisible, setModalVisible] = useState(false);
-    const appointments = getAppointments();
-    const { refreshing, onRefresh } = useRefresh();
+    const [appointments, setAppointments] = useState([]);
+
+    const fetchAppointments = async () => {
+        const data = await getAppointments();
+        setAppointments(data);
+    };
+
+    const { refreshing, onRefresh: handleRefresh } = useRefresh(fetchAppointments);
+
+    useEffect(() => {
+        fetchAppointments();
+    }, []);
+
+    if (appointments === null) return <Loading />;
 
     return (
         <ScrollView
