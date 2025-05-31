@@ -8,16 +8,20 @@ import { homeStyles } from "../assets/styles/homeStyle";
 
 // utils
 import { getCurrentWeekday } from "../utils/date";
-import { getAppointments } from "../utils/appointments";
+import { getAppointments, getAppointmentsToday, getAppointmentsWithDate } from "../utils/appointments";
 import { getMessage } from "../utils/messages";
 import Loading from "../components/Loading";
+import { useState } from "react";
+import { useRefresh } from '../hooks/useRefresh';
+import { projectPalete } from "../assets/styles/colors";
 
 export default function Home() {
-  const userInfo = useUserInfo();
-  const USERNAME = userInfo && userInfo.name ?
-    <Text style={{ fontWeight: 'bold' }}>{userInfo.name}</Text> : "usuário";
-  const ENTERPRISE_NAME = userInfo && userInfo.enterprise_name ?
-    <Text style={{ fontWeight: 'bold' }}>{userInfo.enterprise_name}</Text> : "sua empresa";
+  const { name, enterprise_name } = useUserInfo() || {};
+  const [appointments, setAppointments] = useState([]);
+  const USERNAME = name ?
+    <Text style={{ fontWeight: 'bold' }}>{name}</Text> : "usuário";
+  const ENTERPRISE_NAME = enterprise_name ?
+    <Text style={{ fontWeight: 'bold' }}>{enterprise_name}</Text> : "sua empresa";
 
   const appointments = async () => await getAppointments();
   const appointmentsLength = appointments.length;
@@ -36,7 +40,14 @@ export default function Home() {
 
   const randomTip = tips[Math.floor(Math.random() * tips.length)];
 
-  if (useUserInfo() === null) return <Loading />;
+  const fetchAppointments = async () => {
+    const data = await getAppointments();
+    setAppointments(data);
+  };
+
+  const { refreshing, onRefresh: handleRefresh } = useRefresh(fetchAppointments);
+
+  if ((USERNAME === "usuário" || ENTERPRISE_NAME === "sua empresa") || !appointments) return <Loading />;
 
   return (
     <View style={homeStyles.container}>
