@@ -1,4 +1,3 @@
-import { useState, useRef } from "react";
 import { useState } from "react";
 import { View, Text, Image, TouchableOpacity, Linking, Switch } from "react-native";
 import { Ionicons, FontAwesome6, FontAwesome5 } from '@expo/vector-icons';
@@ -14,88 +13,68 @@ import { settingsStyles } from '../assets/styles/settingsStyles';
 
 export default function Settings({ navigation }) {
     const [userInfoUpdate, setUserInfoUpdate] = useState(null);
-    const [modalVisible, setModalVisible] = useState(false);
-    const [editedName, setEditedName] = useState('');
-    const [editedEnterprise, setEditedEnterprise] = useState('');
-    const [toastMessage, setToastMessage] = useState('');
-    const toastAnim = useRef(new Animated.Value(100)).current;
-    const [editedImage, setEditedImage] = useState(null);
-    const useUser = useUserInfo();
+    const { name, enterprise_name, image_uri } = useUserInfo() || {};
 
-    const showToast = (message) => {
-        setToastMessage(message);
-        Animated.sequence([
-            Animated.timing(toastAnim, {
-                toValue: 0,
-                duration: 400,
-                easing: Easing.out(Easing.ease),
-                useNativeDriver: true,
-            }),
-            Animated.delay(2000),
-            Animated.timing(toastAnim, {
-                toValue: 100,
-                duration: 400,
-                easing: Easing.in(Easing.ease),
-                useNativeDriver: true,
-            }),
-        ]).start();
-    };
+    const [isEnabledEnterpriseSingular, setIsEnabledEnterpriseSingular] = useState(false);
+    const toggleSwitchEnterprise = () => setIsEnabledEnterpriseSingular(previousState => !previousState);
 
-    const handleSave = () => {
-        setUserInfoUpdate({
-            ...userInfoUpdate,
-            name: editedName,
-            enterprise_name: editedEnterprise
-        });
+    const [isEnabledDate, setIsEnabledDate] = useState(false);
+    const toggleSwitchDate = () => setIsEnabledDate(previousState => !previousState);
 
-        setModalVisible(false);
-        showToast("Informações atualizadas!");
-    };
+    // TODO: levar essas constantes pra nova tela de perfil
 
-    if (useUser === null) return <Loading />;
+    // const showToast = (message) => {
+    //     setToastMessage(message);
+    //     Animated.sequence([
+    //         Animated.timing(toastAnim, {
+    //             toValue: 0,
+    //             duration: 400,
+    //             easing: Easing.out(Easing.ease),
+    //             useNativeDriver: true,
+    //         }),
+    //         Animated.delay(2000),
+    //         Animated.timing(toastAnim, {
+    //             toValue: 100,
+    //             duration: 400,
+    //             easing: Easing.in(Easing.ease),
+    //             useNativeDriver: true,
+    //         }),
+    //     ]).start();
+    // };
 
-    const handlePickImage = async () => {
-        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (permissionResult.granted === false) {
-            Alert.alert("Permissão negada", "Você precisa permitir o acesso às imagens.");
-            return;
-        }
+    // const handleSave = () => {
+    //     setUserInfoUpdate({
+    //         ...userInfoUpdate,
+    //         name: editedName,
+    //         enterprise_name: editedEnterprise
+    //     });
 
-        const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            quality: 1,
-            allowsEditing: true,
-            aspect: [1, 1],
-        });
+    //     setModalVisible(false);
+    //     showToast("Informações atualizadas!");
+    // };
 
-        if (!result.canceled) setEditedImage(result.assets[0].uri);
-    };
+    if (!name && !enterprise_name && !image_uri) return <Loading />;
 
     return (
         <View style={settingsStyles.container}>
             <View style={settingsStyles.userBox}>
                 <View style={settingsStyles.userInfo}>
-                    {useUser?.image_uri ? (
-                        <Image source={{ uri: useUser.image_uri }} style={settingsStyles.userPhoto} />
+                    {image_uri ? (
+                        <Image source={{ uri: image_uri }} style={settingsStyles.userPhoto} />
                     ) : (
                         <Ionicons name="person-circle-sharp" size={60} color="#aaa" />
                     )}
                     <View>
                         <Text style={settingsStyles.username}>
-                            {(userInfoUpdate?.name || useUser.name) ?? 'Nome de usuário indefinido'}
+                            {(userInfoUpdate?.name || name) ?? 'Nome de usuário indefinido'}
                         </Text>
                         <Text style={settingsStyles.enterprise}>
-                            {(userInfoUpdate?.enterprise_name || useUser.enterprise_name) ?? 'Nome da empresa ainda não definida'}
+                            {(userInfoUpdate?.enterprise_name || enterprise_name) ?? 'Nome da empresa ainda não definida'}
                         </Text>
                     </View>
                 </View>
 
                 <TouchableOpacity
-                    onPress={() => {
-                        // setEditedName((userInfoUpdate?.name ?? useUser.name) || '');
-                        // setEditedEnterprise((userInfoUpdate?.enterprise_name ?? useUser.enterprise_name) || '');
-                        // setModalVisible(true);
-
                     onPress={() => navigation.navigate("Profile")}
                 >
                     <FontAwesome6 name="chevron-right" color="#ccc" size={35} />
