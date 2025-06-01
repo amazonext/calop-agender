@@ -1,6 +1,6 @@
 import { global } from '../assets/styles/global/globalStyle';
 import { getMessages } from '../utils/messages';
-import { addAppointment, getAppointments, getAppointmentsWithDate, useAppointments } from '../utils/appointments';
+import { addAppointment, getAppointments, getAppointmentsLength, getAppointmentsWithDate, useAppointments } from '../utils/appointments';
 import { getItemFromStorage, removeItemFromStorage, saveToStorage } from '../utils/storage';
 import { getAllSchedulings } from '../utils/scheduling_db';
 import { getUserInfos } from '../utils/user_db';
@@ -19,7 +19,9 @@ export default function Tests() {
             <Button
                 title="Run"
                 onPress={async () => {
-                    // await saveToStorage('appointments', {});
+                    const appointmentsWithDate = await getAppointmentsWithDate("31/05");
+                    const { months, today } = appointmentsWithDate;
+
                 }}
             />
 
