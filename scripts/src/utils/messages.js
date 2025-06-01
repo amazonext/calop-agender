@@ -3,15 +3,13 @@ import { getAppointments } from "./appointments";
 import { drawRandomNumber } from "../helpers/drawRandomNumber";
 import { getCurrentWeekday, getCurrentTurn } from "./date";
 
-function getMessagesFromStorage() {
-    const messages = getItemFromStorage('messages');
-
-    return messages;
+async function getMessagesFromStorage() {
+    return await getItemFromStorage('messages');
 }
 
 // [ ]: configurar o busyEmployee
 async function getConditionalsMessages() {
-    const appointments = getAppointments();
+    const appointments = await getAppointments();
     const appointmentsLength = appointments.length;
     const messagesObject = await getMessagesFromStorage();
 
@@ -20,26 +18,31 @@ async function getConditionalsMessages() {
 
 async function getWeekDayMessage(weekIndex) {
     const messagesObject = await getMessagesFromStorage();
-    const weekDayMessage = messagesObject.week[weekIndex][drawRandomNumber(0, 4)];
-
-    return weekDayMessage;
+    return messagesObject.week[weekIndex][drawRandomNumber(0, 4)];
 }
 
 async function getTurnMessage(currentTurn) {
     const messagesObject = await getMessagesFromStorage();
-    const turnMessage = messagesObject.turn[currentTurn][drawRandomNumber(0, 4)];
-
-    return turnMessage;
+    return messagesObject.turn[currentTurn][drawRandomNumber(0, 4)];
 }
 
-export function getMessage() {
+export async function getMessage() {
     const weekDayIndex = getCurrentWeekday().index;
     const currentTurn = getCurrentTurn();
+
     const messages = [];
 
-    if (!getConditionalsMessages() === undefined) messages.push(getConditionalsMessages());
+    const conditional = await getConditionalsMessages();
+    if (conditional) messages.push(conditional);
 
-    messages.push(getWeekDayMessage(weekDayIndex), getTurnMessage(currentTurn));
+    const weekMessage = await getWeekDayMessage(weekDayIndex);
+    const turnMessage = await getTurnMessage(currentTurn);
+
+    messages.push(weekMessage, turnMessage);
 
     return messages[drawRandomNumber(0, messages.length - 1)];
+}
+
+export async function useMessage() {
+    return await getMessage();
 }
