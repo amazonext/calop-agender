@@ -60,9 +60,6 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
             <View style={createScheduling.modalOverlay}>
                 <View style={createScheduling.modalContainer}>
                     <View style={createScheduling.headerSection}>
-                        <View style={createScheduling.headerIconContainer}>
-                            <Ionicons name="calendar" size={28} color="#fff" />
-                        </View>
                         <Text style={createScheduling.headerTitle}>Novo Agendamento</Text>
                         <Text style={createScheduling.headerSubtitle}>Selecione a data, o horário e o serviço</Text>
                     </View>
