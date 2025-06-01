@@ -25,14 +25,24 @@ async function addAppointment(date, hour, model) {
 
 async function getAppointmentsWithDate(date) {
     const appointments = await getAppointments();
-    const [day, month] = date.split('_');
+    const [day, month] = date.split('/');
 
-    // console.log(appointments[month]);
-    // console.log(appointments[month][day]);
-    // return {
-    //     today: appointments[month][day],
-    //     month: appointments[month]
-    // };
+    return {
+        today: appointments?.[month]?.[day] || [],
+        months: appointments?.[month] || {}
+    };
+}
+
+async function getAppointmentsLength(appointmentsWithDateObj) {
+    const { today, months } = appointmentsWithDateObj;
+    let monthsLength = 0;
+
+    for (const month in months) monthsLength += Object.keys(months[month]).length;
+
+    return {
+        today: today.length,
+        month: monthsLength
+    }
 }
 
 function useAppointments() {
@@ -50,4 +60,4 @@ function useAppointments() {
     return appointment;
 }
 
-export { getAppointments, addAppointment, useAppointments, getAppointmentsWithDate };
+export { getAppointments, addAppointment, useAppointments, getAppointmentsWithDate, getAppointmentsLength };
