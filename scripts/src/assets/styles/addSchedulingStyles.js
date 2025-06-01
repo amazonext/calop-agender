@@ -14,17 +14,23 @@ export const addSchedulingStyles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
         padding: 20,
-        gap: 25,
-        paddingBottom: 40,
+        gap: 35,
+        paddingBottom: 110
     },
     header: {
         alignItems: 'center',
-        marginBottom: 10,
     },
     titleItem: {
         fontSize: 28,
         textAlign: 'center',
         color: projectPalete.color3,
+        fontWeight: '700',
+        marginBottom: 8,
+    },
+    subtitleItem: {
+        ntSize: 18,
+        textAlign: 'center',
+        color: projectPalete.color3 + '75',
         fontWeight: '700',
         marginBottom: 8,
     },
@@ -114,7 +120,6 @@ export const addSchedulingStyles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 8,
         elevation: 6,
-        marginTop: 10,
     },
     submitButtonDisabled: {
         opacity: .6,

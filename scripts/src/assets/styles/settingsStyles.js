@@ -78,6 +78,11 @@ export const settingsStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#444',
     },
+    infoDetail: {
+        fontSize: 14,
+        color: '#444',
+        maxWidth: 260
+    },
     infoValue: {
         fontSize: 14,
         fontWeight: 'bold',

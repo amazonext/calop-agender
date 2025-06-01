@@ -15,24 +15,10 @@ const createScheduling = StyleSheet.create({
         padding: 30,
         width: '100%',
         maxWidth: 400,
-        shadowColor: projectPalete.color1,
-        shadowOffset: { width: 0, height: 10 },
-        shadowOpacity: 0.25,
-        shadowRadius: 20,
-        elevation: 15
+        gap: 30,
     },
     headerSection: {
         alignItems: 'center',
-        marginBottom: 35
-    },
-    headerIconContainer: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        backgroundColor: projectPalete.color1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 15
     },
     headerTitle: {
         fontSize: 24,
@@ -42,12 +28,12 @@ const createScheduling = StyleSheet.create({
     },
     headerSubtitle: {
         fontSize: 14,
-        color: '#666',
+        color: '#33333375',
         textAlign: 'center',
-        marginTop: 5
+        marginTop: 2
     },
     pickersContainer: {
-        gap: 20
+        gap: 20,
     },
     labelInput: {
         fontSize: 16,
@@ -88,10 +74,48 @@ const createScheduling = StyleSheet.create({
         color: '#666',
         marginTop: 2
     },
+    descriptionButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#f8f9fa',
+        borderRadius: 15,
+        paddingVertical: 18,
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        borderColor: '#e9ecef'
+    },
+    descriptionIconContainer: {
+        width: 45,
+        height: 45,
+        borderRadius: 12,
+        backgroundColor: projectPalete.color1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 15
+    },
+    descriptionContainer: {
+        backgroundColor: "#f8f9fa",
+        borderColor: '#dee2e6',
+        paddingVertical: 18,
+        paddingHorizontal: 20,
+        flexDirection: 'row'
+    },
+    descriptionTextContainer: {
+        flex: 1,
+    },
+    descriptionValueText: {
+        fontSize: 18,
+        fontWeight: '600',
+        color: '#333'
+    },
+    descriptionHelpText: {
+        fontSize: 12,
+        color: '#666',
+        marginTop: 2
+    },
     buttonsRow: {
         flexDirection: 'row',
         gap: 12,
-        marginTop: 35
     },
     cancelButton: {
         flex: 1,
@@ -112,19 +136,12 @@ const createScheduling = StyleSheet.create({
         paddingVertical: 16,
         borderRadius: 12,
         backgroundColor: projectPalete.color1,
-        shadowColor: projectPalete.color1,
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 8,
-        elevation: 8
     },
     confirmButtonText: {
         textAlign: 'center',
         color: '#fff',
         fontSize: 16,
         fontWeight: '700'
-    },
-    dropdownContainer: {
     },
     dropdownButton: {
         flexDirection: 'row',

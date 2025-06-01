@@ -5,8 +5,7 @@ import { projectPalete } from './colors';
 export const mySchedulingStyles = StyleSheet.create({
     ...global,
     container: {
-        flex: 1,
-        padding: 20
+        padding: 20,
     },
     title: {
         fontSize: 24,
@@ -38,16 +37,16 @@ export const mySchedulingStyles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 15,
         backgroundColor: projectPalete.color6,
-        zIndex: 100
     },
     noSchedulingContent: {
         flex: 1,
+        minHeight: 400,
         justifyContent: 'center',
         alignItems: 'center',
     },
     noSchedulingText: {
-        justifyContent: 'center',
         fontSize: 18,
-        color: '#00000050'
+        color: '#00000050',
+        textAlign: 'center',
     }
 });
