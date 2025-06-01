@@ -87,7 +87,7 @@ export default function Settings({ navigation }) {
                     <View style={settingsStyles.infoRow}>
                         <View>
                             <Text style={settingsStyles.infoLabel}>Modo empresário autônomo</Text>
-                            <Text>A opção de selecionar um profissional é removida</Text>
+                            <Text style={settingsStyles.infoDetail}>A opção de selecionar um profissional é removida</Text>
                         </View>
                         <Switch
                             // NOTE: trackColor -> barra de fundo por onde o botão redondo (thumb) desliza
@@ -101,7 +101,7 @@ export default function Settings({ navigation }) {
                     <View style={settingsStyles.infoRow}>
                         <View>
                             <Text style={settingsStyles.infoLabel}>Data por extenso</Text>
-                            <Text>A data na lista de agendamentos será exibida por extenso (por exemplo: 10 de maio)</Text>
+                            <Text style={settingsStyles.infoDetail}>A data na lista de agendamentos será exibida por extenso (por exemplo: 10 de maio)</Text>
                         </View>
                         <Switch
                             // TODO: estilizar o switch
