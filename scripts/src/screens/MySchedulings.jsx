@@ -35,7 +35,7 @@ export default function MySchedulings() {
     if (appointments === null) return <Loading />;
 
     return (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
             <ScrollView
                 refreshControl={
                     <RefreshControl

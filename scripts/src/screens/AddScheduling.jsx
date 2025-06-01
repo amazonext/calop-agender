@@ -21,11 +21,6 @@ export default function AddScheduling() {
             profissional_name: profissionalName
         });
 
-        console.log(name);
-        console.log(parseFloat(value));
-        console.log(detailing);
-        console.log(profissionalName);
-
         setName("");
         setValue("");
         setDetailing("");

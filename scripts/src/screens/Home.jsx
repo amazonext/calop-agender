@@ -54,7 +54,7 @@ export default function Home() {
   const { refreshing, onRefresh: handleRefresh } = useRefresh(onRefresh);
 
   useEffect(() => {
-    onRefresh(); // já mostra loading completo na primeira renderização
+    onRefresh();
   }, []);
 
   const [randomTip] = useState(() => {
