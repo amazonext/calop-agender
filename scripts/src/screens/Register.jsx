@@ -12,6 +12,8 @@ import initializeApp from '../utils/initializeApp';
 import { projectPalete } from '../assets/styles/colors';
 import { registerStyles } from '../assets/styles/registerStyles';
 
+// TODO: adicionar um keyboard view
+
 export default function Register({ navigation }) {
     const [imageUri, setImageUri] = useState(null);
     const [enterpriseName, setEnterpriseName] = useState("");
