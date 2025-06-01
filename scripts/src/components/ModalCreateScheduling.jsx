@@ -2,7 +2,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState, useEffect } from "react";
 import { Modal, Text, View, TouchableOpacity, FlatList } from "react-native";
 import { createScheduling } from '../assets/styles/modals';
-import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { Ionicons, AntDesign, Entypo } from '@expo/vector-icons';
 
 // components
 import ServiceItem from '../components/ServiceItem';
@@ -14,6 +14,7 @@ import { addAppointment } from '../utils/appointments';
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showHourPicker, setShowHourPicker] = useState(false);
+    const [description, setDescription] = useState(null);
 
     const [date, setDate] = useState(() => {
         const d = new Date();
@@ -178,6 +179,24 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }}
                             />
                         )}
+
+                        <View>
+                            <Text style={createScheduling.labelInput}>Descrição</Text>
+
+                            <TouchableOpacity
+                                style={createScheduling.descriptionButton}
+                            >
+                                <View style={createScheduling.descriptionIconContainer}>
+                                    <Entypo name="text" size={20} color="#fff" />
+                                </View>
+                                <View style={createScheduling.descriptionTextContainer}>
+                                    <Text style={createScheduling.descriptionValueText}>Sem descrição</Text>
+                                    <Text style={createScheduling.descriptionHelpText}>Toque para alterar</Text>
+                                </View>
+
+                                <Ionicons name="chevron-forward" size={20} color="#666" />
+                            </TouchableOpacity>
+                        </View>
                     </View>
 
                     <View style={createScheduling.buttonsRow}>
