@@ -10,6 +10,7 @@ import ServiceItem from '../components/ServiceItem';
 // utils
 import { getAllSchedulings } from '../utils/scheduling_db';
 import { addAppointment } from '../utils/appointments';
+import { addEvent } from '../utils/calendar';
 
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
@@ -216,6 +217,8 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
 
                                 const formattedDate = dateFormatted.replace("/", "_");
                                 addAppointment(formattedDate, hourFormatted, selectedService);
+                                // TODO: terminar de adicionar as propriedades do objeto
+                                // addEvent({ title: services.name, notes: description });
 
                                 setModalVisible(false);
                             }}
