@@ -2,23 +2,20 @@ import { useEffect, useState } from "react";
 import { getItemFromStorage, saveToStorage } from "./storage";
 
 async function getAppointments() {
-    return await getItemFromStorage('appointments');
+    const data = await getItemFromStorage('appointments');
+
+    return data || {};
 }
 
 async function addAppointment(date, hour, model) {
-    const appointments = await getAppointments(); // Recupera os agendamentos existentes
+    let appointments = await getAppointments();
+    if (!appointments) appointments = {};
+
     const [day, month] = date.split('_');
 
-    const newAppointment = {
-        model,
-        hour
-    };
-
-    console.log("day: " + day);
-    console.log("month: " + month);
+    const newAppointment = { model, hour };
 
     if (!appointments[month]) appointments[month] = {};
-
     if (!appointments[month][day]) appointments[month][day] = [];
 
     appointments[month][day].push(newAppointment);
