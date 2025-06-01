@@ -7,7 +7,7 @@ const TIME_ZONE = 'America/Belem';
 async function requestCalendarPermissions() {
     const { status } = await Calendar.requestCalendarPermissionsAsync();
 
-    if (status !== 'granted') return false
+    if (status !== 'granted') return false;
 
     return true;
 }
@@ -50,12 +50,9 @@ async function getOrCreateCalendar() {
     return newCalendarId;
 }
 
-function buildEventDates({ day, month, hourStart, hourEnd, minuteStart, minuteEnd }) {
+function buildEventStartDate({ day, month, hourStart, minuteStart }) {
     const year = new Date().getFullYear();
-    const startDate = new Date(year, month - 1, day, hourStart, minuteStart);
-    const endDate = new Date(year, month - 1, day, hourEnd, minuteEnd);
-
-    return { startDate, endDate };
+    return new Date(year, month - 1, day, hourStart, minuteStart);
 }
 
 async function addEvent(eventData) {
@@ -65,11 +62,11 @@ async function addEvent(eventData) {
     const calendarId = await getOrCreateCalendar();
     const {
         title, description, day, month,
-        hourStart, hourEnd, minuteStart, minuteEnd
+        hourStart, minuteStart
     } = eventData;
 
-    const { startDate, endDate } = buildEventDates({
-        day, month, hourStart, hourEnd, minuteStart, minuteEnd
+    const startDate = buildEventStartDate({
+        day, month, hourStart, minuteStart
     });
 
     try {
@@ -77,7 +74,6 @@ async function addEvent(eventData) {
             title,
             notes: description,
             startDate,
-            endDate,
             timeZone: TIME_ZONE,
             alarms: [{ relativeOffset: -15 }],
         });
