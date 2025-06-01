@@ -33,9 +33,10 @@ export default function AddScheduling() {
         <View style={addSchedulingStyles.container}>
             <KeyboardAvoidingView
                 style={addSchedulingStyles.keyboardView}
-                behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
                 <ScrollView
+                    style={{ flex: 1 }}
                     contentContainerStyle={addSchedulingStyles.scrollContainer}
                     keyboardShouldPersistTaps="handled"
                     showsVerticalScrollIndicator={false}
