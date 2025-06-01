@@ -43,6 +43,7 @@ export default function AddScheduling() {
                 >
                     <View style={addSchedulingStyles.header}>
                         <Text style={addSchedulingStyles.titleItem}>Novo modelo de serviço</Text>
+                        <Text style={addSchedulingStyles.subtitleItem}>Defina o procedimento, valor, detalhamento e o(a) profissional</Text>
                         <View style={addSchedulingStyles.titleUnderline} />
                     </View>
 
