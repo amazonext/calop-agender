@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { global } from '../assets/styles/global/globalStyle';
 import { getMessages } from '../utils/messages';
 import { addAppointment, getAppointments, getAppointmentsLength, getAppointmentsWithDate, useAppointments } from '../utils/appointments';
@@ -19,9 +20,10 @@ export default function Tests() {
             <Button
                 title="Run"
                 onPress={async () => {
-                    const appointmentsWithDate = await getAppointmentsWithDate("31/05");
+                    const appointmentsWithDate = await getAppointmentsWithDate("01/06");
                     const { months, today } = appointmentsWithDate;
 
+                    console.log(months);
                 }}
             />
 
