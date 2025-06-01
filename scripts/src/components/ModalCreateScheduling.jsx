@@ -61,7 +61,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                 <View style={createScheduling.modalContainer}>
                     <View style={createScheduling.headerSection}>
                         <Text style={createScheduling.headerTitle}>Novo Agendamento</Text>
-                        <Text style={createScheduling.headerSubtitle}>Selecione a data, o horário e o serviço</Text>
+                        <Text style={createScheduling.headerSubtitle}>Defina a data, o horário e o serviço</Text>
                     </View>
 
                     <View style={createScheduling.pickersContainer}>
@@ -111,6 +111,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
 
                         <View style={createScheduling.dropdownContainer}>
                             <Text style={createScheduling.labelInput}>Serviço</Text>
+
                             <TouchableOpacity
                                 style={createScheduling.dropdownButton}
                                 onPress={() => {
