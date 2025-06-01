@@ -10,12 +10,13 @@ import Loading from "../components/Loading";
 
 // styles
 import { settingsStyles } from '../assets/styles/settingsStyles';
+import { projectPalete } from "../assets/styles/colors";
 
 export default function Settings({ navigation }) {
     const [userInfoUpdate, setUserInfoUpdate] = useState(null);
     const { name, enterprise_name, image_uri } = useUserInfo() || {};
 
-    const [isEnabledEnterpriseSingular, setIsEnabledEnterpriseSingular] = useState(false);
+    const [isEnabledEnterpriseSingular, setIsEnabledEnterpriseSingular] = useState(true);
     const toggleSwitchEnterprise = () => setIsEnabledEnterpriseSingular(previousState => !previousState);
 
     const [isEnabledDate, setIsEnabledDate] = useState(false);
@@ -92,8 +93,8 @@ export default function Settings({ navigation }) {
                         <Switch
                             // NOTE: trackColor -> barra de fundo por onde o botão redondo (thumb) desliza
                             // NOTE: thumbColor -> botão redondo (thumb) que desliza da esquerda para a direita ao alternar
-                            // trackColor={{ false: '#767577', true: '#81b0ff' }}
-                            // thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                            trackColor={{ true: projectPalete.color12 + '50' }}
+                            thumbColor={isEnabledDate ? projectPalete.color1 : projectPalete.color11}
                             onValueChange={toggleSwitchEnterprise}
                             value={isEnabledEnterpriseSingular}
                         />
@@ -146,11 +147,11 @@ export default function Settings({ navigation }) {
             </View>
 
             {/* <Animated.View style={[
-                settingsStyles.toastContainer,
-                { transform: [{ translateY: toastAnim }] }
-            ]}>
-                <Text style={settingsStyles.toastText}>{toastMessage}</Text>
-            </Animated.View> */}
+                    settingsStyles.toastContainer,
+                    { transform: [{ translateY: toastAnim }] }
+                ]}>
+                    <Text style={settingsStyles.toastText}>{toastMessage}</Text>
+                </Animated.View> */}
         </View>
     );
 }
