@@ -117,5 +117,27 @@ export default function initializeApp() {
         }
     });
 
+    // storage de dicas
+    saveToStorage('tips', [
+        "🦜 Psiu! Use a aba 'Criar Serviços' à esquerda para adicionar novos tipos de atendimento!",
+        "🦜 Que tal agendar um novo serviço? Toque na aba 'Agendar' à direita!",
+        "🦜 Dica da Calopsita: Mantenha seus serviços organizados criando categorias claras!",
+        "🦜 Voou da memória? Volte sempre à tela inicial para ver o resumo do seu dia!",
+        "🦜 Canto da Calopsita: Agende com antecedência para não perder nenhum cliente!",
+        "🦜 Organize-se como uma calopsita esperta: crie seus serviços primeiro, depois agende!",
+        "🦜 Dica de ouro: Use a navegação inferior para voar rapidamente entre as funcionalidades!",
+        "🦜 Calopsita lembra: conferir os horários disponíveis evita conflitos no agendamento!",
+        "🦜 Dica voadora: personalize os nomes dos serviços para deixar tudo mais com a sua cara!",
+        "🦜 Piu piu! Atualize os preços dos seus serviços sempre que necessário!",
+        "🦜 Um bom atendimento começa com uma boa organização. Você tá no caminho certo!",
+        "🦜 Agendamentos coloridos? Use ícones ou emojis nos títulos para identificar rapidinho!",
+        "🦜 Cuidado com o bico! Evite agendamentos sobrepostos para não se enrolar!",
+        "🦜 Calopsita esperta compartilha a agenda com a equipe! Todo mundo ganha com isso!",
+        "🦜 Lembrete do ninho: revise sua agenda do dia logo cedo para um voo tranquilo!",
+        "🦜 Criatividade no ar: nomeie categorias como quiser — é seu espaço de voo!",
+        "🦜 Pru pru! Clientes felizes voltam — mantenha a pontualidade nos agendamentos!",
+        "🦜 Calopsita feliz é calopsita organizada! Continue assim e voe alto! 🕊️"
+    ]);
+
     saveToStorage('appointments', {});
 }
