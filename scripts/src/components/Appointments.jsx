@@ -1,6 +1,4 @@
 import { View, Text, Alert, StyleSheet, TouchableOpacity } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { projectPalete } from '../assets/styles/colors';
 
 export default function Appointments({ data: infos }) {
@@ -16,83 +14,70 @@ export default function Appointments({ data: infos }) {
             { text: 'Sim', onPress: () => console.log('Cancelado', model) },
         ]);
 
-    const renderRightActions = (progress, dragX, model) => (
-        <View style={styles.rightActionsContainer}>
-            <TouchableOpacity
-                style={[styles.rightActionButton, { backgroundColor: projectPalete.color13 }]}
-                onPress={() => handleDelete(model)}
-                activeOpacity={.8}
-            >
-                <Text style={styles.actionText}>Concluído</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[styles.rightActionButton, { backgroundColor: projectPalete.color5 }]}
-                onPress={() => handleCancel(model)}
-                activeOpacity={.8}
-            >
-                <Text style={styles.actionText}>Cancelar</Text>
-            </TouchableOpacity>
-        </View>
-    );
-
     return (
-        <GestureHandlerRootView style={{ flex: 1 }}>
-            <View>
-                {Object.entries(infos)
-                    .reverse()
-                    .map(([month, days]) =>
-                        Object.entries(days)
-                            .reverse()
-                            .map(([day, procedures]) => {
-                                const date = `${day}/${month}`;
-                                const proceduresPerHour = procedures.reduce((acc, item) => {
-                                    const hora = item.hour;
-                                    if (!acc[hora]) acc[hora] = [];
-                                    acc[hora].push(item.model);
-                                    return acc;
-                                }, {});
-                                return (
-                                    <View key={date} style={styles.dateContainer}>
-                                        <Text style={styles.dateTitle}>{date}</Text>
-                                        {Object.entries(proceduresPerHour)
-                                            .sort()
-                                            .map(([hour, models]) => (
-                                                <View key={hour} style={styles.hourContainer}>
-                                                    <Text style={styles.hourTitle}>{hour}</Text>
-                                                    {[...models]
-                                                        .reverse()
-                                                        .map((model, idx) => (
-                                                            <Swipeable
-                                                                key={idx}
-                                                                renderRightActions={(prog, drag) =>
-                                                                    renderRightActions(prog, drag, model)
-                                                                }
-                                                                overshootRight={false}
-                                                            >
-                                                                <View style={styles.modelCard}>
-                                                                    <Text>
-                                                                        Procedimento: {model.procedure || 'Nome não informado'}
-                                                                    </Text>
-                                                                    <Text style={styles.detailText}>
-                                                                        Profissional: {model.profissional_name || '...'}
-                                                                    </Text>
-                                                                    <Text style={styles.detailText}>
-                                                                        Valor: R$ {model.value || '0,00'}
-                                                                    </Text>
-                                                                    <Text style={styles.detailText}>
-                                                                        {model.detailing || 'Detalhes não informados'}
-                                                                    </Text>
-                                                                </View>
-                                                            </Swipeable>
-                                                        ))}
-                                                </View>
-                                            ))}
-                                    </View>
-                                );
-                            })
-                    )}
-            </View>
-        </GestureHandlerRootView>
+        <View>
+            {Object.entries(infos)
+                .reverse()
+                .map(([month, days]) =>
+                    Object.entries(days)
+                        .reverse()
+                        .map(([day, procedures]) => {
+                            const date = `${day}/${month}`;
+                            const proceduresPerHour = procedures.reduce((acc, item) => {
+                                const hora = item.hour;
+                                if (!acc[hora]) acc[hora] = [];
+                                acc[hora].push(item.model);
+                                return acc;
+                            }, {});
+                            return (
+                                <View key={date} style={styles.dateContainer}>
+                                    <Text style={styles.dateTitle}>{date}</Text>
+                                    {Object.entries(proceduresPerHour)
+                                        .sort()
+                                        .map(([hour, models]) => (
+                                            <View key={hour} style={styles.hourContainer}>
+                                                <Text style={styles.hourTitle}>{hour}</Text>
+                                                {[...models]
+                                                    .reverse()
+                                                    .map((model, idx) => (
+                                                        <View key={idx} style={styles.modelCard}>
+                                                            <Text>
+                                                                Procedimento: {model.procedure || 'Nome não informado'}
+                                                            </Text>
+                                                            <Text style={styles.detailText}>
+                                                                Profissional: {model.profissional_name || '...'}
+                                                            </Text>
+                                                            <Text style={styles.detailText}>
+                                                                Valor: R$ {model.value || '0,00'}
+                                                            </Text>
+                                                            <Text style={styles.detailText}>
+                                                                {model.detailing || 'Detalhes não informados'}
+                                                            </Text>
+
+                                                            {/* Ações visíveis no card */}
+                                                            <View style={styles.actionsRow}>
+                                                                <TouchableOpacity
+                                                                    style={[styles.actionButton, { backgroundColor: projectPalete.color13 }]}
+                                                                    onPress={() => handleDelete(model)}
+                                                                >
+                                                                    <Text style={styles.actionText}>Concluir</Text>
+                                                                </TouchableOpacity>
+                                                                <TouchableOpacity
+                                                                    style={[styles.actionButton, { backgroundColor: projectPalete.color5 }]}
+                                                                    onPress={() => handleCancel(model)}
+                                                                >
+                                                                    <Text style={styles.actionText}>Cancelar</Text>
+                                                                </TouchableOpacity>
+                                                            </View>
+                                                        </View>
+                                                    ))}
+                                            </View>
+                                        ))}
+                                </View>
+                            );
+                        })
+                )}
+        </View>
     );
 }
 
