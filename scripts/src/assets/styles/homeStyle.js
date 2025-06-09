@@ -91,7 +91,7 @@ export const homeStyles = StyleSheet.create({
     },
     summaryCard: {
         flex: 1,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FFF',
         borderRadius: 12,
         padding: 20,
         alignItems: 'center',
@@ -138,7 +138,7 @@ export const homeStyles = StyleSheet.create({
     tipContainer: {
         marginTop: 25,
         paddingHorizontal: 15,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FFF',
         borderRadius: 12,
         padding: 15,
         marginHorizontal: 15,

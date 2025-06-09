@@ -4,9 +4,6 @@ import { projectPalete } from './colors';
 
 export const mySchedulingStyles = StyleSheet.create({
     ...global,
-    container: {
-        padding: 20,
-    },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
@@ -40,7 +37,7 @@ export const mySchedulingStyles = StyleSheet.create({
     },
     noSchedulingContent: {
         flex: 1,
-        minHeight: 400,
+        minHeight: '100%',
         justifyContent: 'center',
         alignItems: 'center',
     },

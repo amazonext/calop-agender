@@ -3,20 +3,16 @@ import { projectPalete } from './colors';
 import { global } from './global/globalStyle';
 
 export const registerStyles = StyleSheet.create({
+    ...global,
     safeArea: {
         flex: 1,
         backgroundColor: projectPalete.color6,
+        justifyContent: 'center'
     },
     container: {
         ...global.container,
         justifyContent: 'space-between',
         padding: 20,
-    },
-    content: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: 10
     },
     title: {
         ...global.title,
@@ -35,11 +31,9 @@ export const registerStyles = StyleSheet.create({
         borderColor: projectPalete.color3,
         borderStyle: 'dashed',
         borderWidth: 5,
+        borderRadius: 15,
+        padding: 10,
         alignItems: 'center',
-        borderRadius: 500,
-        padding: 25,
-        height: 225,
-        width: 225,
         justifyContent: 'center'
     },
     photoText: {
@@ -50,19 +44,15 @@ export const registerStyles = StyleSheet.create({
     },
     form: {
         paddingHorizontal: 10,
-        paddingTop: 25,
-        paddingBottom: 60,
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-        backgroundColor: projectPalete.color11
+        paddingVertical: 30,
+        borderRadius: 30,
+        backgroundColor: projectPalete.color11,
+        gap: 40
     },
     inputsGroup: {
-        marginBottom: 30,
         gap: 15
     },
-    inputs: {
-        gap: 10
-    },
+    inputs: { gap: 10 },
     label: {
         fontSize: 18,
         fontWeight: 'bold',
