@@ -90,11 +90,10 @@ export default function Settings({ navigation }) {
                             <Text style={settingsStyles.infoLabel}>Modo empresário autônomo</Text>
                             <Text style={settingsStyles.infoDetail}>A opção de selecionar um profissional é removida</Text>
                         </View>
+
                         <Switch
-                            // NOTE: trackColor -> barra de fundo por onde o botão redondo (thumb) desliza
-                            // NOTE: thumbColor -> botão redondo (thumb) que desliza da esquerda para a direita ao alternar
-                            trackColor={{ true: projectPalete.color12 + '50' }}
-                            thumbColor={isEnabledDate ? projectPalete.color1 : projectPalete.color11}
+                            trackColor={{ true: projectPalete.color9 }}
+                            thumbColor={isEnabledEnterpriseSingular ? projectPalete.color12 : "#ECECEC"}
                             onValueChange={toggleSwitchEnterprise}
                             value={isEnabledEnterpriseSingular}
                         />
@@ -104,10 +103,10 @@ export default function Settings({ navigation }) {
                             <Text style={settingsStyles.infoLabel}>Data por extenso</Text>
                             <Text style={settingsStyles.infoDetail}>A data na lista de agendamentos será exibida por extenso (por exemplo: 10 de maio)</Text>
                         </View>
+
                         <Switch
-                            // TODO: estilizar o switch
-                            // trackColor={{ false: '#767577', true: '#81b0ff' }}
-                            // thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                            trackColor={{ true: projectPalete.color9 }}
+                            thumbColor={isEnabledDate ? projectPalete.color12 : "#ECECEC"}
                             onValueChange={toggleSwitchDate}
                             value={isEnabledDate}
                         />
