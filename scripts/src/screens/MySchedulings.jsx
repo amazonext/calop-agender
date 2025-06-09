@@ -49,7 +49,9 @@ export default function MySchedulings() {
             >
                 {
                     appointments && Object.values(appointments).flat().length > 0 ? (
-                        <Appointments data={appointments} />
+                        <View style={{padding: 20}}>
+                            <Appointments data={appointments} />
+                        </View>
                     ) : (
                         <View style={mySchedulingStyles.noSchedulingContent}>
                             <Text style={mySchedulingStyles.noSchedulingText}>

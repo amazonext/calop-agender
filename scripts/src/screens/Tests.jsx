@@ -12,7 +12,7 @@ import { query } from '../helpers/db';
 
 export default function Tests() {
     const { name, enterprise_name, image_uri } = useUserInfo() || {};
-    const appointments = useAppointments();
+    const appointments = getAppointments();
 
     return (
         <View style={global.container}>
@@ -20,10 +20,7 @@ export default function Tests() {
             <Button
                 title="Run"
                 onPress={async () => {
-                    const appointmentsWithDate = await getAppointmentsWithDate("01/06");
-                    const { months, today } = appointmentsWithDate;
-
-                    console.log(months);
+                    console.log(Object.keys(appointments).map(key => appointments[key])[0]);
                 }}
             />
 

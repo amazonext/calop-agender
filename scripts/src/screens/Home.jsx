@@ -22,6 +22,7 @@ export default function Home() {
   const [appointmentsLength, setAppointmentsLength] = useState(null);
   const [message, setMessage] = useState(null);
   const [isRefreshingManually, setIsRefreshingManually] = useState(false);
+  const [randomTip, setRandomTip] = useState(null);
 
   const USERNAME = name ? <Text style={{ fontWeight: 'bold' }}>{name}</Text> : "usuário";
   const ENTERPRISE_NAME = enterprise_name ? <Text style={{ fontWeight: 'bold' }}>{enterprise_name}</Text> : "sua empresa";
@@ -48,6 +49,7 @@ export default function Home() {
   const onRefresh = async () => {
     setIsRefreshingManually(true);
     await Promise.all([loadAppointmentsSummary(), loadMessage()]);
+    setRandomTip(generateRandomTip());
     setIsRefreshingManually(false);
   };
 
@@ -57,7 +59,7 @@ export default function Home() {
     onRefresh();
   }, []);
 
-  const [randomTip] = useState(() => {
+  const generateRandomTip = () => {
     const tips = [
       "🦜 Psiu! Use a aba 'Criar Serviços' à esquerda para adicionar novos tipos de atendimento!",
       "🦜 Que tal agendar um novo serviço? Toque na aba 'Agendar' à direita!",
@@ -67,8 +69,9 @@ export default function Home() {
       "🦜 Organize-se como uma calopsita esperta: crie seus serviços primeiro, depois agende!",
       "🦜 Dica de ouro: Use a navegação inferior para voar rapidamente entre as funcionalidades!"
     ];
-    return tips[Math.floor(Math.random() * tips.length)];
-  });
+    const randomIndex = Math.floor(Math.random() * tips.length);
+    return tips[randomIndex];
+  };
 
   if (
     isRefreshingManually ||
