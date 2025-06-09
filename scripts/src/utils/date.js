@@ -24,7 +24,7 @@ function getCurrentMonth() {
     const monthIndex = date.getMonth();
 
     const colors = [
-        "#E6C87D", "#FFF4B2", "#F2D6A5", "#FFFBCC", "#D9B86A", "#F6E2A5",
+        "#E6C87D", "#FFF4B2", "#F2D6A5", "#FFFBCC", "#D9B86A", "#DDC375",
         "#F4D160", "#E3C17A", "#FBC798", "#FDE8A9", "#EFD393", "#D4B16A",
     ];
 

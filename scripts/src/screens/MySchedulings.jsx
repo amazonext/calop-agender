@@ -19,7 +19,7 @@ import { projectPalete } from '../assets/styles/colors';
 
 export default function MySchedulings() {
     const [modalVisible, setModalVisible] = useState(false);
-    const [appointments, setAppointments] = useState([]);
+    const [appointments, setAppointments] = useState({});
 
     const fetchAppointments = async () => {
         const data = await getAppointments();
@@ -46,7 +46,6 @@ export default function MySchedulings() {
                         progressViewOffset={5}
                     />
                 }
-                contentContainerStyle={mySchedulingStyles.container}
             >
                 {
                     appointments && Object.values(appointments).flat().length > 0 ? (

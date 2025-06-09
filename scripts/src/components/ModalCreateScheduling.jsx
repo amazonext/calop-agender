@@ -182,9 +182,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                         <View>
                             <Text style={createScheduling.labelInput}>Descrição</Text>
 
-                            <TouchableOpacity
-                                style={createScheduling.descriptionButton}
-                            >
+                            <TouchableOpacity style={createScheduling.descriptionButton}>
                                 <View style={createScheduling.descriptionIconContainer}>
                                     <Entypo name="text" size={20} color="#fff" />
                                 </View>
