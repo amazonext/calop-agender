@@ -54,6 +54,7 @@ export default function AddScheduling() {
                                 <TextInput
                                     style={addSchedulingStyles.input}
                                     value={procedure}
+                                    maxLength={15}
                                     onChangeText={setProcedure}
                                     placeholder="Digite o procedimento"
                                     placeholderTextColor={projectPalete.color2 + '50'}
@@ -68,6 +69,7 @@ export default function AddScheduling() {
                                 <TextInput
                                     style={[addSchedulingStyles.input, addSchedulingStyles.currencyInput]}
                                     value={value}
+                                    maxLength={15}
                                     onChangeText={setValue}
                                     placeholder="0,00"
                                     placeholderTextColor={projectPalete.color2 + '50'}
@@ -85,6 +87,7 @@ export default function AddScheduling() {
                                 <TextInput
                                     style={[addSchedulingStyles.input, addSchedulingStyles.textArea]}
                                     value={detailing}
+                                    maxLength={15}
                                     onChangeText={setDetailing}
                                     placeholder="Digite o detalhamento do serviço"
                                     placeholderTextColor={projectPalete.color2 + '50'}
@@ -101,6 +104,7 @@ export default function AddScheduling() {
                                 <TextInput
                                     style={addSchedulingStyles.input}
                                     value={profissionalName}
+                                    maxLength={15}
                                     onChangeText={setProfissionalName}
                                     placeholder="Digite o nome do profissional"
                                     placeholderTextColor={projectPalete.color2 + '50'}
