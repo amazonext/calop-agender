@@ -125,7 +125,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 activeOpacity={services.length > 0 ? 0.7 : 1}
                             >
                                 <Text style={createScheduling.dropdownButtonText}>
-                                    {selectedService?.name || (services?.length ? 'Escolha um serviço' : 'Nenhum serviço disponível')}
+                                    {selectedService?.procedure || (services?.length ? 'Escolha um serviço' : 'Nenhum serviço disponível')}
                                 </Text>
                                 {services.length > 0 && (
                                     <Ionicons

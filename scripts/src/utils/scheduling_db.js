@@ -3,11 +3,11 @@ import { createTable, deleteRow, insertRow, selectAll, updateRow, query, selectW
 function createTableSchedulings() {
     createTable('scheduling_models', `
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        name TEXT NOT NULL,
+        procedure TEXT NOT NULL,
         value REAL NOT NULL,
         detailing TEXT,
         profissional_name TEXT NOT NULL,
-        key_identifier INTEGER NOT NULL UNIQUE
+        key_identifier INTEGER UNIQUE
     `);
 }
 
@@ -46,7 +46,7 @@ function createScheduling(scheduling) {
     generateUniqueKeyIdentifier(key_identifier => {
         const newScheduling = {
             ...scheduling,
-            key_identifier,
+            key_identifier
         };
 
         insertRow('scheduling_models', newScheduling);

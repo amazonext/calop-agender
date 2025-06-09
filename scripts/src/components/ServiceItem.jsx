@@ -8,7 +8,7 @@ export default function ServiceItem({ item, onSelect }) {
             onPress={() => onSelect(item)}
         >
             <Text style={createScheduling.dropdownItemText}>
-                {item.name}
+                {item.procedure}
             </Text>
         </TouchableOpacity>
     );

@@ -6,28 +6,28 @@ import { createScheduling } from "../utils/scheduling_db";
 import { projectPalete } from "../assets/styles/colors";
 
 export default function AddScheduling() {
-    const [value, setValue] = useState("");
     const [detailing, setDetailing] = useState("");
     const [profissionalName, setProfissionalName] = useState("");
     const [name, setName] = useState("");
+    const [procedure, setProcedure] = useState("");
 
     const handleCreateScheduling = () => {
         Keyboard.dismiss();
 
         createScheduling({
-            name: name,
+            procedure: procedure,
             value: parseFloat(value),
             detailing: detailing || "",
             profissional_name: profissionalName
         });
 
-        setName("");
+        setProcedure("");
         setValue("");
         setDetailing("");
         setProfissionalName("");
     };
 
-    const isFormValid = name && value && profissionalName;
+    const isFormValid = procedure && value && profissionalName;
 
     return (
         <View style={addSchedulingStyles.container}>
@@ -53,8 +53,8 @@ export default function AddScheduling() {
                             <View style={addSchedulingStyles.inputContainer}>
                                 <TextInput
                                     style={addSchedulingStyles.input}
-                                    value={name}
-                                    onChangeText={setName}
+                                    value={procedure}
+                                    onChangeText={setProcedure}
                                     placeholder="Digite o procedimento"
                                     placeholderTextColor={projectPalete.color2 + '50'}
                                 />
