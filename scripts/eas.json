@@ -13,8 +13,7 @@
         "buildType": "apk"
       },
       "ios": {
-        "simulator": false,
-        "buildType": "adhoc"
+        "simulator": false
       },
       "distribution": "internal"
     },
@@ -24,8 +23,7 @@
         "buildType": "apk"
       },
       "ios": {
-        "buildType": "adhoc",
-        "enterpriseProvisioning": "adhoc"
+        "simulator": false
       },
       "distribution": "internal"
     }
