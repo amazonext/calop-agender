@@ -1,5 +1,3 @@
-// [x]: criar o banco de dados de agendamentos
-// [x]: criar o storage de mensagens personalizadas
 // [ ]: fazer uma condição para verificar se os procedimentos já foram realizados
 
 import { createTable } from "../helpers/db";
@@ -139,5 +137,7 @@ export default function initializeApp() {
         "🦜 Calopsita feliz é calopsita organizada! Continue assim e voe alto! 🕊️"
     ]);
 
+    // storage de configurações
+    // storage de agendamentos
     saveToStorage('appointments', {});
 }

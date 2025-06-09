@@ -90,26 +90,41 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#fff',
     },
-    dateTitle: { fontSize: 25, fontWeight: 'bold' },
-    hourContainer: { marginTop: 10, padding: 10 },
+    dateTitle: {
+        fontSize: 25,
+        fontWeight: 'bold'
+    },
+    hourContainer: {
+        marginTop: 10,
+        padding: 10
+    },
     hourTitle: {
         fontSize: 20,
         fontWeight: '600',
         borderBottomWidth: 2,
         borderColor: '#bbb',
     },
-    modelCard: { marginLeft: 10, padding: 5, backgroundColor: '#f9f9f9' },
-    nameText: { fontSize: 16, fontWeight: '600' },
-    detailText: { fontSize: 16 },
-    rightActionsContainer: {
-        flexDirection: 'row',
-        width: 180, // 2 botões de 90 largura cada
-    },
-    rightActionButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 90,
+    modelCard: {
         padding: 10,
+        backgroundColor: '#f9f9f9',
+        borderRadius: 8,
+        marginBottom: 10,
     },
-    actionText: { color: '#fff', fontWeight: '600' },
+    detailText: { fontSize: 16 },
+    actionsRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+    },
+    actionButton: {
+        flex: 1,
+        marginHorizontal: 5,
+        paddingVertical: 8,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    actionText: {
+        color: '#fff',
+        fontWeight: 'bold'
+    },
 });
