@@ -138,6 +138,11 @@ export default function initializeApp() {
     ]);
 
     // storage de configurações
+    saveToStorage('settings', {
+        individualEntrepreneur: false,
+        dateInFull: false
+    });
+
     // storage de agendamentos
     saveToStorage('appointments', {});
 }
