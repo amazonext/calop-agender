@@ -8,26 +8,26 @@ import { projectPalete } from "../assets/styles/colors";
 export default function AddScheduling() {
     const [detailing, setDetailing] = useState("");
     const [profissionalName, setProfissionalName] = useState("");
-    const [name, setName] = useState("");
     const [procedure, setProcedure] = useState("");
+    const [price, setPrice] = useState("");
 
     const handleCreateScheduling = () => {
         Keyboard.dismiss();
 
         createScheduling({
             procedure: procedure,
-            value: parseFloat(value),
+            price: parseFloat(price),
             detailing: detailing || "",
             profissional_name: profissionalName
         });
 
         setProcedure("");
-        setValue("");
+        setPrice("");
         setDetailing("");
         setProfissionalName("");
     };
 
-    const isFormValid = procedure && value && profissionalName;
+    const isFormValid = procedure && price && profissionalName;
 
     return (
         <View style={addSchedulingStyles.container}>
@@ -70,7 +70,7 @@ export default function AddScheduling() {
                                     style={[addSchedulingStyles.input, addSchedulingStyles.currencyInput]}
                                     value={value}
                                     maxLength={15}
-                                    onChangeText={setValue}
+                                    onChangeText={setPrice}
                                     placeholder="0,00"
                                     placeholderTextColor={projectPalete.color2 + '50'}
                                     keyboardType="numeric"

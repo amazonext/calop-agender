@@ -8,7 +8,7 @@ export default function initializeApp() {
     createTable('scheduling_models', `
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         procedure TEXT NOT NULL,
-        value REAL NOT NULL,
+        price REAL NOT NULL,
         detailing TEXT,
         profissional_name TEXT NOT NULL,
         key_identifier INTEGER NOT NULL UNIQUE
