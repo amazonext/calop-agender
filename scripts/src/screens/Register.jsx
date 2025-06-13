@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { View, Text, TextInput, Button, Image, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { FontAwesome5, FontAwesome6 } from '@expo/vector-icons';
+import { View, Text, TextInput, Button, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { FontAwesome6 } from '@expo/vector-icons';
 
 // utils
 import { addUserInfos } from '../utils/user_db';
-import { pickAndSaveImage } from '../utils/imagePicker';
 import { saveToStorage } from '../utils/storage';
 import initializeApp from '../utils/initializeApp';
 
@@ -13,7 +12,6 @@ import { projectPalete } from '../assets/styles/colors';
 import { registerStyles } from '../assets/styles/registerStyles';
 
 export default function Register({ navigation }) {
-    const [imageUri, setImageUri] = useState(null);
     const [enterpriseName, setEnterpriseName] = useState("Ed's Inc");
     const [name, setName] = useState("Ed");
     const [errors, setErrors] = useState({ name: '' });
@@ -32,8 +30,7 @@ export default function Register({ navigation }) {
         if (!hasError) {
             addUserInfos({
                 name: name.trim(),
-                enterprise_name: enterpriseName.trim(),
-                image_uri: imageUri
+                enterprise_name: enterpriseName.trim()
             });
 
             navigation.replace("HomeTabs");
@@ -50,22 +47,6 @@ export default function Register({ navigation }) {
                     showsVerticalScrollIndicator={false}
                 >
                     <View style={registerStyles.form}>
-                        <View>
-                            <TouchableOpacity
-                                style={registerStyles.photoButton}
-                                onPress={() => pickAndSaveImage(setImageUri)}
-                            >
-                                <FontAwesome5
-                                    name="upload"
-                                    size={30}
-                                    color={projectPalete.color3}
-                                />
-                                <Text style={registerStyles.photoText}>Adicionar foto de perfil</Text>
-                            </TouchableOpacity>
-                            {imageUri && (
-                                <Image source={{ uri: imageUri }} style={registerStyles.imagePreview} />
-                            )}
-                        </View>
                         <View style={registerStyles.inputsGroup}>
                             <View style={registerStyles.inputs}>
                                 <Text style={registerStyles.label}>

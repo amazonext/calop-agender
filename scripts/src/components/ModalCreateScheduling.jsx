@@ -15,7 +15,7 @@ import { addEvent } from '../utils/calendar';
 export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showHourPicker, setShowHourPicker] = useState(false);
-    const [description, setDescription] = useState(null);
+    // const [description, setDescription] = useState(null);
 
     const [date, setDate] = useState(() => {
         const d = new Date();
@@ -179,7 +179,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                             />
                         )}
 
-                        <View>
+                        {/* <View>
                             <Text style={createScheduling.labelInput}>Descrição</Text>
 
                             <TouchableOpacity style={createScheduling.descriptionButton}>
@@ -193,7 +193,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
 
                                 <Ionicons name="chevron-forward" size={20} color="#666" />
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
                     </View>
 
                     <View style={createScheduling.buttonsRow}>

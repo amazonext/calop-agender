@@ -21,27 +21,6 @@ export const registerStyles = StyleSheet.create({
         textAlign: 'center',
         color: projectPalete.color10
     },
-    imagePickerButton: {
-        padding: 10,
-        borderRadius: 5,
-        alignItems: 'center',
-        marginBottom: 10,
-    },
-    photoButton: {
-        borderColor: projectPalete.color3,
-        borderStyle: 'dashed',
-        borderWidth: 5,
-        borderRadius: 15,
-        padding: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    photoText: {
-        ...global.text,
-        color: projectPalete.color3,
-        fontSize: 20,
-        marginTop: 15,
-    },
     form: {
         paddingHorizontal: 10,
         paddingVertical: 30,

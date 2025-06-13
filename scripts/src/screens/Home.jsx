@@ -22,7 +22,6 @@ export default function Home() {
   const [appointmentsLength, setAppointmentsLength] = useState(null);
   const [message, setMessage] = useState(null);
   const [isRefreshingManually, setIsRefreshingManually] = useState(false);
-  const [randomTip, setRandomTip] = useState(null);
 
   const USERNAME = name ? <Text style={{ fontWeight: 'bold' }}>{name}</Text> : "usuário";
   const ENTERPRISE_NAME = enterprise_name ? <Text style={{ fontWeight: 'bold' }}>{enterprise_name}</Text> : "sua empresa";
@@ -58,20 +57,6 @@ export default function Home() {
   useEffect(() => {
     onRefresh();
   }, []);
-
-  const generateRandomTip = () => {
-    const tips = [
-      "🦜 Psiu! Use a aba 'Criar Serviços' à esquerda para adicionar novos tipos de atendimento!",
-      "🦜 Que tal agendar um novo serviço? Toque na aba 'Agendar' à direita!",
-      "🦜 Dica da Calopsita: Mantenha seus serviços organizados criando categorias claras!",
-      "🦜 Voou da memória? Volte sempre à tela inicial para ver o resumo do seu dia!",
-      "🦜 Canto da Calopsita: Agende com antecedência para não perder nenhum cliente!",
-      "🦜 Organize-se como uma calopsita esperta: crie seus serviços primeiro, depois agende!",
-      "🦜 Dica de ouro: Use a navegação inferior para voar rapidamente entre as funcionalidades!"
-    ];
-    const randomIndex = Math.floor(Math.random() * tips.length);
-    return tips[randomIndex];
-  };
 
   if (
     isRefreshingManually ||
@@ -129,10 +114,6 @@ export default function Home() {
                 </View>
               </View>
             </View>
-          </View>
-
-          <View style={homeStyles.tipContainer}>
-            <Text style={homeStyles.tipText}>{randomTip}</Text>
           </View>
         </View>
       </ScrollView>

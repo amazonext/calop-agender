@@ -1,6 +1,7 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { profileStyles } from "../assets/styles/profileStyles";
-import { FontAwesome, FontAwesome6, Ionicons } from '@expo/vector-icons';
+import { FontAwesome6 } from "@expo/vector-icons";
+import { useState, useEffect } from "react";
 
 // hooks
 import { useUserInfo } from "../hooks/useUserInfo";
@@ -15,18 +16,6 @@ export default function Profile() {
 
   return (
     <View style={profileStyles.container}>
-      <View style={profileStyles.photoContainer}>
-        {image_uri ? (
-          <Image source={{ uri: image_uri }} style={profileStyles.userPhoto} />
-        ) : (
-          <Ionicons name="person-circle-sharp" size={120} color="#aaa" />
-        )}
-        <TouchableOpacity style={profileStyles.changePhotoButton} activeOpacity={.8}>
-          <FontAwesome name="camera" size={20} color="#fff" />
-        </TouchableOpacity>
-      </View>
-
-      {/* nomes e inputs relacionados*/}
       <View style={profileStyles.inputButton}>
         <Text style={profileStyles.inputButtonLabel}>Nome do usuário</Text>
         <View

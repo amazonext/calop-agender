@@ -19,14 +19,6 @@ export const settingsStyles = StyleSheet.create({
         alignItems: "center",
         gap: 10
     },
-    userPhoto: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        backgroundColor: "#888",
-        justifyContent: "center",
-        alignItems: "center",
-    },
     username: {
         fontSize: 18,
         fontWeight: "bold",

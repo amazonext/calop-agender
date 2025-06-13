@@ -135,27 +135,4 @@ export const homeStyles = StyleSheet.create({
         color: getCurrentMonth().color,
         marginBottom: 8,
     },
-    tipContainer: {
-        marginTop: 25,
-        paddingHorizontal: 15,
-        backgroundColor: '#FFF',
-        borderRadius: 12,
-        padding: 15,
-        marginHorizontal: 15,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-    tipText: {
-        fontSize: 16,
-        color: projectPalete.color8,
-        textAlign: 'center',
-        fontStyle: 'italic',
-        lineHeight: 22,
-    },
 });
