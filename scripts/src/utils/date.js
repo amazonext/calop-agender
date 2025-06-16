@@ -53,4 +53,17 @@ function getCurrentTurn() {
     return "night";
 }
 
-export { getCurrentDay, getCurrentMonth, getCurrentWeekday, getCurrentTurn };
+function getDateInFull(dateStr) {
+    if (!dateStr) return '';
+
+    const [day, month] = dateStr.split('/').map(Number);
+
+    const monthNames = [
+        'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+        'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+    ];
+
+    return `${day} de ${monthNames[month - 1]}`;
+}
+
+export { getCurrentDay, getCurrentMonth, getCurrentWeekday, getCurrentTurn, getDateInFull };

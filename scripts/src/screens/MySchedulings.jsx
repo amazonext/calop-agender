@@ -12,6 +12,7 @@ import { getAppointments } from '../utils/appointments';
 
 // hooks
 import { useRefresh } from '../hooks/useRefresh';
+import { useSettings } from '../hooks/useSettings';
 
 // styles
 import { mySchedulingStyles } from "../assets/styles/mySchedulingStyles";
@@ -20,6 +21,8 @@ import { projectPalete } from '../assets/styles/colors';
 export default function MySchedulings() {
     const [modalVisible, setModalVisible] = useState(false);
     const [appointments, setAppointments] = useState({});
+
+    const settings = useSettings();
 
     const fetchAppointments = async () => {
         const data = await getAppointments();
@@ -32,7 +35,9 @@ export default function MySchedulings() {
         fetchAppointments();
     }, []);
 
-    if (appointments === null) return <Loading />;
+    if (appointments === null || !settings) return <Loading />;
+
+    const dateInFullValue = settings.dateInFull;
 
     return (
         <View style={{ flex: 1 }}>
@@ -49,8 +54,8 @@ export default function MySchedulings() {
             >
                 {
                     appointments && Object.values(appointments).flat().length > 0 ? (
-                        <View style={{padding: 20}}>
-                            <Appointments data={appointments} />
+                        <View style={{ padding: 20 }}>
+                            <Appointments data={appointments} dateInFull={dateInFullValue} />
                         </View>
                     ) : (
                         <View style={mySchedulingStyles.noSchedulingContent}>
@@ -65,9 +70,7 @@ export default function MySchedulings() {
             <TouchableOpacity
                 style={mySchedulingStyles.addScheduling}
                 activeOpacity={0.8}
-                onPress={() => {
-                    setModalVisible(true);
-                }}
+                onPress={() => setModalVisible(true)}
             >
                 <FontAwesome6
                     name="plus"

@@ -60,4 +60,38 @@ function useAppointments() {
     return appointment;
 }
 
-export { getAppointments, addAppointment, useAppointments, getAppointmentsWithDate, getAppointmentsLength };
+async function removeAppointment(id) {
+    try {
+        const current = await getItemFromStorage('appointments');
+
+        if (typeof current !== 'object' || Array.isArray(current)) {
+            return current;
+        }
+
+        for (const dayKey in current) {
+            const dayData = current[dayKey];
+
+            for (const hourKey in dayData) {
+                const hourArray = dayData[hourKey];
+
+                if (Array.isArray(hourArray)) {
+                    dayData[hourKey] = hourArray.filter(
+                        item => item?.model?.id !== id
+                    );
+
+                    if (dayData[hourKey].length === 0) delete dayData[hourKey];
+                }
+            }
+
+            if (Object.keys(dayData).length === 0) delete current[dayKey];
+        }
+
+        await saveToStorage('appointments', JSON.stringify(current));
+        return current;
+    } catch (error) {
+        console.error(`Erro ao remover item com id=${id} da chave "appointments"`, error);
+        return null;
+    }
+}
+
+export { getAppointments, addAppointment, useAppointments, getAppointmentsWithDate, getAppointmentsLength, removeAppointment };

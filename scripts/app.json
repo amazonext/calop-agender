@@ -42,7 +42,8 @@
     },
     "owner": "the-heapsters",
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-sqlite"
     ]
   }
 }

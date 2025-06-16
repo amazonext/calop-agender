@@ -1,17 +1,30 @@
-import { View, Text, Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Alert, StyleSheet, Button } from 'react-native';
 import { projectPalete } from '../assets/styles/colors';
+import { removeAppointment } from '../utils/appointments';
+import { getDateInFull } from '../utils/date';
+import Loading from './Loading';
 
-export default function Appointments({ data: infos }) {
-    const handleDelete = (model) =>
+export default function Appointments({ data: infos, dateInFull }) {
+    if (dateInFull === undefined) return <Loading />;
+
+    const handleDelete = model =>
         Alert.alert('Excluir agendamento', 'Deseja realmente excluir?', [
             { text: 'Cancelar', style: 'cancel' },
-            { text: 'Excluir', onPress: () => console.log('Excluído', model) },
+            {
+                text: 'Excluir', onPress: async () => {
+                    await removeAppointment(model.id);
+                }
+            }
         ]);
 
-    const handleCancel = (model) =>
+    const handleCancel = model =>
         Alert.alert('Cancelar agendamento', 'Deseja realmente cancelar?', [
             { text: 'Não', style: 'cancel' },
-            { text: 'Sim', onPress: () => console.log('Cancelado', model) },
+            {
+                text: 'Sim', onPress: async () => {
+                    await removeAppointment(model.id);
+                }
+            }
         ]);
 
     return (
@@ -31,7 +44,13 @@ export default function Appointments({ data: infos }) {
                             }, {});
                             return (
                                 <View key={date} style={styles.dateContainer}>
-                                    <Text style={styles.dateTitle}>{date}</Text>
+                                    {
+                                        dateInFull ?
+                                            <Text style={styles.dateTitle}>{getDateInFull(date)}</Text>
+                                            :
+                                            <Text style={styles.dateTitle}>{date}</Text>
+                                    }
+
                                     {Object.entries(proceduresPerHour)
                                         .sort()
                                         .map(([hour, models]) => (
@@ -56,18 +75,16 @@ export default function Appointments({ data: infos }) {
 
                                                             {/* Ações visíveis no card */}
                                                             <View style={styles.actionsRow}>
-                                                                <TouchableOpacity
-                                                                    style={[styles.actionButton, { backgroundColor: projectPalete.color13 }]}
+                                                                <Button
+                                                                    title="Concluído"
+                                                                    color={projectPalete.color13}
                                                                     onPress={() => handleDelete(model)}
-                                                                >
-                                                                    <Text style={styles.actionText}>Concluir</Text>
-                                                                </TouchableOpacity>
-                                                                <TouchableOpacity
-                                                                    style={[styles.actionButton, { backgroundColor: projectPalete.color5 }]}
+                                                                />
+                                                                <Button
+                                                                    title="Cancelar"
+                                                                    color={projectPalete.color5}
                                                                     onPress={() => handleCancel(model)}
-                                                                >
-                                                                    <Text style={styles.actionText}>Cancelar</Text>
-                                                                </TouchableOpacity>
+                                                                />
                                                             </View>
                                                         </View>
                                                     ))}

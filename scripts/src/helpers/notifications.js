@@ -41,7 +41,6 @@ async function registerNotifications() {
         }
 
         if (finalStatus !== 'granted') {
-            console.warn('[❌] Permissão negada para notificações!');
             alert('Permissão negada para notificações!');
             return;
         }
@@ -50,7 +49,6 @@ async function registerNotifications() {
 
         token = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
     } else {
-        console.warn('[⚠️] Dispositivo físico é necessário para testar notificações push');
         alert('Você precisa de um dispositivo físico para testar notificações push.');
     }
 

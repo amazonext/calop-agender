@@ -35,7 +35,7 @@ export default function App() {
                     component={Profile}
                     options={{
                         headerShown: true,
-                        headerTitle: 'Perfil',
+                        headerTitle: 'Informações Cadastrais',
                         headerTintColor: projectPalete.color3,
                         headerStyle: { backgroundColor: projectPalete.color1 }
                     }}

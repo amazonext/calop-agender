@@ -1,83 +1,77 @@
-import { useState } from "react";
-import { View, Text, Image, TouchableOpacity, Linking, Switch } from "react-native";
-import { Ionicons, FontAwesome6, FontAwesome5 } from '@expo/vector-icons';
+import { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, Linking, Alert } from "react-native";
+import { FontAwesome6, FontAwesome5, Octicons } from '@expo/vector-icons';
 
 // hooks
 import { useUserInfo } from "../hooks/useUserInfo";
+import { useSettings } from "../hooks/useSettings";
 
 // components
 import Loading from "../components/Loading";
+import SettingsSwitch from "../components/SettingsSwitch";
 
 // styles
 import { settingsStyles } from '../assets/styles/settingsStyles';
-import { projectPalete } from "../assets/styles/colors";
+import { saveSettings } from "../utils/saveSettings";
 
 export default function Settings({ navigation }) {
-    const [userInfoUpdate, setUserInfoUpdate] = useState(null);
-    const { name, enterprise_name, image_uri } = useUserInfo() || {};
+    const userInfo = useUserInfo();
+    const settings = useSettings();
 
-    const [isEnabledEnterpriseSingular, setIsEnabledEnterpriseSingular] = useState(true);
-    const toggleSwitchEnterprise = () => setIsEnabledEnterpriseSingular(previousState => !previousState);
+    // const [isEnabledEnterpriseSingular, setIsEnabledEnterpriseSingular] = useState(undefined);
+    const [isEnabledDateInFull, setIsEnabledDateInFull] = useState(undefined);
 
-    const [isEnabledDate, setIsEnabledDate] = useState(false);
-    const toggleSwitchDate = () => setIsEnabledDate(previousState => !previousState);
+    useEffect(() => {
+        if (settings) {
+            // setIsEnabledEnterpriseSingular(settings.enterpriseSingular);
+            setIsEnabledDateInFull(settings.dateInFull);
+        }
+    }, [settings]);
 
-    // TODO: levar essas constantes pra nova tela de perfil
+    // const toggleSwitchEnterprise = () => {
+    //     const newValue = !isEnabledEnterpriseSingular;
 
-    // const showToast = (message) => {
-    //     setToastMessage(message);
-    //     Animated.sequence([
-    //         Animated.timing(toastAnim, {
-    //             toValue: 0,
-    //             duration: 400,
-    //             easing: Easing.out(Easing.ease),
-    //             useNativeDriver: true,
-    //         }),
-    //         Animated.delay(2000),
-    //         Animated.timing(toastAnim, {
-    //             toValue: 100,
-    //             duration: 400,
-    //             easing: Easing.in(Easing.ease),
-    //             useNativeDriver: true,
-    //         }),
-    //     ]).start();
+    //     setIsEnabledEnterpriseSingular(newValue);
+    //     settings?.setEnterpriseSingular?.(newValue);
+
+    //     saveSettings({ enterpriseSingular: newValue });
     // };
 
-    // const handleSave = () => {
-    //     setUserInfoUpdate({
-    //         ...userInfoUpdate,
-    //         name: editedName,
-    //         enterprise_name: editedEnterprise
-    //     });
+    const toggleSwitchDate = () => {
+        const newValue = !isEnabledDateInFull;
 
-    //     setModalVisible(false);
-    //     showToast("Informações atualizadas!");
-    // };
+        setIsEnabledDateInFull(newValue);
+        settings?.setDateInFull?.(newValue);
 
-    if (!name && !enterprise_name && !image_uri) return <Loading />;
+        Alert.alert("Atenção!", "Para a configuração ser aplicada, feche e abra o aplicativo novamente.");
+
+        saveSettings({ dateInFull: newValue });
+    };
+
+    if (
+        !userInfo ||
+        !settings ||
+        isEnabledDateInFull === undefined
+    ) return <Loading />;
+
+    const { name, enterprise_name } = userInfo;
 
     return (
         <View style={settingsStyles.container}>
             <View style={settingsStyles.userBox}>
                 <View style={settingsStyles.userInfo}>
-                    {image_uri ? (
-                        <Image source={{ uri: image_uri }} style={settingsStyles.userPhoto} />
-                    ) : (
-                        <Ionicons name="person-circle-sharp" size={60} color="#aaa" />
-                    )}
+                    <Octicons name="organization" size={40} color="#aaa" />
                     <View>
                         <Text style={settingsStyles.username}>
-                            {(userInfoUpdate?.name || name) ?? 'Nome de usuário indefinido'}
+                            {name ?? 'Nome de usuário indefinido'}
                         </Text>
                         <Text style={settingsStyles.enterprise}>
-                            {(userInfoUpdate?.enterprise_name || enterprise_name) ?? 'Nome da empresa ainda não definida'}
+                            {enterprise_name ?? 'Nome da empresa ainda não definida'}
                         </Text>
                     </View>
                 </View>
 
-                <TouchableOpacity
-                    onPress={() => navigation.navigate("Profile")}
-                >
+                <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
                     <FontAwesome6 name="chevron-right" color="#ccc" size={35} />
                 </TouchableOpacity>
             </View>
@@ -85,32 +79,19 @@ export default function Settings({ navigation }) {
             <View style={settingsStyles.section}>
                 <Text style={settingsStyles.sectionTitle}>Ajustes</Text>
                 <View style={settingsStyles.infoCard}>
-                    <View style={settingsStyles.infoRow}>
-                        <View>
-                            <Text style={settingsStyles.infoLabel}>Modo empresário autônomo</Text>
-                            <Text style={settingsStyles.infoDetail}>A opção de selecionar um profissional é removida</Text>
-                        </View>
+                    {/* <SettingsSwitch
+                        label="Modo empresário autônomo"
+                        detail="A opção de selecionar um profissional é removida"
+                        value={isEnabledEnterpriseSingular}
+                        onToggle={toggleSwitchEnterprise}
+                    /> */}
 
-                        <Switch
-                            trackColor={{ true: projectPalete.color9 }}
-                            thumbColor={isEnabledEnterpriseSingular ? projectPalete.color12 : "#ECECEC"}
-                            onValueChange={toggleSwitchEnterprise}
-                            value={isEnabledEnterpriseSingular}
-                        />
-                    </View>
-                    <View style={settingsStyles.infoRow}>
-                        <View>
-                            <Text style={settingsStyles.infoLabel}>Data por extenso</Text>
-                            <Text style={settingsStyles.infoDetail}>A data na lista de agendamentos será exibida por extenso (por exemplo: 10 de maio)</Text>
-                        </View>
-
-                        <Switch
-                            trackColor={{ true: projectPalete.color9 }}
-                            thumbColor={isEnabledDate ? projectPalete.color12 : "#ECECEC"}
-                            onValueChange={toggleSwitchDate}
-                            value={isEnabledDate}
-                        />
-                    </View>
+                    <SettingsSwitch
+                        label="Data por extenso"
+                        detail="A data na lista de agendamentos será exibida por extenso (por exemplo: 10 de maio)"
+                        value={isEnabledDateInFull}
+                        onToggle={toggleSwitchDate}
+                    />
                 </View>
             </View>
 
@@ -128,11 +109,7 @@ export default function Settings({ navigation }) {
 
                     <View style={[settingsStyles.infoRow, { borderBottomWidth: 0 }]}>
                         <Text style={settingsStyles.infoLabel}>Site do Projeto</Text>
-                        <View style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: 5
-                        }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
                             <Text
                                 style={settingsStyles.linkValue}
                                 onPress={() => Linking.openURL('https://theheapsters.github.io/calop-agender/presentation/')}
@@ -144,13 +121,6 @@ export default function Settings({ navigation }) {
                     </View>
                 </View>
             </View>
-
-            {/* <Animated.View style={[
-                    settingsStyles.toastContainer,
-                    { transform: [{ translateY: toastAnim }] }
-                ]}>
-                    <Text style={settingsStyles.toastText}>{toastMessage}</Text>
-                </Animated.View> */}
         </View>
     );
 }

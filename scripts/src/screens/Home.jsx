@@ -47,8 +47,10 @@ export default function Home() {
 
   const onRefresh = async () => {
     setIsRefreshingManually(true);
-    await Promise.all([loadAppointmentsSummary(), loadMessage()]);
-    setRandomTip(generateRandomTip());
+    await Promise.all([
+      loadAppointmentsSummary(),
+      loadMessage(),
+    ]);
     setIsRefreshingManually(false);
   };
 

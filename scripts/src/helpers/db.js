@@ -49,17 +49,24 @@ function insertRow(tableName, dataObj) {
 }
 
 // atualiza um registro pelo seu id
-function updateRow(tableName, id, dataObj) {
-    const cols = Object.keys(dataObj);
-    const assignments = cols.map(col => `${col} = ?`).join(', ');
-    const values = cols.map(col => dataObj[col]);
-    const sql = `UPDATE ${tableName} SET ${assignments} WHERE id = ?`;
-    exec(sql, [...values, id]);
+function updateRow(tableName, dataObj, whereObj) {
+    const setCols = Object.keys(dataObj);
+    const setAssignments = setCols.map(col => `${col} = ?`).join(', ');
+    const setValues = setCols.map(col => dataObj[col]);
+
+    const whereCols = Object.keys(whereObj);
+    const whereConditions = whereCols.map(col => `${col} = ?`).join(' AND ');
+    const whereValues = whereCols.map(col => whereObj[col]);
+
+    const sql = `UPDATE ${tableName} SET ${setAssignments} WHERE ${whereConditions}`;
+    const values = [...setValues, ...whereValues];
+
+    query(sql, values);
 }
 
 // deleta um registro pelo seu id
-function deleteRow(tableName, id) {
-    exec(`DELETE FROM ${tableName} WHERE id = ?`, [id]);
+function deleteRow(tableName, columnName, value) {
+    query(`DELETE FROM ${tableName} WHERE ${columnName} = ?`, [value]);
 }
 
 export { createTable, dropTable, selectAll, insertRow, updateRow, deleteRow, query, selectWhere };
