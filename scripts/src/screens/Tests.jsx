@@ -3,16 +3,20 @@ import { global } from '../assets/styles/global/globalStyle';
 import { getMessages } from '../utils/messages';
 import { addAppointment, getAppointments, getAppointmentsLength, getAppointmentsWithDate, useAppointments } from '../utils/appointments';
 import { getItemFromStorage, removeItemFromStorage, saveToStorage } from '../utils/storage';
-import { getAllSchedulings } from '../utils/scheduling_db';
-import { getUserInfos } from '../utils/user_db';
+import { getAllProcedures } from '../utils/scheduling_db';
+import { editUserInfos, getUserInfos } from '../utils/user_db';
 import { useUserInfo } from '../hooks/useUserInfo';
 import { Button, FlatList, Text, View } from 'react-native';
 import cleanApp from '../utils/cleaner';
-import { query } from '../helpers/db';
+import { query, selectAll, updateRow } from '../helpers/db';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSettings } from '../hooks/useSettings';
+import { getDateInFull } from '../utils/date';
 
 export default function Tests() {
-    const { name, enterprise_name, image_uri } = useUserInfo() || {};
+    const { name, enterprise_name } = useUserInfo() || {};
     const appointments = getAppointments();
+    const settings = useSettings();
 
     return (
         <View style={global.container}>
@@ -20,7 +24,7 @@ export default function Tests() {
             <Button
                 title="Run"
                 onPress={async () => {
-                    console.log(Object.keys(appointments).map(key => appointments[key])[0]);
+                    console.log(await appointments);
                 }}
             />
 
@@ -33,10 +37,18 @@ export default function Tests() {
                     console.log('App resetado');
                 }} />
                 <Button
-                    title='Select All alguma coisa'
+                    title='Select All from all'
                     onPress={() => {
                         console.log(query('SELECT * FROM user_infos'));
                         console.log(query('SELECT * FROM scheduling_models'));
+                    }}
+                />
+
+                <Button
+                    title='Select All keys'
+                    onPress={async () => {
+                        console.log(await AsyncStorage.getAllKeys());
+                        console.log(await getItemFromStorage('settings'));
                     }}
                 />
                 <Button title="Drop table" onPress={() => query('DROP TABLE scheduling_models')} />

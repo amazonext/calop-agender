@@ -40,7 +40,7 @@ function generateUniqueKeyIdentifier(callback) {
     tryGenerate();
 }
 
-function createScheduling(scheduling) {
+function createProcedure(scheduling) {
     createTableSchedulings();
 
     generateUniqueKeyIdentifier(key_identifier => {
@@ -53,20 +53,25 @@ function createScheduling(scheduling) {
     });
 }
 
-function getAllSchedulings() {
+function getAllProcedures() {
     return selectAll('scheduling_models');
 }
 
-function getSelectedSchedulings(procedure) {
-    selectWhere('scheduling_models', 'description',procedure);
+function getSelectedProcedure(procedure) {
+    selectWhere('scheduling_models', 'description', procedure);
 }
 
-function editScheduling(id, scheduling) {
-    updateRow('scheduling_models', id, scheduling);
+function editProcedure(scheduling, identifier) {
+    const validColumns = ['procedure', 'price', 'detailing', 'profissional_name', 'key_identifier', 'id'];
+    const filteredScheduling = {};
+    for (const key in scheduling) {
+        if (validColumns.includes(key)) filteredScheduling[key] = scheduling[key];
+    }
+    updateRow('scheduling_models', filteredScheduling, { key_identifier: identifier });
 }
 
-function deleteScheduling(id) {
-    deleteRow('scheduling_models', id);
+function deleteProcedure(key_identifier) {
+    deleteRow('scheduling_models', 'key_identifier', key_identifier);
 }
 
-export { createScheduling, getAllSchedulings, editScheduling, deleteScheduling, getSelectedSchedulings };
+export { createProcedure, getAllProcedures, editProcedure, deleteProcedure, getSelectedProcedure };

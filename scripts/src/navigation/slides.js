@@ -19,7 +19,7 @@ export default [
         key: 'about-scheduling',
         title: 'Agendamento Simplificado',
         text: 'Marque compromissos em segundos.',
-        image: require('../assets/images/logo-app.png'),
+        image: require('../assets/images/prints/agendamentos.png'),
         backgroundColor: projectPalete.color6,
         colors: {
             title: projectPalete.color3,
@@ -30,7 +30,7 @@ export default [
         key: 'about-create-model',
         title: 'Crie modelos de serviços',
         text: 'Agilize a adição de agendamentos com modelos de serviços.',
-        image: require('../assets/images/logo-app.png'),
+        image: require('../assets/images/prints/servicos.png'),
         backgroundColor: projectPalete.color6,
         colors: {
             title: projectPalete.color3,
@@ -41,7 +41,7 @@ export default [
         key: 'about-home',
         title: 'Veja seus agendamentos do dia',
         text: 'Interface inteligente disposta a mostrar seus agendamentos de forma eficaz.',
-        image: require('../assets/images/logo-app.png'),
+        image: require('../assets/images/prints/home.png'),
         backgroundColor: projectPalete.color6,
         colors: {
             title: projectPalete.color3,

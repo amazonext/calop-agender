@@ -48,7 +48,7 @@ export default function Appointments({ data: infos }) {
                                                                 Profissional: {model.profissional_name || '...'}
                                                             </Text>
                                                             <Text style={styles.detailText}>
-                                                                Valor: R$ {model.value || '0,00'}
+                                                                Valor: R$ {model.price || '0,00'}
                                                             </Text>
                                                             <Text style={styles.detailText}>
                                                                 {model.detailing || 'Detalhes não informados'}

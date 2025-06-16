@@ -12,8 +12,8 @@ import { projectPalete } from '../assets/styles/colors';
 import { registerStyles } from '../assets/styles/registerStyles';
 
 export default function Register({ navigation }) {
-    const [enterpriseName, setEnterpriseName] = useState("Ed's Inc");
-    const [name, setName] = useState("Ed");
+    const [enterpriseName, setEnterpriseName] = useState("");
+    const [name, setName] = useState("");
     const [errors, setErrors] = useState({ name: '' });
 
     const handleRegister = () => {

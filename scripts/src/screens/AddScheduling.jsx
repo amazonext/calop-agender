@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform, Keyboard } from "react-native";
 
 import { addSchedulingStyles } from "../assets/styles/addSchedulingStyles";
-import { createScheduling } from "../utils/scheduling_db";
+import { createProcedure } from "../utils/scheduling_db";
 import { projectPalete } from "../assets/styles/colors";
 
 export default function AddScheduling() {
@@ -11,10 +11,10 @@ export default function AddScheduling() {
     const [procedure, setProcedure] = useState("");
     const [price, setPrice] = useState("");
 
-    const handleCreateScheduling = () => {
+    const handleCreateProcedure = () => {
         Keyboard.dismiss();
 
-        createScheduling({
+        createProcedure({
             procedure: procedure,
             price: parseFloat(price),
             detailing: detailing || "",
@@ -119,7 +119,7 @@ export default function AddScheduling() {
                             !isFormValid && addSchedulingStyles.submitButtonDisabled
                         ]}
                         disabled={!isFormValid}
-                        onPress={handleCreateScheduling}
+                        onPress={handleCreateProcedure}
                         activeOpacity={0.8}
                     >
                         <Text style={[

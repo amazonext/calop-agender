@@ -1,18 +1,18 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState, useEffect } from "react";
 import { Modal, Text, View, TouchableOpacity, FlatList } from "react-native";
-import { createScheduling } from '../assets/styles/modals';
-import { Ionicons, AntDesign, Entypo } from '@expo/vector-icons';
+import { createProcedure } from '../assets/styles/modals';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 
 // components
 import ServiceItem from '../components/ServiceItem';
 
 // utils
-import { getAllSchedulings } from '../utils/scheduling_db';
+import { getAllProcedures } from '../utils/scheduling_db';
 import { addAppointment } from '../utils/appointments';
-import { addEvent } from '../utils/calendar';
+// import { addEvent } from '../utils/calendar';
 
-export default function ModalCreateScheduling({ modalVisible, setModalVisible }) {
+export default function ModalcreateProcedure({ modalVisible, setModalVisible }) {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showHourPicker, setShowHourPicker] = useState(false);
     // const [description, setDescription] = useState(null);
@@ -45,7 +45,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
 
     useEffect(() => {
         if (modalVisible) {
-            const schedulings = getAllSchedulings();
+            const schedulings = getAllProcedures();
             setServices(schedulings);
             setSelectedService(null);
         }
@@ -58,18 +58,18 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
             visible={modalVisible}
             onRequestClose={() => setModalVisible(!modalVisible)}
         >
-            <View style={createScheduling.modalOverlay}>
-                <View style={createScheduling.modalContainer}>
-                    <View style={createScheduling.headerSection}>
-                        <Text style={createScheduling.headerTitle}>Novo Agendamento</Text>
-                        <Text style={createScheduling.headerSubtitle}>Defina a data, o horário e o serviço</Text>
+            <View style={createProcedure.modalOverlay}>
+                <View style={createProcedure.modalContainer}>
+                    <View style={createProcedure.headerSection}>
+                        <Text style={createProcedure.headerTitle}>Novo Agendamento</Text>
+                        <Text style={createProcedure.headerSubtitle}>Defina a data, o horário e o serviço</Text>
                     </View>
 
-                    <View style={createScheduling.pickersContainer}>
+                    <View style={createProcedure.pickersContainer}>
                         <View>
-                            <Text style={createScheduling.labelInput}>Data</Text>
+                            <Text style={createProcedure.labelInput}>Data</Text>
                             <TouchableOpacity
-                                style={createScheduling.dateTimePickerButton}
+                                style={createProcedure.dateTimePickerButton}
                                 onPress={() => {
                                     setIsServiceDropdownVisible(false);
                                     setShowHourPicker(false);
@@ -77,21 +77,21 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }}
                                 activeOpacity={0.7}
                             >
-                                <View style={createScheduling.dateTimePickerIconContainer}>
+                                <View style={createProcedure.dateTimePickerIconContainer}>
                                     <Ionicons name="calendar-outline" size={22} color="#fff" />
                                 </View>
-                                <View style={createScheduling.dateTimePickerTextContainer}>
-                                    <Text style={createScheduling.dateTimePickerValueText}>{dateFormatted}</Text>
-                                    <Text style={createScheduling.dateTimePickerHelpText}>Toque para alterar</Text>
+                                <View style={createProcedure.dateTimePickerTextContainer}>
+                                    <Text style={createProcedure.dateTimePickerValueText}>{dateFormatted}</Text>
+                                    <Text style={createProcedure.dateTimePickerHelpText}>Toque para alterar</Text>
                                 </View>
                                 <Ionicons name="chevron-forward" size={20} color="#666" />
                             </TouchableOpacity>
                         </View>
 
                         <View>
-                            <Text style={createScheduling.labelInput}>Horário</Text>
+                            <Text style={createProcedure.labelInput}>Horário</Text>
                             <TouchableOpacity
-                                style={createScheduling.dateTimePickerButton}
+                                style={createProcedure.dateTimePickerButton}
                                 onPress={() => {
                                     setIsServiceDropdownVisible(false);
                                     setShowDatePicker(false);
@@ -99,22 +99,22 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }}
                                 activeOpacity={0.7}
                             >
-                                <View style={createScheduling.dateTimePickerIconContainer}>
+                                <View style={createProcedure.dateTimePickerIconContainer}>
                                     <AntDesign name="clockcircleo" size={20} color="#fff" />
                                 </View>
-                                <View style={createScheduling.dateTimePickerTextContainer}>
-                                    <Text style={createScheduling.dateTimePickerValueText}>{hourFormatted}</Text>
-                                    <Text style={createScheduling.dateTimePickerHelpText}>Toque para alterar</Text>
+                                <View style={createProcedure.dateTimePickerTextContainer}>
+                                    <Text style={createProcedure.dateTimePickerValueText}>{hourFormatted}</Text>
+                                    <Text style={createProcedure.dateTimePickerHelpText}>Toque para alterar</Text>
                                 </View>
                                 <Ionicons name="chevron-forward" size={20} color="#666" />
                             </TouchableOpacity>
                         </View>
 
-                        <View style={createScheduling.dropdownContainer}>
-                            <Text style={createScheduling.labelInput}>Serviço</Text>
+                        <View style={createProcedure.dropdownContainer}>
+                            <Text style={createProcedure.labelInput}>Serviço</Text>
 
                             <TouchableOpacity
-                                style={createScheduling.dropdownButton}
+                                style={createProcedure.dropdownButton}
                                 onPress={() => {
                                     if (services.length > 0) {
                                         setShowDatePicker(false);
@@ -124,7 +124,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 }}
                                 activeOpacity={services.length > 0 ? 0.7 : 1}
                             >
-                                <Text style={createScheduling.dropdownButtonText}>
+                                <Text style={createProcedure.dropdownButtonText}>
                                     {selectedService?.procedure || (services?.length ? 'Escolha um serviço' : 'Nenhum serviço disponível')}
                                 </Text>
                                 {services.length > 0 && (
@@ -136,7 +136,7 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 )}
                             </TouchableOpacity>
                             {isServiceDropdownVisible && services.length > 0 && (
-                                <View style={createScheduling.dropdownList}>
+                                <View style={createProcedure.dropdownList}>
                                     <FlatList
                                         data={services}
                                         renderItem={({ item, index }) => (
@@ -180,15 +180,15 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                         )}
 
                         {/* <View>
-                            <Text style={createScheduling.labelInput}>Descrição</Text>
+                            <Text style={createProcedure.labelInput}>Descrição</Text>
 
-                            <TouchableOpacity style={createScheduling.descriptionButton}>
-                                <View style={createScheduling.descriptionIconContainer}>
+                            <TouchableOpacity style={createProcedure.descriptionButton}>
+                                <View style={createProcedure.descriptionIconContainer}>
                                     <Entypo name="text" size={20} color="#fff" />
                                 </View>
-                                <View style={createScheduling.descriptionTextContainer}>
-                                    <Text style={createScheduling.descriptionValueText}>Sem descrição</Text>
-                                    <Text style={createScheduling.descriptionHelpText}>Toque para alterar</Text>
+                                <View style={createProcedure.descriptionTextContainer}>
+                                    <Text style={createProcedure.descriptionValueText}>Sem descrição</Text>
+                                    <Text style={createProcedure.descriptionHelpText}>Toque para alterar</Text>
                                 </View>
 
                                 <Ionicons name="chevron-forward" size={20} color="#666" />
@@ -196,17 +196,17 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                         </View> */}
                     </View>
 
-                    <View style={createScheduling.buttonsRow}>
+                    <View style={createProcedure.buttonsRow}>
                         <TouchableOpacity
-                            style={createScheduling.cancelButton}
+                            style={createProcedure.cancelButton}
                             onPress={() => setModalVisible(false)}
                             activeOpacity={0.8}
                         >
-                            <Text style={createScheduling.cancelButtonText}>Cancelar</Text>
+                            <Text style={createProcedure.cancelButtonText}>Cancelar</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                            style={createScheduling.confirmButton}
+                            style={createProcedure.confirmButton}
                             onPress={() => {
                                 if (!selectedService) {
                                     alert('Por favor, selecione um serviço antes de continuar.');
@@ -216,13 +216,13 @@ export default function ModalCreateScheduling({ modalVisible, setModalVisible })
                                 const formattedDate = dateFormatted.replace("/", "_");
                                 addAppointment(formattedDate, hourFormatted, selectedService);
                                 // TODO: terminar de adicionar as propriedades do objeto
-                                // addEvent({ title: services.name, notes: description });
+                                // addEvent({ title: services.procedure, notes: services.detailing });
 
                                 setModalVisible(false);
                             }}
                             activeOpacity={0.8}
                         >
-                            <Text style={createScheduling.confirmButtonText}>Criar Agendamento</Text>
+                            <Text style={createProcedure.confirmButtonText}>Criar Agendamento</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
