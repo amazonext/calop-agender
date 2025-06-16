@@ -20,12 +20,12 @@ export const settingsStyles = StyleSheet.create({
         gap: 10
     },
     username: {
-        fontSize: 18,
+        fontSize: 25,
         fontWeight: "bold",
         color: "#222",
     },
     enterprise: {
-        fontSize: 14,
+        fontSize: 20,
         fontWeight: "bold",
         color: "#666",
     },

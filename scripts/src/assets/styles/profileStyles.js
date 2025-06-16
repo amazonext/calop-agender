@@ -10,38 +10,9 @@ export const profileStyles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: 'center'
   },
-
-  // Container da foto
-  photoContainer: {
-    marginTop: 30,
-    alignItems: "center",
-  },
-  userPhoto: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: projectPalete.color4,
-  },
-
-  // Botão de alterar foto
-  changePhotoButton: {
-    backgroundColor: projectPalete.color6,
-    padding: 10,
-    borderRadius: 50,
-    position: 'absolute',
-    bottom: 0,
-    right: 0
-  },
-  changePhotoButtonText: {
-    color: projectPalete.color8,
-    fontSize: 14,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-
   // Botões de input
   inputButton: {
-    backgroundColor: projectPalete.color5,
+    backgroundColor: projectPalete.color11,
     marginHorizontal: 16,
     marginVertical: 10,
     borderRadius: 12,
@@ -52,12 +23,12 @@ export const profileStyles = StyleSheet.create({
   inputButtonLabel: {
     fontSize: 14,
     fontWeight: "bold",
-    color: projectPalete.color8,
+    color: projectPalete.color3,
     marginBottom: 6,
   },
   inputButtonValue: {
     fontSize: 18,
     fontWeight: "bold",
-    color: projectPalete.color3,
+    color: projectPalete.color10,
   },
 });

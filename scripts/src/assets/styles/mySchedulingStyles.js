@@ -13,7 +13,7 @@ export const mySchedulingStyles = StyleSheet.create({
     },
     content: {
         padding: 20,
-        backgroundColor: projectPalete.color1,
+        backgroundColor: "projectPalete.color1",
         borderRadius: 12,
         marginHorizontal: 16,
     },

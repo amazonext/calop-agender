@@ -9,9 +9,10 @@ export const itemStyles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
-        width: width * 0.8,
+        width: width * 0.5,
         height: height * 0.5,
         resizeMode: 'contain',
+        borderRadius: 10
     },
     titleSlide: {
         fontSize: 36,

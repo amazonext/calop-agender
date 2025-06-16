@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { projectPalete } from './colors';
 
-const createScheduling = StyleSheet.create({
+const createProcedure = StyleSheet.create({
     modalOverlay: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.2)',
@@ -74,45 +74,45 @@ const createScheduling = StyleSheet.create({
         color: '#666',
         marginTop: 2
     },
-    descriptionButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#f8f9fa',
-        borderRadius: 15,
-        paddingVertical: 18,
-        paddingHorizontal: 20,
-        borderWidth: 1,
-        borderColor: '#e9ecef'
-    },
-    descriptionIconContainer: {
-        width: 45,
-        height: 45,
-        borderRadius: 12,
-        backgroundColor: projectPalete.color1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 15
-    },
-    descriptionContainer: {
-        backgroundColor: "#f8f9fa",
-        borderColor: '#dee2e6',
-        paddingVertical: 18,
-        paddingHorizontal: 20,
-        flexDirection: 'row'
-    },
-    descriptionTextContainer: {
-        flex: 1,
-    },
-    descriptionValueText: {
-        fontSize: 18,
-        fontWeight: '600',
-        color: '#333'
-    },
-    descriptionHelpText: {
-        fontSize: 12,
-        color: '#666',
-        marginTop: 2
-    },
+    // descriptionButton: {
+    //     flexDirection: 'row',
+    //     alignItems: 'center',
+    //     backgroundColor: '#f8f9fa',
+    //     borderRadius: 15,
+    //     paddingVertical: 18,
+    //     paddingHorizontal: 20,
+    //     borderWidth: 1,
+    //     borderColor: '#e9ecef'
+    // },
+    // descriptionIconContainer: {
+    //     width: 45,
+    //     height: 45,
+    //     borderRadius: 12,
+    //     backgroundColor: projectPalete.color1,
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     marginRight: 15
+    // },
+    // descriptionContainer: {
+    //     backgroundColor: "#f8f9fa",
+    //     borderColor: '#dee2e6',
+    //     paddingVertical: 18,
+    //     paddingHorizontal: 20,
+    //     flexDirection: 'row'
+    // },
+    // descriptionTextContainer: {
+    //     flex: 1,
+    // },
+    // descriptionValueText: {
+    //     fontSize: 18,
+    //     fontWeight: '600',
+    //     color: '#333'
+    // },
+    // descriptionHelpText: {
+    //     fontSize: 12,
+    //     color: '#666',
+    //     marginTop: 2
+    // },
     buttonsRow: {
         flexDirection: 'row',
         gap: 12,
@@ -202,11 +202,6 @@ const settings = StyleSheet.create({
         color: '#222',
         marginBottom: 12,
     },
-    imagePickerText: {
-        borderStyle: 'dashed',
-        borderColor: projectPalete.color3,
-        borderWidth: 4,
-    },
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
@@ -236,4 +231,56 @@ const settings = StyleSheet.create({
     },
 });
 
-export { createScheduling, settings };
+const editUser = StyleSheet.create({
+    modalOverlay: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: 'rgba(0,0,0,0.2)'
+    },
+    modalContainer: {
+        backgroundColor: projectPalete.color1,
+        padding: 25,
+        borderRadius: 16,
+        width: "85%",
+    },
+    modalTitle: {
+        color: "#fff",
+        fontSize: 20,
+        fontWeight: "600",
+        marginBottom: 15,
+        textAlign: "center"
+    },
+    modalInput: {
+        backgroundColor: projectPalete.color13,
+        color: "#fff",
+        padding: 12,
+        borderRadius: 8,
+        fontSize: 16,
+        marginBottom: 20,
+        textAlign: 'center'
+    },
+    modalButtons: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        gap: 10
+    },
+    modalButtonCancel: {
+        backgroundColor: projectPalete.color3,
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        borderRadius: 8,
+        flex: 1,
+        alignItems: "center"
+    },
+    modalButtonSave: {
+        backgroundColor: projectPalete.color6,
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        borderRadius: 8,
+        flex: 1,
+        alignItems: "center"
+    }
+});
+
+export { createProcedure, settings, editUser };
