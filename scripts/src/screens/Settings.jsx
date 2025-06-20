@@ -112,7 +112,7 @@ export default function Settings({ navigation }) {
                         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
                             <Text
                                 style={settingsStyles.linkValue}
-                                onPress={() => Linking.openURL('https://theheapsters.github.io/calop-agender/presentation/')}
+                                onPress={() => Linking.openURL('https://theheapsters.github.io/about/calop-agender.html')}
                             >
                                 Calop Agender
                             </Text>
