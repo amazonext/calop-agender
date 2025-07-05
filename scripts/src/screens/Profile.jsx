@@ -11,7 +11,7 @@ import { editUserInfos, getUserInfos } from "../utils/user_db";
 
 // components
 import Loading from "../components/Loading";
-import ModalUser from "../components/ModalUser";
+import ModalUser from "../components/modalUser";
 
 export default function Profile() {
   const { name, enterprise_name } = useUserInfo() || {};
